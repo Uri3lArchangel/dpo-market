@@ -70,26 +70,33 @@ background-image: url(../../public/images_/hero-bg.png) ;
     color: white;
     flex-direction: column;
 
+
 }
 .h1_IntroTitle_container article{
     max-width: 60%;
     z-index: 2;
 
+
 }
 .h1_IntroTitle_container h1{
     font-size: 1.8rem;
     font-weight: 900;
+    text-align: left;
+
 }
+
 .h1_IntroTitle_container h1 text{
     color: var(--green-pry-1);
 }
 .h1_IntroTitle_container p{
     margin: 0.7em 0;
     line-height: 27px;
+    text-align: left;
+
 }
 .investLearnMore_Container{
     display: flex;
-    width: 30%;
+    max-width: 380px;
     margin: 2em 0 0 0;
     justify-content: space-between;
    
@@ -101,7 +108,7 @@ width: 40%;
 display: flex;
 align-items: center;
 justify-content: center;
-height: 45px;
+height: 50px;
 border-radius: 5px;
 }
 
@@ -111,7 +118,7 @@ display: flex;
 align-items: center;
 width: 45%;
 justify-content: space-between;
-height: 45px;
+height: 50px;
 }
 .investLearnMore_Container button:nth-child(2) p{
 color: white;
@@ -120,7 +127,7 @@ color: white;
     padding: 0;
     position: absolute;
     right: 0;
-    width: 45%;
+    width: 600px;
     height: 320px;
     background-size: 108.9% 117%;
     background-position: center;
@@ -128,4 +135,73 @@ color: white;
     background-image: url(../../public/images_/Chart.png);
     top: 380px;
     box-shadow: -10px 10px 30px #0008;
+}
+
+
+
+@media screen and (max-width:640px) {
+   
+    .h1_IntroTitle_container h1{
+        font-size: 1rem !important;
+        text-align: center;
+       
+    }
+    .div_chart_container{
+        display: none;
+    }
+   
+    .h1_IntroTitle_container p{
+       font-size: 0.8rem !important;
+       text-align: center;
+    }
+  
+    .investLearnMore_Container button{
+        margin: 0 1em;
+        max-width: 105px;
+    }
+   
+}
+
+@media screen and (max-width:1024px) {
+    .Header_headerContainer{
+        background-color: #000000fc;
+        min-height: 800px;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-position-x: center;
+        background-size:400% 30%;
+        animation-timing-function: ease-in-out;
+        animation-name: colorchange;
+        animation-duration: 45s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    background-image: url(../../public/images_/hero-bg.png) ;
+    }
+    .h1_IntroTitle_container article{
+        max-width: 100% ;
+        margin-top: 9em;
+        }
+    .h1_IntroTitle_container h1{
+        font-size: 1.6rem;
+        text-align: center;
+       
+    }
+    .h1_IntroTitle_container p{
+        font-size: 1.1rem;
+        text-align: center;
+     }
+     .investLearnMore_Container button{
+        margin: 0 1.5em;
+        max-width: 110px;
+    }
+    .investLearnMore_Container{
+        display: flex;
+        max-width: 100%;
+        margin: 2em 0 0 0;
+        justify-content: center;
+       
+    }
+    .div_chart_container{
+    display: none;
+    }
 }

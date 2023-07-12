@@ -32,6 +32,7 @@ width: 50%;
 height: 474px;
 z-index: 0;
 }
-.intersect-color{
-    background-color: black !important;
+.scrolledNav{
+background-color: #000;
+transition: all 0.5s linear;
 }

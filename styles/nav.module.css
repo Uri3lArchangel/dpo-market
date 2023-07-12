@@ -1,4 +1,96 @@
-.nav_level0_NavContainer > ul{
+
+
+.nav_level0_NavContainer {
+    display: none;
+}
+
+.nav_sm{
+    display: flex;
+    width: 100%;
+    z-index: 10;
+
+    justify-content: space-between;
+    position: fixed;
+    color: white;
+}
+.nav_sm figure a{
+    font-size:1.3rem;
+    font-weight: 600;
+}
+.nav_sm a{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav_sm a:hover{
+    color: var(--green-pry-1);
+}
+.nav_sm text{
+    color: var(--green-pry-1);
+}
+.dropdown_sm{
+    font-size: 1.1rem;
+}
+.nav_md{
+display: none;
+}
+
+
+
+@media screen and (min-width:640px) 
+{
+.nav_sm{
+    display: none;
+
+}
+.nav_md{
+    display: flex ;
+    position: fixed;
+    z-index: 10;
+    color: white;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.nav_md figure a{
+    font-size:1.6rem;
+    font-weight: 700;
+}
+.nav_md a{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav_md a:hover{
+    color: var(--green-pry-1);
+}
+.nav_md text{
+    color: var(--green-pry-1);
+}
+.dropdown_md{
+    font-size: 1.1rem;
+}
+
+.div_authButton_container{
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    font-weight: 600;
+    color: white;
+    font-size: 0.86rem;
+
+}
+.div_authButton_container button:nth-child(2){
+    background-color: var(--green-pry-1);
+    padding: 0 1.4em;
+    border-radius: 5px;
+}
+}
+
+@media screen and (min-width:940px) 
+    
+
+{.nav_level0_NavContainer > ul{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,9 +102,11 @@
 .nav_level0_NavContainer > li{
     cursor: pointer;
 }
+.nav_level0_NavContainer text{
+    color: var(--green-pry-1);
+}
 
-
-.nav_level0_NavContainer figure {
+.nav_level0_NavContainer figure a{
     display: flex;
     align-items: center;
     }
@@ -60,4 +154,25 @@
     background-color: var(--green-pry-1);
     padding: 0 1.4em;
     border-radius: 5px;
+}
+.nav_sm{
+    display: none;
+}
+.nav_md{
+display: none;
+}
+
+
+
+}
+
+@media screen and (min-width:1240px) {
+    .nav_level0_NavContainer > ul{
+
+        width: 30%;
+     
+    }
+    .div_authButton_container{
+    width: 200px;
+    }
 }

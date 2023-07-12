@@ -32,3 +32,44 @@ margin: auto;
     font-weight: 600;
     margin: 0.5em 0;
 }
+
+@media screen and (min-width:1024px) {
+    .sect_mainContainer{
+        min-height: 100vh;
+        padding: 4em 0;
+        background-size: 100% 100%;
+        background-position: center;
+        background-image: url(../../public/images_/loopers.png);
+    }
+    .sect_mainContainer h3{
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 0 0.6em 0;
+    
+    }
+    .sect_mainContainer p{
+    line-height: 40px;
+    width: 90%;
+    margin: auto;
+    }
+    .sect_approach{
+        background-color: var(--green-pry-1);
+        color: white;
+        width: 80%;
+        padding: 1.5em;
+        margin: 3em auto;
+        line-height: 25px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 10px #0007;
+    }
+    .sect_mainContainer h4{
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0.5em 0;
+    }
+    .sect_mainContainer div{
+    width: 50%;
+    margin: auto;
+    }
+}

@@ -1,14 +1,25 @@
-import React from "react";
+'use client'
+import React, { useEffect } from "react";
 import about from '../../../../../styles/landing/about.module.css'
-
+import Aos from 'aos'
 
 const AboutDPO = () => {
+  useEffect(() => {
+    if(window.innerWidth > 940){
+      Aos.init({duration:800,easing:'ease-in'})
+
+    }else{
+      Aos.init({duration:300,easing:'ease-in'})
+
+    }
+
+     }, [])
   return (
     <section id="about-us" className={about.sect_mainContainer}> 
       <div>
-        <article>
-          <h3>About Us</h3>
-          <p>
+        <article> 
+          <h3 data-aos="fade-right">About Us</h3>
+          <p data-aos="fade-right">
             Direct Private Offers is a decentralised &quot;Expert Global Market&quot;
             Funding Portal where investors can invest in great “up and coming”
             companies; and established going concerns. DPO attracts a wide range
@@ -24,7 +35,7 @@ const AboutDPO = () => {
             Issuers are able to resource our Institutional Investor, Accredited
             Investor, and Global Retail, and Institutional Investor databases.
           </p>
-          <section className={about.sect_approach}>
+          <section className={about.sect_approach} data-aos="fade-up" data-aos-delay="100">
           <h4>Our Approach</h4>
           <p>
             Direct Private Offers is a niche Funding Portal that uses technology

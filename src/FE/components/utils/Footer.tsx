@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className={footer.mainContainer}>
         <section>
             <div className={footer.leftContainer}>
-           <figure>
+           <figure> 
             <div>
                 <Image src={logo} alt='dpo logo' />
             </div>

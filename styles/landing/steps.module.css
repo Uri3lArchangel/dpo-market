@@ -1,6 +1,7 @@
 .section_mainContainer {
   min-height: 100vh;
   text-align: center;
+  min-width: 100%;
   position: relative;
   background-image: url(../../public/images_/Looper-3.png);
   background-repeat: no-repeat;
@@ -10,16 +11,16 @@
   width: 100%;
   z-index: 0;
   padding: 0 0 5em 0;
-  
+   
 }
 .section_mainContainer div > h1 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: 600;
   margin: 3.5em 0 0.5em 0;
 }
 .section_mainContainer div > p {
-  font-size: 0.95rem;
-  margin: 1.7em 0;
+  font-size: 0.8rem;
+  margin: 1.0em 0;
 }
 
 .ul_stepsContainer {
@@ -35,13 +36,14 @@ align-items: center;
   display: grid;
   text-align: left;
   grid-template-areas:
-    "icon title title"
-    "icon content content";
-  gap: 0.4em 1em;
-  margin: 2em 0;
-  width: 400px;
+    "title title"
+    "content content";
+  gap: 0.4em;
+  margin: 1.5em 0;
+  width: 100%;
 }
 .ul_stepsContainer li div {
+  display: none;
   grid-area: icon;
   width: 50px;
   height: 50px;
@@ -53,7 +55,7 @@ align-items: center;
 
 .ul_stepsContainer li h2 {
   grid-area: title;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   font-weight: 600;
 }
 .ul_stepsContainer li p {
@@ -68,4 +70,81 @@ align-items: center;
   border-radius: 5px;
   padding: 0.6em 1.2em;
   color: white;
+}
+
+
+@media screen and (min-width:470px) {
+  .section_mainContainer {
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    background-image: url(../../public/images_/Looper-3.png);
+    background-repeat: no-repeat;
+    background-position-x:right;
+    background-position-y: bottom ;
+    background-size: 40% 100%;
+    width: 100%;
+    z-index: 0;
+    padding: 0 0 5em 0;
+     
+  }
+  .section_mainContainer div > h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 3.5em 0 0.5em 0;
+  }
+  .section_mainContainer div > p {
+    font-size: 1.1rem;
+    margin: 1.7em 0;
+  }
+  
+  .ul_stepsContainer {
+      position: relative;
+    display: flex;
+    flex-direction: column;
+  align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  .ul_stepsContainer li {
+    display: grid;
+    text-align: left;
+    grid-template-areas:
+      "icon title title"
+      "icon content content";
+    gap: 0.4em 1em;
+    margin: 2em 0;
+    width: 400px;
+  }
+  .ul_stepsContainer li div {
+    display: block;
+    grid-area: icon;
+    width: 50px;
+    height: 50px;
+  }
+  .ul_stepsContainer li img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ul_stepsContainer li h2 {
+    grid-area: title;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .ul_stepsContainer li p {
+    grid-area: content;
+    font-size: 0.99rem;
+    line-height: 20px;
+  }
+  .ul_stepsContainer button a{
+      cursor: pointer;
+      display: block;
+    background-color: var(--green-pry-1);
+    border-radius: 5px;
+    padding: 0.6em 1.2em;
+    color: white;
+  }
+  
 }

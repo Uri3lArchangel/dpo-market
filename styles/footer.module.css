@@ -64,3 +64,81 @@ font-size: 1.2rem;
 .rightContainer a:hover{
     color: var(--green-pry-1);
 }
+
+
+@media screen and (max-width:940px) {
+    .mainContainer{
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+       
+        height: 100%;
+    }
+    .mainContainer > section{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        align-items: center;
+        width: 100%;
+        /* align-items: center; */
+        justify-content: center;
+    }
+    .copyrightContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        max-width: 100%;
+        line-break: anywhere;
+        text-align: center;
+    }
+    .leftContainer{
+        width: fit-content;
+        align-self: center; 
+        margin: 1em 0;
+    }
+    .leftContainer h5{
+    font-size: 1.2em;
+    margin: 0.8em 0;
+    font-weight: 900;
+    }
+    .leftContainer text{
+        color: var(--green-pry-1);
+    }
+    .leftContainer p{
+        display: flex;
+        align-items: center;
+    
+    }
+    .leftContainer p a:hover{
+        color: var(--green-pry-1);
+    }
+    .leftContainer p a{
+    margin: 0 0.8em;
+    font-size: 0.9rem;
+    }
+    .rightContainer {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        height: 100%;
+        align-self: center; 
+        justify-content: space-around;
+    }
+    .rightContainer h5{
+        font-size: 1.1rem;
+        font-weight: 600;
+    
+    } 
+    .rightContainer a{
+        display: block;
+        margin:1em 0;
+        font-size: 0.9rem;
+    }
+    .rightContainer a:hover{
+        color: var(--green-pry-1);
+    }
+    
+}

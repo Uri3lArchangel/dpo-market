@@ -2,6 +2,7 @@ import Nav from '@/src/FE/components/utils/Nav'
 import '../styles/globals.css'
 import Raleway from 'next/font/local'
 import Footer from '@/src/FE/components/utils/Footer'
+import "aos/dist/aos.css"
 
 const raleway = Raleway({
   src:[
@@ -35,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={raleway.className}>
+      <body style={{overflowX:'hidden'}} className={raleway.className}>
         <Nav />
         {children}
         <Footer />
