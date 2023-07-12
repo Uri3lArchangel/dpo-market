@@ -1,0 +1,131 @@
+@keyframes colorchange {
+    0%{
+        background-color: black;
+    }25%{
+        background-color: #1a0505fc;
+
+    }50%{
+        background-color: #061205fc;
+
+    }75%{
+        background-color: #082325fc;
+
+    }
+    100%{
+        background-color: #0b0517fc;
+
+    }
+}
+
+.Header_headerContainer{
+    background-color: #000000fc;
+    min-height: 650px;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: center;
+    background-size:200% 30%;
+    animation-timing-function: ease-in-out;
+    animation-name: colorchange;
+    animation-duration: 45s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+background-image: url(../../public/images_/hero-bg.png) ;
+}
+
+.Header_headerContainer figure {
+    display: flex;
+    align-items: center;
+    }
+    .Header_headerContainer figure div{
+    width: 30px;
+    height: 30px;
+    }
+    .Header_headerContainer  figcaption{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    }
+/*The is at the center  of the nav*/
+.Header_headerContainer nav > ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 43%;
+    font-size: 0.85rem;
+    color: white;
+    font-weight: 500;
+}
+.Header_headerContainer nav > li{
+    cursor: pointer;
+}
+
+
+.h1_IntroTitle_container{
+    /* padding: 15em 2em 0 2em; */
+    height: 600px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+
+}
+.h1_IntroTitle_container article{
+    max-width: 60%;
+    z-index: 2;
+
+}
+.h1_IntroTitle_container h1{
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+.h1_IntroTitle_container h1 text{
+    color: var(--green-pry-1);
+}
+.h1_IntroTitle_container p{
+    margin: 0.7em 0;
+    line-height: 27px;
+}
+.investLearnMore_Container{
+    display: flex;
+    width: 30%;
+    margin: 2em 0 0 0;
+    justify-content: space-between;
+   
+}
+.investLearnMore_Container button:nth-child(1){
+color: white;
+background-color: var(--green-pry-1);
+width: 40%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 45px;
+border-radius: 5px;
+}
+
+.investLearnMore_Container button:nth-child(2){
+color: var(--green-pry-1);
+display: flex;
+align-items: center;
+width: 45%;
+justify-content: space-between;
+height: 45px;
+}
+.investLearnMore_Container button:nth-child(2) p{
+color: white;
+}
+.div_chart_container{
+    padding: 0;
+    position: absolute;
+    right: 0;
+    width: 45%;
+    height: 320px;
+    background-size: 108.9% 117%;
+    background-position: center;
+    border-radius: 9px;
+    background-image: url(../../public/images_/Chart.png);
+    top: 380px;
+    box-shadow: -10px 10px 30px #0008;
+}

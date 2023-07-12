@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+font-size: 16px;
+--green-pry-1:#6ec761;
+}
+.intersect{
+    fill: #7000FF;
+filter: blur(200px);
+width: 375px;
+height: 545.499px;
+flex-shrink: 0;
+position: absolute;
+z-index: 0;
+
+}
+.intersect2{
+fill: #60FFE7;
+filter: blur(200px);
+position: absolute;
+right: 0;
+top: 60%;
+width: 50%;
+height: 474px;
+z-index: 0;
+}
+.intersect-color{
+    background-color: black !important;
+}

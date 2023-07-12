@@ -1,0 +1,29 @@
+.sect_mainContainer{
+    min-height: 30vh;
+    background-image: url(../../public/images_/block-7.png);
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 2em 0;
+    text-align: center;
+
+}
+.sect_mainContainer h4{
+    font-size: 1.4rem; 
+    color: white;
+    font-weight: 700;
+}
+.imageContainer{
+width: 100px;
+height: 100px;
+}
+.sect_chainsContainer{
+    display: flex;
+justify-content: center;
+margin: 1em 0 ;
+color: white;
+}
+.imageContainer img{
+    width: 100%;
+    height: 100%;
+
+}

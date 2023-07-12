@@ -1,0 +1,66 @@
+.mainContainer{
+    height: 70vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.mainContainer > section{
+    display: flex;
+    height: 50%;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+}
+.copyrightContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+}
+.leftContainer{
+    width: 30%;
+    height: 100%;
+    align-self: flex-start;
+}
+.leftContainer h5{
+font-size: 1.6rem;
+margin: 0.5em 0;
+font-weight: 900;
+}
+.leftContainer text{
+    color: var(--green-pry-1);
+}
+.leftContainer p{
+    display: flex;
+    align-items: center;
+
+}
+.leftContainer p a:hover{
+    color: var(--green-pry-1);
+}
+.leftContainer p a{
+margin: 0 0.2em;
+font-size: 1.2rem;
+}
+.rightContainer {
+    display: flex;
+    width: 65%;
+    height: 100%;
+    align-self: flex-start;
+    justify-content: space-around;
+}
+.rightContainer h5{
+    font-size: 1.3rem;
+    font-weight: 600;
+
+}
+.rightContainer a{
+    display: block;
+    margin:1.2em 0;
+    font-size: 1.2rem;
+}
+.rightContainer a:hover{
+    color: var(--green-pry-1);
+}
