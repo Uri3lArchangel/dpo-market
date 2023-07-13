@@ -6,11 +6,17 @@ import { BsChevronDoubleDown } from 'react-icons/bs';
 import { GiChart, GiPayMoney } from 'react-icons/gi';
 import {FcDebt} from 'react-icons/fc'
 import Link from 'next/link';
+import { smoothScoll } from './AboutUs';
+
+
+
+
+
 
 const items: MenuProps['items'] = [
   {
     key: '1',
-    label: 'Primary Market',
+    label: <Link onClick={smoothScoll} href="/invest#primary-market">Primary Market</Link>,
     children: [
       {
         key: '1-1',
@@ -26,7 +32,7 @@ const items: MenuProps['items'] = [
   },
   {
     key: '2',
-    label: <Link href=" ">Secondary Market</Link>,
+    label: <Link onClick={smoothScoll} href="/invest#secondary-market">Secondary Market</Link>,
     icon:<GiChart />
   },
   

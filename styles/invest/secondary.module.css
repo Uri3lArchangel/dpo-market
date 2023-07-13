@@ -1,0 +1,259 @@
+.mainContainer{
+    min-height: 100vh;
+    padding: 10em 0;
+    background-image: url(../../public/images_/loopers_sec.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.innerContainer{
+    width: 95%;
+    margin:1em auto;
+}
+.title h3{
+
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+}
+.title p{
+    font-size: 1.17rem;
+    text-align: center;
+    margin: 1em 0;
+}
+.headerContainer{
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 16px 74px 16px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--font-color-black-title, #2B2B2B);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.headerContainer ul{
+    display: grid;
+    grid-template-areas: 
+    "no name name name name last last trade trade";
+    color: white;
+    justify-content: space-between;
+}
+.headerContainer ul li:nth-child(1){
+    grid-area: no;
+}
+.headerContainer ul li:nth-child(2){
+    grid-area: name;
+}
+.headerContainer ul li:nth-child(3){
+    grid-area: last;
+}
+.headerContainer ul li:nth-child(4){
+    grid-area:trade;
+}
+
+.pairInnerContainer ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.pairInnerContainer ul li{
+    display: grid;
+    grid-template-areas: 
+    "no name name name name last last trade trade";
+    color: black;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-height: 90px;
+    margin: 1em 0;
+    align-items: center;
+    padding: 10px 10px 10px 30px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    
+}
+.innerNameSpan{
+    display: none;
+}
+.pairInnerContainer ul li > div:nth-child(1){
+    grid-area: no;
+    font-size: 0.8rem;
+    display: none;
+
+}
+.pairInnerContainer ul li > div:nth-child(2){
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    justify-content: flex-start;
+    font-size: 0.8rem;
+    grid-area: name;
+    
+}
+.pairInnerContainer ul li > div:nth-child(3){
+    grid-area: last;
+    display: none;
+}
+.pairInnerContainer ul li > div:nth-child(4){
+    grid-area:trade;
+    background-color: var(--green-pry-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    font-size: 0.8rem;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+
+}
+
+@media screen and (min-width:340px) {
+    .pairInnerContainer ul li > div:nth-child(1){
+        grid-area: no;
+        font-size: 0.8rem;
+        display: block;
+    
+    }
+    .pairInnerContainer ul li > div:nth-child(2){
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        justify-content: flex-start;
+        font-size: 0.8rem;
+        grid-area: name;
+        
+    }
+    .pairInnerContainer ul li > div:nth-child(3){
+        grid-area: last;
+        display: block;
+    }
+    .pairInnerContainer ul li > div:nth-child(4){
+        grid-area:trade;
+        background-color: var(--green-pry-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        font-size: 0.8rem;
+        height: 40px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 700;
+    
+    }
+}
+
+@media screen and (min-width:640px) {
+    .innerNameSpan{
+        display: inline;
+    }
+}
+@media screen and (min-width:940px) {
+    .mainContainer{
+        min-height: 100vh;
+        padding: 10em 0;
+        background-image: url(../../public/images_/loopers_sec.png);
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .innerContainer{
+        width: 95%;
+        margin:1em auto;
+    }
+    .title h3{
+    
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-align: center;
+    }
+    .title p{
+        font-size: 1.17rem;
+        text-align: center;
+        margin: 1em 0;
+    }
+    .headerContainer{
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 16px 74px 16px 30px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--font-color-black-title, #2B2B2B);
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    .headerContainer ul{
+        display: grid;
+        grid-template-areas: 
+        "no name name name name last last trade trade";
+        color: white;
+        justify-content: space-between;
+    }
+    .headerContainer ul li:nth-child(1){
+        grid-area: no;
+    }
+    .headerContainer ul li:nth-child(2){
+        grid-area: name;
+    }
+    .headerContainer ul li:nth-child(3){
+        grid-area: last;
+    }
+    .headerContainer ul li:nth-child(4){
+        grid-area:trade;
+    }
+    
+    .pairInnerContainer ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .pairInnerContainer ul li{
+        display: grid;
+        grid-template-areas: 
+        "no name name name name last last trade trade";
+        color: black;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        font-weight: 500;
+        min-height: 90px;
+        margin: 1em 0;
+        align-items: center;
+        padding: 10px 10px 10px 30px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        
+    }
+    .pairInnerContainer ul li > div:nth-child(1){
+        grid-area: no;
+    }
+    .pairInnerContainer ul li > div:nth-child(2){
+        display: flex;
+        align-items: center;
+        width: 140px;
+        justify-content: space-between;
+        grid-area: name;
+    }
+    .pairInnerContainer ul li > div:nth-child(3){
+        grid-area: last;
+    }
+    .pairInnerContainer ul li > div:nth-child(4){
+        grid-area:trade;
+        background-color: var(--green-pry-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        color: white;
+        font-weight: 700;
+    
+    }
+}
+@media screen and (min-width:1024px) {
+    .innerContainer{
+    width: 60%;
+    }
+}

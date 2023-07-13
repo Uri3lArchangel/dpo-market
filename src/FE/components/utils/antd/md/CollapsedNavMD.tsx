@@ -10,18 +10,11 @@ import { BsCurrencyExchange, BsFillBriefcaseFill } from 'react-icons/bs';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { AiOutlineControl } from 'react-icons/ai';
 import nav from '../../../../../../styles/nav.module.css'
+import { useRouter } from 'next/navigation';
+import { smoothScoll } from '../../../landing/section1/antd/AboutUs';
 
 
-const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
-    e.preventDefault()
-  let href = e.currentTarget.href
-  const id = href.replace(window.location.href+"#",'')
-  
-  const section = document.getElementById(id) as HTMLDivElement;
-  if(section)
-  section.scrollIntoView({behavior:'smooth'})
-  }
-  
+
 
 const items: MenuProps['items'] = [
     {
@@ -35,7 +28,7 @@ const items: MenuProps['items'] = [
     children: [
       {
         key: '2-1',
-        label:<Link href=" "> Primary Market</Link>,
+        label:<Link onClick={smoothScoll} href="#primary-market"> Primary Market</Link>,
         children:[
             {
                 key:'2-1-1',
@@ -50,7 +43,7 @@ const items: MenuProps['items'] = [
         ]
       },{
         key: '2-2',
-        label: <Link href=" ">Secondary Market</Link>,
+        label: <Link onClick={smoothScoll} href="#secondary-market">Secondary Market</Link>,
         icon:<GiChart />
       },
 

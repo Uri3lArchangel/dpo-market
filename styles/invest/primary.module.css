@@ -1,0 +1,198 @@
+
+.mainContainer{
+    padding: 8em 0;
+    min-height: 130vh;
+    overflow:hidden;
+    background-image: url(../../public/images_/Looper-4.png);
+    background-position: right;
+    background-size: 20% 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+}.topTitle h1{
+font-size: 1rem;
+font-weight: 600;
+text-align: center;
+color: white;
+}
+.topTitle p{
+    font-size: 0.9rem;
+    color: white;
+}
+.topTitle{
+    text-align: center;
+}
+.offers{
+    width: 100%;
+    display: block;
+    justify-content: space-around;
+}
+.offers > div{
+    width: 100%;
+    max-width: 500px;
+    background: #1F2421;
+    border-radius: 18px;
+    margin: 2em auto;
+    min-height: fit-content;
+    max-height: 100%;
+}
+.offersImage{
+    width: 100%;
+    height: 50%;
+    border-radius: 18px 18px 0 0;
+}
+.offersImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 18px 18px 0 0;
+
+}
+.offers text{
+    color: #767676;
+
+}
+.offers h2{
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1em 0;
+    color: white;
+}
+.offers p{
+    color: #767676;
+    line-height: 35px;
+
+
+}
+.offers article{
+    padding:2em 1em;
+    height: fit-content;
+}
+.offers_buttonContainer{
+    display: block;
+    justify-content: space-between;
+    align-items: center; 
+    margin: 2em 0;
+}
+.offers_buttonContainer > a{
+    display: flex;
+    margin: 1em 0;
+    align-items: center;
+    color: red;
+}
+.offers_buttonContainer p{
+    color: red ;
+    font-size: 1.05rem; 
+}
+
+.offers button{
+    display: block;
+    background-color: var(--green-pry-1);
+    color: white;
+    width: 120px;
+    height: 50px;
+}
+.innerContainer{
+    position: relative;
+    z-index: 2;
+}
+
+@media screen and (min-width:940px) {
+    
+.mainContainer{
+    padding: 8em 0;
+    min-height: 130vh;
+    overflow:hidden;
+    background-image: url(../../public/images_/Looper-4.png);
+    background-position: right;
+    background-size: 20% 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+}.topTitle h1{
+font-size: 1.3rem;
+font-weight: 600;
+text-align: center;
+color: white;
+}
+.topTitle p{
+    font-size: 1.2rem;
+    color: white;
+}
+.topTitle{
+    text-align: center;
+}
+.offers{
+    display: flex;
+    justify-content: space-around;
+}
+.offers > div{
+    width: 45%;
+    max-width: 500px;
+    background: #1F2421;
+    border-radius: 18px;
+    margin: 2em 0; 
+    max-height:870px;
+    height: 830px !important;
+}
+.offersImage{
+    width: 100%;
+    height: 50%;
+    border-radius: 18px 18px 0 0;
+}
+.offersImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 18px 18px 0 0;
+
+}
+.offers text{
+    color: #767676;
+
+}
+.offers h2{
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+}
+.offers p{
+    color: #767676;
+
+
+}
+.offers article{
+    padding:2em 1em;
+    height: 100%;
+}
+.offers_buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0;
+}
+.offers_buttonContainer > a{
+    display: flex;
+    align-items: center;
+    color: red;
+}
+.offers_buttonContainer p{
+    color: red ;
+    font-size: 1.05rem; 
+}
+
+.offers button{
+    display: block;
+    background-color: var(--green-pry-1);
+    color: white;
+    width: 120px;
+    height: 50px;
+}
+.innerContainer{
+    position: relative;
+    z-index: 2;
+}
+}
+
+@media screen and (min-width:1280px) {
+    .offers{
+    width: 70%;
+    margin: auto;
+    }
+}

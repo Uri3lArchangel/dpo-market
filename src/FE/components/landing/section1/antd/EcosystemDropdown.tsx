@@ -9,17 +9,17 @@ import {AiOutlineControl} from 'react-icons/ai'
 const items: MenuProps['items'] = [
   {
     key: '1',
-    label: <Link href="">Visit Official Site</Link>,
+    label: <Link target='_blank' href="https://directprivateoffers.net">Visit Official Site</Link>,
     icon:<HiOutlineBuildingOffice2 />
   },
   {
     key: '2',
-    label: <Link href="">Visit Crypto Swap</Link>,
+    label: <Link target='_blank' href="https://dpo-swap.vercel.app/">Visit Crypto Swap</Link>,
     icon:<BsCurrencyExchange />
   },
   {
     key: '3',
-    label: <Link href="">Visit Central Dashboard</Link>,
+    label: <Link target='_blank' href="https://dpo-central-pannel.vercel.app/">Visit Central Dashboard</Link>,
     icon:<AiOutlineControl />
   },
   {

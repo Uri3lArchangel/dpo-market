@@ -25,7 +25,7 @@ const StepsToINvesting = () => {
   }, [])
   
   return (
-    <section id='steps-to-invest' className={steps.section_mainContainer}>
+    <section id='steps-to-invest' className={steps.section_mainContainer + ' selectedScroll'}>
       <Intersect1 />
       <Intersect2 />
     <div>
