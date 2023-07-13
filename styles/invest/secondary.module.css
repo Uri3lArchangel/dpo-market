@@ -96,19 +96,20 @@
 }
 .pairInnerContainer ul li > div:nth-child(4){
     grid-area:trade;
-    background-color: var(--green-pry-1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    font-size: 0.8rem;
-    height: 40px;
-    border-radius: 10px;
-    color: white;
-    font-weight: 700;
-
 }
 
+.pairInnerContainer ul li > div:nth-child(4) a{
+    background-color: var(--green-pry-1);
+    width: 100px;
+    height: 40px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+}
 @media screen and (min-width:340px) {
     .pairInnerContainer ul li > div:nth-child(1){
         grid-area: no;
@@ -131,17 +132,18 @@
     }
     .pairInnerContainer ul li > div:nth-child(4){
         grid-area:trade;
+    }
+    .pairInnerContainer ul li > div:nth-child(4) a{
         background-color: var(--green-pry-1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 100px;
-        font-size: 0.8rem;
         height: 40px;
+        font-size: 0.8rem;
         border-radius: 10px;
+        display: flex;
         color: white;
         font-weight: 700;
-    
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -240,16 +242,18 @@
     }
     .pairInnerContainer ul li > div:nth-child(4){
         grid-area:trade;
+    }
+    .pairInnerContainer ul li > div:nth-child(4) a{
         background-color: var(--green-pry-1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 100px;
         height: 40px;
+        font-size: 0.8rem;
         border-radius: 10px;
+        display: flex;
         color: white;
         font-weight: 700;
-    
+        align-items: center;
+        justify-content: center;
     }
 }
 @media screen and (min-width:1024px) {

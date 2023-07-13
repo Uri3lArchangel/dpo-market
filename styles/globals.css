@@ -70,3 +70,15 @@ left: 0;
 right: 0;
 margin: auto;
 }
+
+.diabled-links{
+    filter:opacity(0.3);
+    cursor: not-allowed;
+}
+em{
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    width: 100%;
+    display: block;
+}

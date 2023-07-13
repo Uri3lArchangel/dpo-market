@@ -57,12 +57,12 @@ const Nav = () => {
             </div>
           </Link>
         </li>
-        <li>
-                   <InvestDropdownApp />
-
-        </li>
+       
         <li>
         <AboutDropdownApp />
+        </li>
+        <li>
+          <InvestDropdownApp />
         </li>
         <li>
          <EcoDropdownApp />

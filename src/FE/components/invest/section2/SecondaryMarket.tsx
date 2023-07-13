@@ -11,6 +11,7 @@ const SecondaryMarket = () => {
     <div>
       <section className={secondary.innerContainer}>
         <div className={secondary.title}>
+          <em>The secondary market is not opened untill the primary martket closes</em>
         <h3>Secondary Market</h3>
         <p>Select Your Trading Currency DPO Pair and Start Trading</p>
         </div>

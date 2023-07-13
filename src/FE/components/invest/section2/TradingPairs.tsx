@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
-import btc from 'cryptocurrency-icons/svg/color/btc.svg'
 import Link from 'next/link'
 import secondary from '../../../../../styles/invest/secondary.module.css'
 import { data } from './core/TradiingPairData'
+import { Tooltip } from 'antd'
 
 const TradingPairs = () => {
   return (
@@ -21,7 +21,9 @@ const TradingPairs = () => {
                     {item.last_price}
                 </div>
                 <div>
-                    <Link href={item.trade}>Trade</Link>
+                    <Tooltip title='Secondary Market is not yet open'>
+                    <Link className='diabled-links' href={item.trade} >Trade</Link>
+                    </Tooltip>
                 </div>
             </li>)}
         </ul>
