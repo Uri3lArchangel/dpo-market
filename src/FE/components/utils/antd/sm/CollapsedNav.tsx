@@ -11,9 +11,21 @@ import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { AiOutlineControl } from 'react-icons/ai';
 import nav from '../../../../../../styles/nav.module.css'
 import { useRouter } from 'next/navigation';
-import { smoothScoll } from '../../../landing/section1/antd/AboutUs';
 
+const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
 
+  let href = e.currentTarget.href
+  const id = (href.split('#'))[1]
+  
+  const section = document.getElementById(id) as HTMLDivElement;
+  
+  if(section )
+  {
+    e.preventDefault()
+  
+    section.scrollIntoView({behavior:'smooth'})
+  }
+  }
 
 const items: MenuProps['items'] = [
     {
@@ -21,75 +33,76 @@ const items: MenuProps['items'] = [
         label:   <Link href="">My Portfolio</Link>,
         icon:<BsFillBriefcaseFill />
       },
-  {
-    key: '2',
-    label: 'Invest',
-    children: [
       {
-        key: '2-1',
-        label:<Link onClick={smoothScoll} href="#primary-market"> Primary Market</Link>,
+        key: '2',
+        label:  <Link href="/">Home</Link>,
         children:[
             {
-                key:'2-1-1',
+                key: '2-1',
+                label: <Link onClick={smoothScoll} href={"/#steps-to-invest"}>How To Invest?</Link>,
+                
+              },
+              {
+                key: '2-2',
+                label: <Link onClick={smoothScoll} href="/#our-goals">What Are Our Goals?</Link>,
+              
+              },
+              {
+                key: '2-3',
+                label: <Link onClick={smoothScoll} href="/#about-us">What is DPO</Link>,
+              },{
+                key: '3-4',
+                label: <Link onClick={smoothScoll} href="/#blockchains">All DPO Supported Blockchains</Link>,
+              },
+            
+        ]
+      },
+  {
+    key: '3',
+    label: <Link href="/invest">Invest</Link>,
+    children: [
+      {
+        key: '3-1',
+        label:<Link onClick={smoothScoll} href="/invest#primary-market"> Primary Market</Link>,
+        children:[
+            {
+                key:'3-1-1',
                 label:<Link href=" ">Equity Offer</Link>,
                icon: <GiMoneyStack />
             },{
-                key: '2-1-2',
+                key: '3-1-2',
                 label: <Link href=" ">Debt Offer</Link>,
                 icon:<FcDebt />
               },
 
         ]
       },{
-        key: '2-2',
-        label: <Link onClick={smoothScoll} href="#secondary-market">Secondary Market</Link>,
+        key: '3-2',
+        label: <Link onClick={smoothScoll} href="/invest#secondary-market">Secondary Market</Link>,
         icon:<GiChart />
       },
 
       
     ],
   },
-  {
-    key: '3',
-    label: <Link href=" ">Learn</Link>,
-    children:[
-        {
-            key: '3-1',
-            label: <Link onClick={smoothScoll} href={"#steps-to-invest"}>How To Invest?</Link>,
-            
-          },
-          {
-            key: '3-2',
-            label: <Link onClick={smoothScoll} href="#our-goals">What Are Our Goals?</Link>,
-          
-          },
-          {
-            key: '3-3',
-            label: <Link onClick={smoothScoll} href="#about-us">What is DPO</Link>,
-          },{
-            key: '3-4',
-            label: <Link onClick={smoothScoll} href="#blockchains">All DPO Supported Blockchains</Link>,
-          },
-        
-    ]
-  },
+  
   {
     key: '4',
-    label:   <Link href="">Our Ecosystem</Link>,
+    label:   "Our Ecosystem",
     children:[
         {
             key: '4-1',
-            label: <Link href="">Visit Official Site</Link>,
+            label: <Link target='_blank' href="https://directprivateoffers.net">Visit Official Site</Link>,
             icon:<HiOutlineBuildingOffice2 />
           },
           {
             key: '4-2',
-            label: <Link href="">Visit Crypto Swap</Link>,
+            label: <Link target='_blank' href="https://dpo-swap.vercel.app/">Visit Crypto Swap</Link>,
             icon:<BsCurrencyExchange />
           },
           {
             key: '4-3',
-            label: <Link href="">Visit Central Dashboard</Link>,
+            label: <Link target='_blank' href="https://dpo-central-pannel.vercel.app/">Visit Central Dashboard</Link>,
             icon:<AiOutlineControl />
           },
           {
@@ -114,7 +127,7 @@ const items: MenuProps['items'] = [
 export const CollapsedNav = () => (
   <Dropdown menu={{ items }} className={nav.dropdown_sm}>
       <Space>
-       <Link href=" " style={{fontSize:'1.2rem'}}>
+       <Link href=" " style={{fontSize:'1.4rem'}}>
         Menu
         <CiMenuKebab />
         </Link>

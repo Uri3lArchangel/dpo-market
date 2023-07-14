@@ -5,7 +5,7 @@ import { BsChevronDoubleDown, BsCurrencyExchange } from 'react-icons/bs';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-export const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
+ const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
 
 let href = e.currentTarget.href
 const id = (href.split('#'))[1]
@@ -47,7 +47,7 @@ const items: MenuProps['items'] = [
 export const AboutDropdownApp = () => (
   <Dropdown menu={{ items }}>
       <Space>
-       <Link href=" " >Learn 
+       <Link href="/" >Home 
         <BsChevronDoubleDown />
         </Link>
       </Space>

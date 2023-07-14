@@ -4,18 +4,18 @@ import about from '../../../../../styles/landing/about.module.css'
 import Aos from 'aos'
 
 const AboutDPO = () => {
-  useEffect(() => {
-    if(window.innerWidth > 940){
-      Aos.init({duration:800,easing:'ease-in'})
-
+  useEffect(()=>{
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
     }else{
-      Aos.init({duration:300,easing:'ease-in'})
-
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    
+    
     }
-
-     }, [])
+  },[])
+    
   return (
-    <section id="about-us" className={about.sect_mainContainer}> 
+    <section id="about-us" className={about.sect_mainContainer + ' overflow-x-hidden'}> 
       <div>
         <article> 
           <h3 data-aos="fade-right">About Us</h3>

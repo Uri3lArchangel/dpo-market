@@ -9,11 +9,14 @@ import { AboutDropdownApp } from "../landing/section1/antd/AboutUs";
 import nav from '../../../../styles/nav.module.css'
 import { CollapsedNav } from "./antd/sm/CollapsedNav";
 import { CollapsedNavMD } from "./antd/md/CollapsedNavMD";
-import { useRouter } from "next/navigation";
+import Aos from 'aos'
+
 
 const Nav = () => {
  useEffect(()=>{
- 
+
+
+
   
   document.onscroll=()=>{
     let element = document.querySelector('.selectedScroll')
@@ -38,11 +41,11 @@ const Nav = () => {
 }
  },[])
   return (<>
-    <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer}>
+    <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden'}>
       <figure>
         <Link href="/"> 
         <div>
-          <Image src={logo} alt="DPO Markets Logo" />
+          <Image src={logo} alt="DPO Markets Logo" /> 
         </div>
         <figcaption>
           DPO <text>Market</text>

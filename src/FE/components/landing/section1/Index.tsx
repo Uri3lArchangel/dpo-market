@@ -1,26 +1,25 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import header from '../../../../../styles/landing/header.module.css'
 import {BiChevronRight, BiSolidRightArrow} from 'react-icons/bi'
-import Aos from 'aos';
-
+import Aos from 'aos'
 const Header = () => {
-  useEffect(() => {
-    if(window.innerWidth > 940){
-      Aos.init({duration:800})
-
+  useEffect(()=>{
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
     }else{
-      Aos.init({duration:300})
-
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    
+    
     }
-
-     }, [])
+  },[])
+    
   
   return (
     <header className={header.Header_headerContainer}>
      
       <section className={header.h1_IntroTitle_container}>
-        <article data-aos="fade-right" data-aos-easing="ease-out" >
+        <article data-aos={"fade-right"} data-aos-easing="ease-out"  >
       <h1 > 
       Invest in Direct Private Offers by <br /> Acquiring Our Shares as Security <br /> Tokens (<text>DPO Tokens</text>)
       </h1>

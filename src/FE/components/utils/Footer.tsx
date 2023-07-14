@@ -7,7 +7,7 @@ import { AiTwotonePhone } from 'react-icons/ai'
 import {MdAttachEmail} from 'react-icons/md'
 const Footer = () => {
   return (
-    <footer className={footer.mainContainer}>
+    <footer className={footer.mainContainer + ' overflow-x-hidden'}>
         <section>
             <div className={footer.leftContainer}>
            <figure> 

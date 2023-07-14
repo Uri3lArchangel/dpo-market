@@ -1,24 +1,23 @@
-import Nav from '@/src/FE/components/utils/Nav'
-import '../styles/globals.css'
+import '../../styles/globals.css'
 import Raleway from 'next/font/local'
-import Footer from '@/src/FE/components/utils/Footer'
 import "aos/dist/aos.css"
+import Footer from '@/src/FE/components/utils/Footer'
 
 const raleway = Raleway({
   src:[
     {
-      path:'../public/fonts/raleway/Raleway-Thin.ttf',
+      path:'../../public/fonts/raleway/Raleway-Thin.ttf',
       weight:'200'
     },{
-      path:'../public/fonts/raleway/Raleway-Regular.ttf',
+      path:'../../public/fonts/raleway/Raleway-Regular.ttf',
       weight:'500'
 
     },{
-      path:'../public/fonts/raleway/Raleway-Bold.ttf',
+      path:'../../public/fonts/raleway/Raleway-Bold.ttf',
       weight:'700'
 
     },{
-      path:'../public/fonts/raleway/Raleway-ExtraBold.ttf',
+      path:'../../public/fonts/raleway/Raleway-ExtraBold.ttf',
       weight:'900'
     }
   ]
@@ -38,8 +37,9 @@ export default function RootLayout({
     <html lang="en">
       <body style={{overflowX:'hidden'}} className={raleway.className}>
         {children}
-        <Footer />  
         </body>
+        <Footer />
     </html>
   )
 }
+ 

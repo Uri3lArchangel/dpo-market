@@ -12,10 +12,17 @@ import { Intersect3, Intersect4, Intersect5 } from '../../utils/Intersects'
 import Aos from 'aos'
 
 const PrimaryMarket = () => {
-
     useEffect(()=>{
-        Aos.init({duration:500})
-    },[])
+        if(window.innerWidth <1024){
+          Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
+        }else{
+          Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+        
+        
+        }
+      },[])
+        
+    
   return (
     <section className={primary.mainContainer} id='primary-market'>
         <Intersect3 />

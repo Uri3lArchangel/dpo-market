@@ -2,10 +2,19 @@
 import React, { useEffect } from 'react'
 import TradingPairs from './TradingPairs'
 import secondary from '../../../../../styles/invest/secondary.module.css'
-
+import Aos from 'aos'
 
 const SecondaryMarket = () => {
-
+  useEffect(()=>{
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
+    }else{
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    
+    
+    }
+  },[])
+    
   return (
    <section className={secondary.mainContainer +' selectedScroll'} id='secondary-market'>
     <div>

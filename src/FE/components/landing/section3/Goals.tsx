@@ -7,18 +7,19 @@ import { GoGoal } from 'react-icons/go'
 import Aos from 'aos'
 
 const Goals = () => {
-    useEffect(() => {
-        if(window.innerWidth > 940){
-          Aos.init({duration:800})
-    
+    useEffect(()=>{
+        if(window.innerWidth <1024){
+          Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
         }else{
-          Aos.init({duration:300})
-    
+          Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+        
+        
         }
-    
-         }, [])
+      },[])
+        
+
   return (
-    <section id='our-goals' className={goals.section_mainContainer}>
+    <section id='our-goals' className={goals.section_mainContainer + ' overflow-x-hidden'}>
         <div>
             <section className={goals.section_innerSect}> 
                     <h2>Investment Objective</h2>

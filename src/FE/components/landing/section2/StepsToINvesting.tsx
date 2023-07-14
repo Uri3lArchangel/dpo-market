@@ -10,20 +10,18 @@ import Link from 'next/link'
 import { Intersect1, Intersect2 } from '../../utils/Intersects'
 import Aos from 'aos'
 
-
 const StepsToINvesting = () => {
-  useEffect(() => {
-    if(window.innerWidth > 470){
-      Aos.init({duration:1000})
 
+  useEffect(()=>{
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
     }else{
-      Aos.init({duration:300,easing:'ease-out'})
-
-    }
-  
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
     
-  }, [])
-  
+    
+    }
+  },[])
+    
   return (
     <section id='steps-to-invest' className={steps.section_mainContainer + ' selectedScroll'}>
       <Intersect1 />

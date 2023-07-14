@@ -6,12 +6,24 @@ import { BsChevronDoubleDown } from 'react-icons/bs';
 import { GiChart, GiPayMoney } from 'react-icons/gi';
 import {FcDebt} from 'react-icons/fc'
 import Link from 'next/link';
-import { smoothScoll } from './AboutUs';
 
 
 
 
+const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
 
+  let href = e.currentTarget.href
+  const id = (href.split('#'))[1]
+  
+  const section = document.getElementById(id) as HTMLDivElement;
+  
+  if(section )
+  {
+    e.preventDefault()
+  
+    section.scrollIntoView({behavior:'smooth'})
+  }
+  }
 
 const items: MenuProps['items'] = [
   {
@@ -43,7 +55,7 @@ const items: MenuProps['items'] = [
 export const InvestDropdownApp = () => (
   <Dropdown menu={{ items }}>
       <Space>
-       <Link href=" ">Invest
+       <Link href="/invest">Invest
         <BsChevronDoubleDown />
         </Link>
       </Space>
