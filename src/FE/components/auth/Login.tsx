@@ -1,15 +1,24 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Passowrd from '../utils/antd/inputs/Passowrd'
  import login from '../../../../styles/auth/login.module.css'
 import Link from 'next/link'
-
+import Aos from 'aos'
 
 function Login() {
+  useEffect(()=>{
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
+    }else{
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    
+    
+    }
+  },[])
   return (
     <section className={login.mainContainer}>
          <div className={login.innerContainer}>
-          <section  className={login.leftContainer}>
+          <section data-aos="fade-down" data-aos-easing="ease-out-back"className={login.leftContainer}>
             <div>
               <div className={login.titleContainer}>
                 <h2> <text>SIGN</text> IN</h2>
@@ -38,7 +47,7 @@ function Login() {
               <p> <Link href="">Sign Up</Link> if you dont have an account</p>
             </div>
           </section>
-          <section className={login.rightContainer}>
+          <section data-aos="slide-up" data-aos-delay="100" data-aos-easing="ease-out"  className={login.rightContainer}>
 n
           </section>
 
