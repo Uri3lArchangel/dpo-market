@@ -1,0 +1,810 @@
+
+.mainContainer > div{
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.innerContainer {
+    position: relative;
+    z-index: 5;
+    min-height: 80vh;
+    padding: 6em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em 0;
+}
+.progressContainer{
+    min-height: 20vh;
+    background-color: rgb(2, 23, 45);
+}
+.leftContainer{
+    width: 100%;
+}
+.leftContainer > div{
+    width: fit-content;
+    margin: auto;
+}
+.leftContainer figure h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.leftContainer figure{
+    display: flex;
+    align-items: flex-start;
+}
+.leftContainer figure text{
+    color: var(--green-pry-1);
+}
+.leftContainer article{
+    max-width:100%;
+    margin: 2em 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.leftContainer em{
+    text-align: left ;
+}
+
+.leftGoToDebtCntainer button a{
+    display: flex;
+    width: 190px;
+    min-width: 120px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--green-pry-1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* right */
+.rightContainer {
+    width: 100%;
+}
+.rightContainer > section{
+    background-color: black;
+    border-radius: 15px;
+background: #000;
+    width:100% ;
+    margin: auto;
+    padding: 3em 0em;
+
+}
+.curencyContainer{
+    margin: 1em 0;
+    color: white;
+    text-align: center;
+    
+}
+.curencyContainer p{
+    font-size: 1.25rem;
+}
+.curencyContainer ul{
+display: flex;
+border-radius: 10px;
+height: 45px;
+background: #E3E3E3;
+justify-content: space-around;
+align-items: center;
+margin: 0.5em 0;
+}
+.curencyContainer li{
+
+width: 15%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 85%;
+flex-shrink: 0;
+color: black;
+font-weight: 600;
+cursor: pointer;
+}
+.inputs > div{
+    position: relative;
+}
+.inputs > div input, .inputs > section{
+
+    display: block;
+    width: 100%;
+    height: 69px;
+    color: white;
+    padding:0 1em ;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1.2rem;
+border: 2px solid rgba(123, 218, 108, 0.74);
+background: rgba(217, 217, 217, 0.00);
+margin: 0.3em 0;
+}
+.inputs input::placeholder{
+    color: rgba(116, 190, 105, 0.6);
+    font-size: 0.8rem;
+}
+
+.inputs section {
+    margin: 1.5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inputs section input {
+width: 80%;
+outline: 0;
+border: 0;
+background-color: transparent;
+}
+.inputs section button{
+    background-color: var(--green-pry-1);
+    padding: 0.3em 0.5em;
+    color: #fff;
+    border-radius: 5px;
+    width: fit-content;
+}
+.downArrow{
+    position:absolute ;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 6;
+    color: #59aa4d;
+    color: white;
+    background-color:#59aa4d;
+    border-radius: 100%;
+    padding: 0.4em;
+    width: 40px;
+    height: 40px;
+}
+.progressContainer {
+    display: flex;
+    align-items: center;
+   
+}
+
+.progressContainer  > div{
+    position: relative;
+    z-index: 7;
+ border-radius: 10px;
+border: 1px solid #929292;
+background: rgba(99, 99, 99, 0.70);
+width: 100%;
+margin: 0;
+height: 120px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+.labelsContainer{
+    position: relative;
+    width: 60%;
+    height: 40%;
+    padding: 0;
+    margin: 0 auto;
+
+    display: none;
+    
+   
+}
+.progressContainer progress{
+width: 90%;
+cursor: pointer;
+}
+
+
+@media screen and (min-width:450px) {
+    
+.mainContainer > div{
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.innerContainer {
+    position: relative;
+    z-index: 5;
+    min-height: 80vh;
+    padding: 6em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+}
+.progressContainer{
+    min-height: 20vh;
+    background-color: rgb(2, 23, 45);
+}
+.leftContainer{
+    width: 80%;
+}
+.leftContainer > div{
+    width: fit-content;
+    margin: auto;
+}
+.leftContainer figure h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.leftContainer figure{
+    display: flex;
+    align-items: flex-start;
+}
+.leftContainer figure text{
+    color: var(--green-pry-1);
+}
+.leftContainer article{
+    max-width:100%;
+    margin: 2em 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.leftContainer em{
+    text-align: left ;
+}
+
+.leftGoToDebtCntainer button a{
+    display: flex;
+    width: 190px;
+    min-width: 120px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--green-pry-1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* right */
+.rightContainer {
+    width: 80%;
+}
+.rightContainer > section{
+    background-color: black;
+    border-radius: 15px;
+background: #000;
+    width:100% ;
+    margin: auto;
+    padding: 3em 2.5em;
+
+}
+.curencyContainer{
+    margin: 1em 0;
+    color: white;
+    text-align: center;
+    
+}
+.curencyContainer p{
+    font-size: 1.25rem;
+}
+.curencyContainer ul{
+display: flex;
+border-radius: 10px;
+height: 45px;
+background: #E3E3E3;
+justify-content: space-around;
+align-items: center;
+margin: 0.5em 0;
+}
+.curencyContainer li{
+
+width: 15%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 85%;
+flex-shrink: 0;
+color: black;
+font-weight: 600;
+cursor: pointer;
+}
+.inputs > div{
+    position: relative;
+}
+.inputs > div input, .inputs > section{
+
+    display: block;
+    width: 100%;
+    height: 69px;
+    color: white;
+    padding:0 1em ;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1.2rem;
+border: 2px solid rgba(123, 218, 108, 0.74);
+background: rgba(217, 217, 217, 0.00);
+margin: 0.3em 0;
+}
+.inputs input::placeholder{
+    color: rgba(116, 190, 105, 0.6);
+    font-size: 0.8rem;
+}
+
+.inputs section {
+    margin: 1.5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inputs section input {
+width: 80%;
+outline: 0;
+border: 0;
+background-color: transparent;
+}
+.inputs section button{
+    background-color: var(--green-pry-1);
+    padding: 0.3em 0.5em;
+    color: #fff;
+    border-radius: 5px;
+    width: fit-content;
+}
+.downArrow{
+    position:absolute ;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 6;
+    color: #59aa4d;
+    color: white;
+    background-color:#59aa4d;
+    border-radius: 100%;
+    padding: 0.4em;
+    width: 40px;
+    height: 40px;
+}
+.progressContainer {
+    display: flex;
+    align-items: center;
+   
+}
+
+.progressContainer  > div{
+    position: relative;
+    z-index: 7;
+ border-radius: 10px;
+border: 1px solid #929292;
+background: rgba(99, 99, 99, 0.70);
+width: 80%;
+margin: auto;
+height: 120px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+}
+.labelsContainer{
+    position: relative;
+    width: 71%;
+    height: 40%;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+
+    
+   
+}
+.progressContainer progress{
+width: 71%;
+cursor: pointer;
+}
+}
+
+
+@media screen and (min-width:840px) {
+    
+.mainContainer > div{
+    background-image: url(../../public/images_/looperandcolor.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.innerContainer {
+    position: relative;
+    z-index: 5;
+    min-height: 80vh;
+    padding: 6em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.progressContainer{
+    min-height: 20vh;
+    background-color: rgb(2, 23, 45);
+}
+.leftContainer{
+    width: 40%;
+}
+.leftContainer > div{
+    width: fit-content;
+    margin: auto;
+}
+.leftContainer figure h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.leftContainer figure{
+    display: flex;
+    align-items: flex-start;
+}
+.leftContainer figure text{
+    color: var(--green-pry-1);
+}
+.leftContainer article{
+    max-width:100%;
+    margin: 2em 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.leftContainer em{
+    text-align: left ;
+}
+
+.leftGoToDebtCntainer button a{
+    display: flex;
+    width: 190px;
+    min-width: 120px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--green-pry-1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* right */
+.rightContainer {
+    width: 60%;
+}
+.rightContainer > section{
+    background-color: black;
+    border-radius: 15px;
+background: #000;
+    width:70% ;
+    margin: auto;
+    padding: 3em 2.5em;
+
+}
+.curencyContainer{
+    margin: 1em 0;
+    color: white;
+    text-align: center;
+    
+}
+.curencyContainer p{
+    font-size: 1.25rem;
+}
+.curencyContainer ul{
+display: flex;
+border-radius: 10px;
+height: 45px;
+background: #E3E3E3;
+justify-content: space-around;
+align-items: center;
+margin: 0.5em 0;
+}
+.curencyContainer li{
+
+width: 15%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 85%;
+flex-shrink: 0;
+color: black;
+font-weight: 600;
+cursor: pointer;
+}
+.inputs > div{
+    position: relative;
+}
+.inputs > div input, .inputs > section{
+
+    display: block;
+    width: 100%;
+    height: 69px;
+    color: white;
+    padding:0 1em ;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1.2rem;
+border: 2px solid rgba(123, 218, 108, 0.74);
+background: rgba(217, 217, 217, 0.00);
+margin: 0.3em 0;
+}
+.inputs input::placeholder{
+    color: rgba(116, 190, 105, 0.6);
+    font-size: 0.8rem;
+}
+
+.inputs section {
+    margin: 1.5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inputs section input {
+width: 80%;
+outline: 0;
+border: 0;
+background-color: transparent;
+}
+.inputs section button{
+    background-color: var(--green-pry-1);
+    padding: 0.3em 0.5em;
+    color: #fff;
+    border-radius: 5px;
+    width: fit-content;
+}
+.downArrow{
+    position:absolute ;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 6;
+    color: #59aa4d;
+    color: white;
+    background-color:#59aa4d;
+    border-radius: 100%;
+    padding: 0.4em;
+    width: 40px;
+    height: 40px;
+}
+.progressContainer {
+    display: flex;
+    align-items: center;
+   
+}
+
+.progressContainer  > div{
+    position: relative;
+    z-index: 7;
+ border-radius: 10px;
+border: 1px solid #929292;
+background: rgba(99, 99, 99, 0.70);
+width: 50%;
+margin: auto;
+height: 120px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+}
+.labelsContainer{
+    position: relative;
+    width: 71%;
+    height: 40%;
+    padding: 0;
+    margin: 0 auto;
+    
+   
+}
+.progressContainer progress{
+width: 71%;
+cursor: pointer;
+}
+}
+
+@media screen and (min-width:1240px) {
+    
+.mainContainer > div{
+    background-image: url(../../public/images_/looperandcolor.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+.innerContainer {
+    position: relative;
+    z-index: 5;
+    min-height: 80vh;
+    padding: 6em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+.progressContainer{
+    min-height: 20vh;
+    background-color: rgb(2, 23, 45);
+}
+.leftContainer{
+    width: 40%;
+}
+.leftContainer > div{
+    width: fit-content;
+    margin: auto;
+}
+.leftContainer figure h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.leftContainer figure{
+    display: flex;
+    align-items: flex-start;
+}
+.leftContainer figure text{
+    color: var(--green-pry-1);
+}
+.leftContainer article{
+    max-width:100%;
+    margin: 2em 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.leftContainer em{
+    text-align: left ;
+}
+
+.leftGoToDebtCntainer button a{
+    display: flex;
+    width: 190px;
+    min-width: 120px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--green-pry-1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+/* right */
+.rightContainer {
+    width: 40%;
+}
+.rightContainer > section{
+    background-color: black;
+    border-radius: 15px;
+background: #000;
+    width:70% ;
+    margin: auto;
+    padding: 3em 2.5em;
+
+}
+.curencyContainer{
+    margin: 1em 0;
+    color: white;
+    text-align: center;
+    
+}
+.curencyContainer p{
+    font-size: 1.25rem;
+}
+.curencyContainer ul{
+display: flex;
+border-radius: 10px;
+height: 45px;
+background: #E3E3E3;
+justify-content: space-around;
+align-items: center;
+margin: 0.5em 0;
+}
+.curencyContainer li{
+
+width: 15%;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 85%;
+flex-shrink: 0;
+color: black;
+font-weight: 600;
+cursor: pointer;
+}
+.inputs > div{
+    position: relative;
+}
+.inputs > div input, .inputs > section{
+
+    display: block;
+    width: 100%;
+    height: 69px;
+    color: white;
+    padding:0 1em ;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1.2rem;
+border: 2px solid rgba(123, 218, 108, 0.74);
+background: rgba(217, 217, 217, 0.00);
+margin: 0.3em 0;
+}
+.inputs input::placeholder{
+    color: rgba(116, 190, 105, 0.6);
+    font-size: 0.8rem;
+}
+
+.inputs section {
+    margin: 1.5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inputs section input {
+width: 80%;
+outline: 0;
+border: 0;
+background-color: transparent;
+}
+.inputs section button{
+    background-color: var(--green-pry-1);
+    padding: 0.3em 0.5em;
+    color: #fff;
+    border-radius: 5px;
+    width: fit-content;
+}
+.downArrow{
+    position:absolute ;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 6;
+    color: #59aa4d;
+    color: white;
+    background-color:#59aa4d;
+    border-radius: 100%;
+    padding: 0.4em;
+    width: 40px;
+    height: 40px;
+}
+.progressContainer {
+    display: flex;
+    align-items: center;
+   
+}
+
+.progressContainer  > div{
+    position: relative;
+    z-index: 7;
+ border-radius: 10px;
+border: 1px solid #929292;
+background: rgba(99, 99, 99, 0.70);
+width: 50%;
+margin: auto;
+height: 120px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+}
+.labelsContainer{
+    position: relative;
+    width: 71%;
+    height: 40%;
+    padding: 0;
+    margin: 0 auto;
+    
+   
+}
+.progressContainer progress{
+width: 71%;
+cursor: pointer;
+}
+}

@@ -1,15 +1,16 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { BsArrowDown, BsArrowDownCircle, BsArrowRight } from 'react-icons/bs'
+import { BsArrowDown, BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 import { GiMoneyStack } from 'react-icons/gi'
-import equity from '../../../../styles/primary/equity.module.css'
+import debt from '../../../../styles/primary/debt.module.css'
 import { change } from './functions/currencychange'
 import { Tooltip } from 'antd'
 import { BiPaste } from 'react-icons/bi'
+import { FcDebt } from 'react-icons/fc'
 import Aos from 'aos'
 
-function Equity() {
+function Debt() {
     useEffect(()=>{
         if(window.innerWidth <1024){
           Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
@@ -25,39 +26,41 @@ function Equity() {
         changeCurrency(change(e))
     }
   return (
-    <section className={equity.mainContainer + ' selectedScroll'} id='equity'>
+    <section className={debt.mainContainer + ' selectedScroll'} id='debt'>
         <div>
         </div>
 
-            <section className={equity.innerContainer}>
-                <div data-aos="fade-right" className={equity.leftContainer}>
+            <section className={debt.innerContainer}>
+                <div data-aos="fade-right" className={debt.leftContainer}>
                     <div>
                     <figure>
-                        <GiMoneyStack size={35} className={equity.icon} />
+                        <FcDebt size={35} className={debt.icon} />
                         <figcaption>
-                            <h1>DIRECT <text>PRIVATE</text> OFFERS, <br /> EQUITY OFFER</h1>
+                            <h1>DIRECT <text>PRIVATE</text> OFFERS, <br /> DEBT OFFER</h1>
                         </figcaption>
                     </figure>
                     <article>
-                    <p>Invest in DPO by buying shares in form of DPO <br /> equity tokens at a fixed price and join the DPO <br /> ecosystem</p>
+                    <p>DPO provides investors with debt offers by issueing DPO converible notes tokens<br /> tokens are sold at lower value than the note face value </p>
+                    <p> <Link className=' underline text-blue-500' href="">Read our debt agreement</Link></p>
                     </article>
-                    <div className={equity.leftGoToDebtCntainer}>
-                    <em>Interested in our debt offer?</em>
+                    <div className={debt.leftGoToDebtCntainer}>
+                    <em>Interested in our equity offer?</em>
                     <button><Link href={
                         {
                             pathname:'/invest/primary-market',
-                            query:{offer:'debt'}
+                            query:{offer:'equity'}
                         }
                     }>
-                    <p>GO TO DEBT OFFER</p>
-                    <BsArrowRight size={25} />    
+                    <BsArrowLeft size={25} />    
+                    <p>GO TO EQUITY OFFER</p>
                     </Link></button>
                     </div>
                     </div>
                 </div>
-                <div data-aos="flip-up" className={equity.rightContainer}> 
+                <div data-aos="flip-up" className={debt.rightContainer}> 
+                    <p className=' text-center text-red-500 text-2xl font-bold'>$870 per notes with face value of $1000</p>
                     <section>
-                            <div className={equity.curencyContainer}>
+                            <div className={debt.curencyContainer}>
                             <p>select your currency</p>
                            
                                 <ul>
@@ -67,23 +70,23 @@ function Equity() {
                                     <li onClick={CurrencyChange} id='currency'>GBP</li>
                                 </ul>
                             </div>
-                            <div className={equity.inputs}>
+                            <div className={debt.inputs}>
                                 <section>
                                 <input type="text" name="" id=""  placeholder='Enter Recieving Wallet Address' />
                                 <button><BiPaste /></button>
                                 </section>
                                 <div>
-                                <input type="number" name="" id=""  placeholder='Enter Amount You Want To Invest' />
-                                <BsArrowDown size={30} className={equity.downArrow} />
-                                <input type="number"readOnly disabled  name="" id=""  placeholder='DPO Tokens You Will Receive' />
+                                <input type="number" name="" id=""  placeholder='Amount Of Notes To Be Purchased' />
+                                <BsArrowDown size={30} className={debt.downArrow} />
+                                <input type="text"readOnly disabled  name="" id=""  placeholder='Total To Be Paid' />
                                 </div>
                             </div>
                     </section>
                 </div>
             </section>
-            <section className={equity.progressContainer}> 
+            <section className={debt.progressContainer}> 
                 <div>
-                    <div className={equity.labelsContainer}>
+                    <div className={debt.labelsContainer}>
 
                      <div className="0" style={{width: "fit-content", height: 20.86, left: -10, top: 1.16, position: 'absolute', textAlign: 'center', color: 'rgba(255, 255, 255, 0.60)', fontSize: 18, fontFamily: 'PT Sans', fontWeight: '400', wordWrap: 'break-word'}}>$0</div>
                      <div className="500000" style={{width: "fit-content", height: 23.18, left: "95%", top: 0, position: 'absolute', textAlign: 'center', color: 'rgba(255, 255, 255, 0.60)', fontSize: 18, fontFamily: 'PT Sans', fontWeight: '400', wordWrap: 'break-word'}}>$500,000</div>
@@ -104,4 +107,4 @@ function Equity() {
   )
 }
 
-export default Equity
+export default Debt
