@@ -60,7 +60,7 @@ const items: MenuProps['items'] = [
       },
   {
     key: '3',
-    label: <Link href="/invest">Invest</Link>,
+    label: <Link href="">Invest</Link>,
     children: [
       {
         key: '3-1',

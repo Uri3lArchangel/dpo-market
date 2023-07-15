@@ -17,7 +17,6 @@ const Nav = () => {
 
   let element = document.querySelector('.selectedScroll')
   let id = element?.id;
-
   if(id){
   const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
   const section2 = document.getElementById(id!) as HTMLDivElement;
