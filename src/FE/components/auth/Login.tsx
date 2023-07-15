@@ -19,6 +19,8 @@ function Login() {
     <section className={login.mainContainer}>
          <div className={login.innerContainer}>
           <section data-aos="fade-down" data-aos-easing="ease-out-back"className={login.leftContainer}>
+          <main>
+
             <div>
               <div className={login.titleContainer}>
                 <h2> <text>SIGN</text> IN</h2>
@@ -46,6 +48,7 @@ function Login() {
               </form>
               <p> <Link href="">Sign Up</Link> if you dont have an account</p>
             </div>
+            </main>
           </section>
           <section data-aos="slide-up" data-aos-delay="100" data-aos-easing="ease-out"  className={login.rightContainer}>
 n

@@ -15,13 +15,31 @@ import Aos from 'aos'
 const Nav = () => {
  useEffect(()=>{
 
+  let element = document.querySelector('.selectedScroll')
+  let id = element?.id;
+
+  if(id){
+  const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
+  const section2 = document.getElementById(id!) as HTMLDivElement;
+  const section2RectTop = (section2.getBoundingClientRect()).top
+
+  if(section2RectTop <= 100){
+    for(let i=0;i<navs.length;i++){
+      navs[i].classList.add('scrolledNav')
+    }
+  }else{
+    for(let i=0;i<navs.length;i++){
+      navs[i].classList.remove('scrolledNav')
+    }
+  }
+}
 
 
   
   document.onscroll=()=>{
     let element = document.querySelector('.selectedScroll')
     let id = element?.id;
-  
+
     if(id){
     const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
     const section2 = document.getElementById(id!) as HTMLDivElement;

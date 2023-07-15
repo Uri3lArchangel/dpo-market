@@ -118,3 +118,38 @@ em{
     margin: auto;
      
 }
+
+.selectedCurrency{
+    border-radius: 10px;
+background-image: radial-gradient(300.69% 95.40% at 22.08% 18.75%, #aceca1 0%, #59aa4d 93.23%);
+box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.25);
+color: white !important;
+}
+progress{
+    cursor: pointer;
+}
+
+progress[value]{
+-webkit-appearance: none;
+appearance: none;
+
+}
+progress[value]::-webkit-progress-bar{
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0 6px 5px rgba(0, 0, 0, 0.25) inset;
+
+}
+progress[value]::-webkit-progress-value{
+    border-radius: 7px;
+    /* background-color: #aceca1; */
+    background-image: linear-gradient(#60FFE7,55%,var(--green-pry-1));
+
+}
+
+progress[value]::-moz-progress-bar { 
+    border-radius: 0px;
+    /* background-color: #aceca1; */
+    background-image: linear-gradient(#60FFE7,55%,var(--green-pry-1));
+
+}

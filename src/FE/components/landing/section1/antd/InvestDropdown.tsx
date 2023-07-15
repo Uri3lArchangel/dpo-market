@@ -32,12 +32,20 @@ const items: MenuProps['items'] = [
     children: [
       {
         key: '1-1',
-        label:<Link href=" "> Equity Offer</Link>,
+        label:<Link href={
+          {pathname:'/invest/primary-market',
+            query:{offer:'equity'}
+          }
+        }> Equity Offer</Link>,
         icon:<GiPayMoney />
       },
       {
         key: '1-2',
-        label: <Link href=" ">Debt Offer</Link>,
+        label: <Link href={
+          {pathname:'/invest/primary-market',
+            query:{offer:'debt'}
+          }
+        }>Debt Offer</Link>,
         icon:<FcDebt />
       },
     ],

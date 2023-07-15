@@ -3,7 +3,9 @@ import React, { Suspense, useEffect } from 'react'
 import header from '../../../../../styles/landing/header.module.css'
 import {BiChevronRight, BiSolidRightArrow} from 'react-icons/bi'
 import Aos from 'aos'
+import { useRouter } from 'next/navigation'
 const Header = () => {
+  const router = useRouter()
   useEffect(()=>{
     if(window.innerWidth <1024){
       Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
@@ -26,7 +28,7 @@ const Header = () => {
       <p>Are you looking for a unique investment opportunity that provides direct access to private companies? Look no further than our revolutionary investment offering: DPO Tokens.</p>
       </article>
       <section data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease-out" className={header.investLearnMore_Container}>
-        <button>
+        <button onClick={()=>{router.push('/invest')}}>
          <p>Invest</p> 
          <BiChevronRight />
           </button>

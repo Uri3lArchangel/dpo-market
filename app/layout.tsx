@@ -37,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{overflowX:'hidden'}} className={raleway.className}>
+      <Nav />
         {children}
         <Footer />  
         </body>

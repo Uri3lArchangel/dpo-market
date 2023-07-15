@@ -11,7 +11,6 @@ const page = () => {
 
   return (
   <>
-  <Nav />
   <Header />
   <main>
     <StepsToINvesting />

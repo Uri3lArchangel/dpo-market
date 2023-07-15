@@ -3,7 +3,7 @@
   text-align: center;
   min-width: 100%;
   position: relative;
-  background-image: url(../../public/images_/Looper-3.png);
+  background-image: none;
   background-repeat: no-repeat;
   background-position-x:right;
   background-position-y: bottom ;
@@ -78,7 +78,7 @@ align-items: center;
     min-height: 100vh;
     text-align: center;
     position: relative;
-    background-image: url(../../public/images_/Looper-3.png);
+    background-image: none;
     background-repeat: no-repeat;
     background-position-x:right;
     background-position-y: bottom ;
@@ -147,4 +147,20 @@ align-items: center;
     color: white;
   }
   
+}
+@media screen and (min-width:1024px) {
+  .section_mainContainer {
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    background-image: url(../../public/images_/Looper-3.png);
+    background-repeat: no-repeat;
+    background-position-x:right;
+    background-position-y: bottom ;
+    background-size: 40% 100%;
+    width: 100%;
+    z-index: 0;
+    padding: 0 0 5em 0;
+     
+  }
 }

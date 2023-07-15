@@ -140,6 +140,20 @@ color: white;
 
 
 @media screen and (max-width:640px) {
+    .Header_headerContainer{
+        background-color: #000000fc;
+        min-height: 650px;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-position-x: center;
+        background-size:200% 30%;
+        animation-timing-function: ease-in-out;
+        animation-name: none;
+        animation-duration: 45s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    background-image: url(../../public/images_/hero-bg.png) ;
+    }
    
     .h1_IntroTitle_container h1{
         font-size: 1rem !important;
@@ -171,7 +185,7 @@ color: white;
         background-position-x: center;
         background-size:400% 30%;
         animation-timing-function: ease-in-out;
-        animation-name: colorchange;
+        animation-name: none;
         animation-duration: 45s;
         animation-direction: alternate;
         animation-iteration-count: infinite;
