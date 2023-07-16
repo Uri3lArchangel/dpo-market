@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import primary from '../../../../../styles/invest/primary.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,7 +22,6 @@ const PrimaryMarket = () => {
         }
       },[])
         
-    
   return (
     <section className={primary.mainContainer} id='primary-market'>
         <Intersect3 />
@@ -46,7 +45,7 @@ const PrimaryMarket = () => {
                 <div className={primary.offers_buttonContainer}>
 
                     <button>
-                        <Link href="">Invest</Link>
+                        <Link href={{pathname:'/invest/primary-market',query:{offer:"equity"}}}>Invest</Link>
                     </button>
               </div>
                 </article>
@@ -61,7 +60,7 @@ const PrimaryMarket = () => {
                 <p>DPO provides debt offers oppurtunities where investors can purchase convertible notes for a lower face value and later redeem them either as common shares or at their face value.</p>
                 <div className={primary.offers_buttonContainer}>
                     <button>
-                        <Link href="">
+                        <Link href={{pathname:'/invest/primary-market',query:{offer:"debt"}}}>
                             Invest
                         </Link>
                     </button>

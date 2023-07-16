@@ -12,6 +12,7 @@
     justify-content: space-between;
     position: fixed;
     color: white;
+    padding: 0 1em;
 }
 .nav_sm figure a{
     font-size:1.3rem;

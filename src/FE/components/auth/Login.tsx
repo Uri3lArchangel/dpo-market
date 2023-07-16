@@ -32,21 +32,18 @@ function Login() {
               <form action="">
                 <div>
                   <label htmlFor="email">EMAIL</label>
-                  <input type="text" id='email' placeholder='johndoe@gmail.com' />
+                  <input type="email" id='email' placeholder='johndoe@gmail.com' />
                 </div>
                 <div>
                   <label htmlFor="pass">PASSWORD</label>
                   <Passowrd  />
                 </div>
-                <div>
-                <input type='checkbox' />
-                <label htmlFor="checkbox">By Checking this box, you agree to our <Link href="">Privacy Policy</Link>  and <Link href="">Terms of Service</Link></label>
-                </div>
+              
                 <button>
                     Sign In
                 </button>
               </form>
-              <p> <Link href="">Sign Up</Link> if you dont have an account</p>
+              <p> <Link href={{pathname:'/auth/sign-up'}}>Sign Up</Link> if you dont have an account</p>
             </div>
             </main>
           </section>

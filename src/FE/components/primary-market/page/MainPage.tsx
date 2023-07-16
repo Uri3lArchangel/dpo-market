@@ -1,8 +1,9 @@
 'use client'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Equity from '../Equity'
 import { useSearchParams } from 'next/navigation'
 import Debt from '../Debt'
+import Loading from '@/app/loading'
 
 function MainPage() {
    const Params = useSearchParams()
@@ -11,7 +12,10 @@ function MainPage() {
    if(offer=="equity"){
      return (
     <>
-    <Equity />
+  <Suspense fallback={<Loading />}>  
+          <Equity />
+</Suspense>
+
     </>
   )
    }else if(offer == "debt"){

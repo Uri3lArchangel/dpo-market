@@ -1,14 +1,20 @@
 
+
 import Login from '@/src/FE/components/auth/Login'
-import Passowrd from '@/src/FE/components/utils/antd/inputs/Passowrd'
+import SignUp from '@/src/FE/components/auth/SignUp'
 import React from 'react'
 
+
 const page = () => {
-  return (
+
+ 
+      return (
     <section>
-       <Login />
+      <SignUp />
     </section>
   )
+  
+
 }
 
 export default page

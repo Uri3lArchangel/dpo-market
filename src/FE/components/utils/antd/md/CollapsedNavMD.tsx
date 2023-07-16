@@ -31,7 +31,7 @@ const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
 const items: MenuProps['items'] = [
     {
         key: '1',
-        label:   <Link href="">My Portfolio</Link>,
+        label:   <Link href={{pathname:'/portfolio'}}>My Portfolio</Link>,
         icon:<BsFillBriefcaseFill />
       },
       {

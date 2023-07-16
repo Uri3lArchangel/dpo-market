@@ -1,5 +1,5 @@
 .mainContainer{
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: black;
     background-image: url(../../public/images_/Group\ 1.png);
     background-size: 100% 100%;
@@ -8,19 +8,18 @@
 }
 .innerContainer{
     display: flex;
-    min-height: 100vh;
-    height: 100vh;
-
+    min-height: 120vh;
+    height: 120vh;
 }
 .leftContainer main{
     width: 100%; 
-   align-self: center;
-   height: 100%;
+   align-self: flex-start;
+   height: fit-content;
 }
 .leftContainer{
      width: 100%; 
-    align-self: center;
-    height: 60%;
+    align-self: flex-start;
+    height: 100%;
 }
 .titleContainer{
     color: white;
@@ -67,11 +66,12 @@ font-size: 1.1rem;
     background-color: white;
     border-radius: 7px;
 padding: 0.4em 0.7em;
+margin: 1.1em 0;
 }
 .leftContainer form label{
     font-size: 0.8rem;
 }
-.leftContainer form > div:nth-child(3){
+.leftContainer form > div:nth-child(5){
 background-color: transparent;
 color: white;
 font-size: 0.9rem;
@@ -99,7 +99,6 @@ cursor: pointer;
     width: 0;
     display: none;
     height: 100%;
-    background-image: url(../../public/images_/bg-1.png);
     background-size: 100% 70%;   
     background-repeat: no-repeat; 
     background-position: center;
@@ -134,7 +133,7 @@ cursor: pointer;
     .leftContainer{
          width: 100%; 
         align-self: center;
-        height: 60%;
+        height: 100%;
     }
     .titleContainer{
         color: white;
@@ -185,7 +184,7 @@ cursor: pointer;
     .leftContainer form label{
         font-size: 0.8rem;
     }
-    .leftContainer form > div:nth-child(3){
+    .leftContainer form > div:nth-child(5){
     background-color: transparent;
     color: white;
     font-size: 0.9rem;
@@ -213,8 +212,9 @@ cursor: pointer;
         width: 0;
         display: none;
         height: 100%;
-        background-image: url(../../public/images_/bg-1.png);
+        background-image: url(../../public/images_/bg-3.png);
         background-size: 100% 70%;   
+        /* filter: opacity(0.5); */
         background-repeat: no-repeat; 
         background-position: center;
     }
@@ -248,7 +248,7 @@ cursor: pointer;
     .leftContainer{
          width: 50%; 
         align-self: center;
-        height: 60%;
+        height: 100%;
     }
     .titleContainer{
         color: white;
@@ -299,7 +299,7 @@ cursor: pointer;
     .leftContainer form label{
         font-size: 0.8rem;
     }
-    .leftContainer form > div:nth-child(3){
+    .leftContainer form > div:nth-child(5){
     background-color: transparent;
     color: white;
     font-size: 0.9rem;
@@ -327,7 +327,6 @@ cursor: pointer;
         display: block;
         width: 50%;
         height: 100%;
-        background-image: url(../../public/images_/bg-1.png);
         background-size: 100% 70%;   
         background-repeat: no-repeat; 
         background-position: center;
@@ -365,7 +364,7 @@ cursor: pointer;
     .leftContainer{
          width: 50%; 
         align-self: center;
-        height: 60%;
+        height: 100%;
     }
     .titleContainer{
         color: white;
@@ -416,7 +415,7 @@ cursor: pointer;
     .leftContainer form label{
         font-size: 0.8rem;
     }
-    .leftContainer form > div:nth-child(3){
+    .leftContainer form > div:nth-child(5){
     background-color: transparent;
     color: white;
     font-size: 0.9rem;
@@ -444,7 +443,6 @@ cursor: pointer;
         width: 50%;
         display: block;
         height: 100%;
-        background-image: url(../../public/images_/bg-1.png);
         background-size: 100% 100%;   
         background-repeat: no-repeat; 
         background-position: center;

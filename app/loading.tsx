@@ -2,7 +2,7 @@ import React from 'react'
 import dpo from '../public/images_/dpologo.png'
 import Image from 'next/image'
 
-const loading = () => {
+const Loading = () => {
   return (
     <section className='loadingContainer'>
         <Image src={dpo} alt='dpo' />
@@ -10,4 +10,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading

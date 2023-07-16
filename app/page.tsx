@@ -8,7 +8,6 @@ import Aos from 'aos'
 import Nav from '@/src/FE/components/utils/Nav'
 
 const page = () => {
-
   return (
   <>
   <Header />

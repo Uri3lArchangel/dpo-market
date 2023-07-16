@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../../../public/images_/dpologo.png";
 import Link from "next/link";
@@ -10,9 +10,11 @@ import nav from '../../../../styles/nav.module.css'
 import { CollapsedNav } from "./antd/sm/CollapsedNav";
 import { CollapsedNavMD } from "./antd/md/CollapsedNavMD";
 import Aos from 'aos'
+import { useRouter } from "next/navigation";
 
 
 const Nav = () => {
+const router = useRouter()
  useEffect(()=>{
 
   let element = document.querySelector('.selectedScroll')
@@ -57,7 +59,8 @@ const Nav = () => {
   
 }
  },[])
-  return (<>
+  return (
+  <>
     <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden'}>
       <figure>
         <Link href="/"> 
@@ -71,7 +74,7 @@ const Nav = () => {
       </figure>
       <ul className={nav.ul_level0_linksConteainer}>
         <li>
-        <Link href="">
+        <Link href={{pathname:'/portfolio'}}>
             <div>
               <p>My Portfolio</p>
             </div>
@@ -90,8 +93,12 @@ const Nav = () => {
         
       </ul>
       <div className={nav.div_authButton_container}>
-        <button>Login</button>
-        <button>Sign Up</button>
+        <button onClick={()=>{
+          router.push('/auth/sign-in')
+        }}>Login</button>
+        <button onClick={()=>{
+          router.push('/auth/sign-up')
+        }}>Sign Up</button>
       </div>
     </nav>
     <nav id="top_sm_md_lg_nav" className={nav.nav_sm}>
@@ -116,8 +123,12 @@ const Nav = () => {
       </figure>
     <CollapsedNavMD />
       <div className={nav.div_authButton_container}>
-        <button>Login</button>
-        <button>Sign Up</button>
+        <button onClick={()=>{
+          router.push('/auth/sign-in')
+        }}>Login</button>
+        <button onClick={()=>{
+          router.push('/auth/sign-up')
+        }}>Sign Up</button>
       </div>
     </nav>
     </>
