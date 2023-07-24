@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../../../public/images_/dpologo.png";
 import Link from "next/link";
@@ -9,12 +9,15 @@ import { AboutDropdownApp } from "../landing/section1/antd/AboutUs";
 import nav from '../../../../styles/nav.module.css'
 import { CollapsedNav } from "./antd/sm/CollapsedNav";
 import { CollapsedNavMD } from "./antd/md/CollapsedNavMD";
-import Aos from 'aos'
 import { useRouter } from "next/navigation";
+import { message } from "antd";
+import { NotificationContext } from "./antd/notification/Note";
 
 
-const Nav = () => {
+const Nav = ({Username}:{Username:string|null}) => {
 const router = useRouter()
+const noteContext =  useContext(NotificationContext)
+
  useEffect(()=>{
 
   let element = document.querySelector('.selectedScroll')
@@ -59,6 +62,19 @@ const router = useRouter()
   
 }
  },[])
+
+ const signOut = async()=>{
+  try{message.loading('Signing Out')
+  let res =await fetch(process.env.NODE_ENV == "development"?'/api/signout':window.location.origin+"/api/signout")
+  console.log(res)
+  let data = await res.json()
+  
+  noteContext!(data)
+  window.location.href=window.location.origin+'/'
+}catch(err:any){
+console.error(err)
+  }
+ }
   return (
   <>
     <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden'}>
@@ -92,14 +108,20 @@ const router = useRouter()
         </li>
         
       </ul>
-      <div className={nav.div_authButton_container}>
+      {!Username?<div className={nav.div_authButton_container}>
         <button onClick={()=>{
           router.push('/auth/sign-in')
         }}>Login</button>
         <button onClick={()=>{
           router.push('/auth/sign-up')
         }}>Sign Up</button>
-      </div>
+      </div>:
+      <div className="flex text-white items-center">
+        <p className={"text-xl font-bold "+ nav.username}>{Username}</p>
+        <button onClick={signOut} className="bg-red-500 px-6 py-2 mx-3" >
+        Sign Out
+        </button>
+        </div>}
     </nav>
     <nav id="top_sm_md_lg_nav" className={nav.nav_sm}>
     <figure>

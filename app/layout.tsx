@@ -3,6 +3,11 @@ import '../styles/globals.css'
 import Raleway from 'next/font/local'
 import Footer from '@/src/FE/components/utils/Footer'
 import "aos/dist/aos.css"
+import Note from '@/src/FE/components/utils/antd/notification/Note'
+import { cookies } from 'next/headers'
+import { jwtdecodebase } from '@/src/BE/web2/functions/jwt'
+
+
 
 const raleway = Raleway({
   src:[
@@ -34,13 +39,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  let data:string|null=null
+  let cookie =  cookies().get('dpo-session-base')
+  if(cookie){
+    data = (jwtdecodebase(cookie.value)).Username 
+    
+  }
 
   return (
     <html lang="en">
       <body style={{overflowX:'hidden'}} className={raleway.className}>
-      <Nav />
+        <Note>
+      <Nav Username={data} />
         {children}
         <Footer />  
+        </Note>
         </body>
     </html>
   )

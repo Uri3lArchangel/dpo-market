@@ -339,7 +339,7 @@ cursor: pointer;
     }
      
     .leftContainer  main  > div > p a{
-        color: var(--green-pry-1);
+        color: var(--green-py-1);
     
     }
     .passwordInput{
@@ -450,7 +450,7 @@ cursor: pointer;
         background-position: center;
     }
     .leftContainer  main  > div > p{
-        color: white;
+        color: white !important;
         text-align: center;
         font-size: 1.1rem;
     }

@@ -10,7 +10,7 @@ function globalError({
     reset: () => void
   }) {
   return (
-    <section className='selectedScroll py-10' id='error'>
+    <section className='selectedScroll flex items-center justify-center' style={{minHeight:'100vh'}} id='error'>
     <App reset={reset} errorCause={error.cause} errorName={error.name} />
     </section>
   )

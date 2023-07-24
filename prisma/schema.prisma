@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @unique @default(autoincrement())
+  username String @unique @db.VarChar(255)
+  password String @db.VarChar(512)
+  email String @db.VarChar(512)
+  addedAt DateTime @default(now())
+  isAccredited Boolean @default(false)
+  totalCoinsAssetValue String @db.VarChar(255) @default("0")
+  activeOrders Boolean @default(false)
+  isDebtOfferActive Boolean @default(false)
+  equityOffers Equity?
+  debtOffers Debt?
+  order Orders?
+  wallet Wallet?
+}
+
+model Equity{
+equityID Int @id @default(autoincrement())
+user User @relation(fields: [userID], references: [id])
+userID Int @unique
+walletAddress String @db.VarChar(1024)
+totalAmountInvested String @db.VarChar(255) @default("0")
+totalTokensToReceive Int @default(0)
+isActive Boolean @default(false)
+}
+
+model Debt{
+debtID Int @id @default(autoincrement())
+user User @relation(fields: [userID], references: [id])
+userID Int @unique
+walletAddress String @db.VarChar(1024)
+totalNotesOwned Int @default(0)
+totalFaceValue String @db.VarChar(255) 
+maturityPeriodInDays Int?
+maturityDate DateTime?
+isActive Boolean @default(false)  
+}
+model Market{
+  marketName String @unique @id
+  primaryMarketState MARKETSTATE @default(OPEN)
+  primaryMarketProgress String @db.VarChar(255) @default("0")
+  secondaryMarketState MARKETSTATE @default(CLOSED)
+}
+model Orders {
+  orderId Int @unique @id @default(autoincrement())
+  user User @relation(fields: [userID],references: [id])
+  userID Int @unique
+  buyOrder BuyOrder[]
+  sellOrder SellOrder[]
+}
+
+model BuyOrder{
+  position Int @unique @default(autoincrement())
+  order Orders @relation(fields: [buyOrderId],references: [orderId])
+  buyOrderId Int @unique
+  coin String @db.Char(255)
+  amount String @db.VarChar(255) 
+  price String @db.VarChar(255) 
+  total String @db.VarChar(255)
+  amountLeftToBeComplete String @db.VarChar(255) 
+  completed Boolean @default(false)
+}
+model SellOrder{
+  position Int @unique @default(autoincrement())
+  order Orders @relation(fields: [sellOrderId],references: [orderId])
+  sellOrderId Int @unique
+  coin String @db.Char(255)
+  amount String @db.VarChar(255)
+  price String @db.VarChar(255) 
+  total Int @default(0)
+  amountLeftToBeComplete String @db.VarChar(255) 
+  completed Boolean @default(false)
+}
+
+model Wallet{
+coinName String? @unique @db.VarChar(255) 
+user User @relation(fields: [walletOwnerID],references: [id])
+walletOwnerID Int @unique
+amount String
+valueInUSD String
+contractAddress String @db.VarChar(1024)
+}
+
+
+model DPOPRICE {
+  order Int @unique @default(autoincrement())
+  price String @db.VarChar(255) @default("1")
+  direction DIRECTION?
+}
+
+enum MARKETSTATE {
+  OPEN
+  CLOSED
+}
+
+enum DIRECTION {
+  UP
+  DOWN
+}

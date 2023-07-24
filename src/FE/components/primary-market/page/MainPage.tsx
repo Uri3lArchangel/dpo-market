@@ -4,8 +4,9 @@ import Equity from '../Equity'
 import { useSearchParams } from 'next/navigation'
 import Debt from '../Debt'
 import Loading from '@/app/loading'
+import App from '@/app/not-found'
 
-function MainPage() {
+function MainPage({clientID,jwtsecretverifier}:{clientID:string,jwtsecretverifier:string}) {
    const Params = useSearchParams()
    const offer = Params.get('offer')
 
@@ -13,19 +14,19 @@ function MainPage() {
      return (
     <>
   <Suspense fallback={<Loading />}>  
-          <Equity />
+          <Equity clientID={clientID} jwtsecretverifier={jwtsecretverifier}  />
 </Suspense>
 
     </>
   )
    }else if(offer == "debt"){
     return(
-        <>
+      <Suspense fallback={<Loading />}>  
         <Debt />
-        </>
+        </Suspense>
     )
    }else{
-    return(<></>)
+    return(<App />)
    }
  
 }

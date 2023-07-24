@@ -1,6 +1,5 @@
 
 
-import Login from '@/src/FE/components/auth/Login'
 import SignUp from '@/src/FE/components/auth/SignUp'
 import React from 'react'
 

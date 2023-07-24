@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsArrowDown, BsArrowDownCircle, BsArrowRight } from 'react-icons/bs'
 import { GiMoneyStack } from 'react-icons/gi'
 import equity from '../../../../styles/primary/equity.module.css'
@@ -8,9 +8,40 @@ import { change } from './functions/currencychange'
 import { Tooltip } from 'antd'
 import { BiPaste } from 'react-icons/bi'
 import Aos from 'aos'
+import PaypalCustomProvider from '@/src/BE/web2/paypal/PaypalCustomProvider'
+import PayPalBtns from '@/src/BE/web2/paypal/PayPalBtns'
+import utils from '../../../../styles/utils/paypal.module.css'
+import { CreateOrderRequestBody,CreateOrderActions,CreateOrderData  } from "@paypal/paypal-js";
+import { OnClickActions,OnApproveData,OnApproveActions } from '@paypal/paypal-js/types/components/buttons'
+import { jwtVerificationSign } from '@/src/BE/web2/functions/jwt'
 
-function Equity() {
+
+
+function Equity({clientID,jwtsecretverifier}:{clientID:string,jwtsecretverifier:string}) {
+// STATES 
+const [currency,changeCurrency] = useState<string>('')
+const [scriptProviderKey, setScriptProviderKey] = useState(0);
+const amountToInvestRef = useRef<HTMLInputElement>(null)
+const [dpoEquiv,setDPOEquiv] = useState<string>('')
+const walletRef = useRef<HTMLInputElement>(null)
+let order = {purchase_units:[{
+    description:"DPO EQUITY OFFER INVESTMENT",
+    amount:{
+        value:'0' as string
+    }
+}]}
+
+// USEEFFECT
+
     useEffect(()=>{
+        if(!currency){
+            
+        let selected = document.getElementById('USD')
+        selected!.classList.add('selectedCurrency')
+            changeCurrency('USD')
+            console.log(currency)
+        }
+       
         if(window.innerWidth <1024){
           Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
         }else{
@@ -18,12 +49,87 @@ function Equity() {
         
         
         }
-      },[])
-    const [currency,changeCurrency] = useState<string>('')
+        changeInput()
+      },[scriptProviderKey])
+  
 
+      // CUSTOM FUNCTIONS
     const CurrencyChange=(e:React.MouseEvent<HTMLLIElement>)=>{
-        changeCurrency(change(e))
+       changeCurrency(change(e))
+       setScriptProviderKey(prev=>prev+1)
     }
+
+    const setupBeforeOrder = (_: Record<string, unknown>,action:OnClickActions)=>{
+        if(!amountToInvestRef.current){
+         console.log("wrong inpuut")
+
+            return action.reject()
+        }
+        const inputAmountValue=amountToInvestRef.current.value
+
+        if(isNaN(parseFloat(inputAmountValue))){
+        console.log("wrong input")
+        return action.reject()
+        }
+     if(!walletRef.current){
+        console.log("wrong wallet address")
+
+        return action.reject()
+     }
+     if(walletRef.current.value == ''){
+        console.log("wrong wallet address")
+
+        return action.reject()
+     }
+        
+    }
+    const setupCreateOrder = (data:CreateOrderData,action:CreateOrderActions)=>{
+        order.purchase_units[0].amount.value=amountToInvestRef.current!.value   
+        return action.order.create(order)
+    }
+
+const changeInput=()=>{
+if(amountToInvestRef.current!.value == ''){
+    setDPOEquiv('')
+    return
+
+}
+if(!isNaN(parseFloat(amountToInvestRef.current!.value)) && currency == 'USD') {
+    let amount = `${parseInt(`${((parseFloat(amountToInvestRef.current!.value))/0.01)}`)}`
+    setDPOEquiv(amount)
+}if(!isNaN(parseFloat(amountToInvestRef.current!.value)) && currency == 'EUR') {
+    let amount = `${parseInt(`${((parseFloat(amountToInvestRef.current!.value))/0.009)}`)}`
+    setDPOEquiv(amount)
+}if(!isNaN(parseFloat(amountToInvestRef.current!.value)) && currency == 'GBP') {
+    let amount = `${parseInt(`${((parseFloat(amountToInvestRef.current!.value))/0.0078)}`)}`
+    setDPOEquiv(amount)
+}if(!isNaN(parseFloat(amountToInvestRef.current!.value)) && currency == 'CAD') {
+    let amount = `${parseInt(`${((parseFloat(amountToInvestRef.current!.value))/0.013)}`)}`
+    setDPOEquiv(amount)
+}
+
+}
+const Approved=async(data:OnApproveData,action:OnApproveActions)=>{
+console.log(action)
+const temp={
+    dpoamount:dpoEquiv,
+    investmentamount:amountToInvestRef.current!.value,
+    walletaddress:walletRef.current!.value,
+    key:jwtsecretverifier
+}
+let sig = jwtVerificationSign(temp)
+const fetchData={
+    WalletAddress:walletRef.current!.value,
+    DpoAmount:dpoEquiv,
+    InvestmentInUsd:amountToInvestRef.current!.value,
+    Hash:sig
+}
+
+await fetch('/api/approved-payment',{method:'POST',mode:'no-cors',body:JSON.stringify(fetchData)})
+return  
+}
+
+// JSX
   return (
     <section className={equity.mainContainer + ' selectedScroll'} id='equity'>
         <div>
@@ -61,22 +167,29 @@ function Equity() {
                             <p>select your currency</p>
                            
                                 <ul>
-                                    <li onClick={CurrencyChange} id='currency'>USD</li>
-                                    <li onClick={CurrencyChange} id='currency'>CAD</li>
-                                    <li onClick={CurrencyChange} id='currency'>EUP</li>
-                                    <li onClick={CurrencyChange} id='currency'>GBP</li>
+                                    <li onClick={CurrencyChange} className='currency' id='USD'>USD</li>
+                                    <li onClick={CurrencyChange} className='currency' id='CAD'>CAD</li>
+                                    <li onClick={CurrencyChange} className='currency' id='EUR'>EUR</li>
+                                    <li onClick={CurrencyChange} className='currency' id='GBP'>GBP</li>
                                 </ul>
                             </div>
-                            <div className={equity.inputs}>
+                            <div className={equity.inputs+' mb-10'}>
                                 <section>
                                 <input type="text" name="" id=""  placeholder='Enter Recieving Wallet Address' />
-                                <button><BiPaste /></button>
+                                <button>
+                                    <BiPaste />
+                                </button>
                                 </section>
                                 <div>
-                                <input type="number" name="" id=""  placeholder='Enter Amount You Want To Invest' />
+                                <input type="text" ref={amountToInvestRef} onChange={changeInput} placeholder={`Enter Amount You Want To Invest (${currency})`} />
                                 <BsArrowDown size={30} className={equity.downArrow} />
-                                <input type="number"readOnly disabled  name="" id=""  placeholder='DPO Tokens You Will Receive' />
+                                <input type="number"readOnly disabled  name="" id="" value={dpoEquiv!} placeholder='DPO Tokens You Will Receive' />
                                 </div>
+                            </div>
+                            <div className={utils.paypalButtonContainer}>
+                            <PaypalCustomProvider key={scriptProviderKey} clientID={clientID} currency={currency} >
+                                <PayPalBtns createOrder={setupCreateOrder} onClick={setupBeforeOrder} onApprove={Approved}/>
+                            </PaypalCustomProvider>
                             </div>
                     </section>
                 </div>
@@ -94,7 +207,7 @@ function Equity() {
 
                     </div>
                     <Tooltip title="$250,000" >
-                    <progress value={50} max={100}>
+                    <progress value={0} max={100}>
 
                     </progress>
                     </Tooltip>

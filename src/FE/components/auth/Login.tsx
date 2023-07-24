@@ -1,11 +1,17 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import Passowrd from '../utils/antd/inputs/Passowrd'
  import login from '../../../../styles/auth/login.module.css'
 import Link from 'next/link'
 import Aos from 'aos'
+import {message} from 'antd'
+import { NotificationContext, NotificationDataObject } from '../utils/antd/notification/Note'
+import { useRouter } from 'next/navigation'
 
 function Login() {
+  const router = useRouter()
+  const noteContext =  useContext(NotificationContext)
+  const email_usernameRef=useRef<HTMLInputElement>(null)
   useEffect(()=>{
     if(window.innerWidth <1024){
       Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
@@ -15,6 +21,61 @@ function Login() {
     
     }
   },[])
+
+
+
+  const LoginSubmit=async(e:React.MouseEvent)=>{
+    e.preventDefault()
+    if(!email_usernameRef.current){
+      const notification:NotificationDataObject={
+        type:'error',
+        message:'Please Provide Email or Username',
+        description:''
+      }
+      noteContext!(notification)
+      return
+    }
+    if(email_usernameRef.current.value == ''){
+      const notification:NotificationDataObject={
+        type:'error',
+        message:'Please Provide Email or Username',
+        description:''
+      }
+      noteContext!(notification)
+      return
+    }
+    const pass =document.getElementById('password_login') as HTMLInputElement
+    if(pass.value == ''){
+      const notification:NotificationDataObject={
+        type:'error',
+        message:'Please Provide a Password',
+        description:''
+      }
+      noteContext!(notification)
+      return
+    }
+    const euser = email_usernameRef.current.value
+    const body={
+      Email_Username:euser,
+      Password:pass.value
+    }
+    message.loading('Logging in',10000)
+
+    const res = await fetch('/api/signin',{
+      method:'POST',
+      mode:'no-cors',
+      cache:'no-cache',
+      body:JSON.stringify(body)
+    })
+    message.destroy()
+
+    const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()
+   
+    noteContext!({message:data.message,type:data.type,description:data.description})
+    if(data.type =="success"){
+      window.location.href=window.location.origin+"/portfolio"
+    }
+  }
   return (
     <section className={login.mainContainer}>
          <div className={login.innerContainer}>
@@ -31,15 +92,16 @@ function Login() {
               </div>
               <form action="">
                 <div>
-                  <label htmlFor="email">EMAIL</label>
-                  <input type="email" id='email' placeholder='johndoe@gmail.com' />
+                  <label htmlFor="text">EMAIL / USERNAME</label>
+                  <input ref={email_usernameRef} type="email" id='email' placeholder='johndoe@gmail.com... or johnDoe...' required />
                 </div>
                 <div>
                   <label htmlFor="pass">PASSWORD</label>
-                  <Passowrd  />
+                  <Passowrd id='password_login' />
                 </div>
+                <p><Link href={{pathname:'/auth/reset-password'}}>Forgotten Password?</Link><span className='text-white'> Click here to reset</span> </p>
               
-                <button>
+                <button onClick={LoginSubmit}>
                     Sign In
                 </button>
               </form>

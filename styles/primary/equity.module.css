@@ -130,7 +130,7 @@ background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
 .inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
+    color: #ccc;
     font-size: 0.8rem;
 }
 
@@ -338,7 +338,7 @@ background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
 .inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
+    color: #ccc;
     font-size: 0.8rem;
 }
 
@@ -546,7 +546,7 @@ background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
 .inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
+    color: #ccc;
     font-size: 0.8rem;
 }
 
@@ -693,7 +693,7 @@ cursor: pointer;
 }
 /* right */
 .rightContainer {
-    width: 40%;
+    width: 50%;
 }
 .rightContainer > section{
     background-color: black;
@@ -752,7 +752,7 @@ background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
 .inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
+    color: #ccc;
     font-size: 0.8rem;
 }
 

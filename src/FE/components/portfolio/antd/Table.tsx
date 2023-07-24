@@ -16,18 +16,6 @@ interface DataType {
 }
 
 const data: DataType[] = [
-//   {
-//     key: '1',
-//     token: {name:'BTC',img:btc},
-//     amount: 0.001,
-//     value: '$10',
-//   },
-//   {
-//     key: '2',
-//     token: {name:'DPO',img:dpo},
-//     amount: 10,
-//     value: '$100',
-//   },
 
 ];
 

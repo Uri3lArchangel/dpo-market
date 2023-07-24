@@ -1,13 +1,11 @@
 
 import React, { Suspense } from 'react'
 import MainPage from '@/src/FE/components/primary-market/page/MainPage'
-import Loading from '@/app/loading'
 
 const page = () => {
   return (
     <main>
-        <MainPage />
-
+        <MainPage jwtsecretverifier={process.env.JWTVERIFIERSECRET!} clientID={process.env.CLIENTID!} />
     </main>
   )
 }

@@ -1,0 +1,14 @@
+
+.paypalButtonContainer{
+    width: 100%;
+    margin: auto;
+}
+
+@media screen and (min-width:1240px) {
+    .paypalButtonContainer{
+        width: 58%;
+        margin: auto;
+    }   
+}
+
+
