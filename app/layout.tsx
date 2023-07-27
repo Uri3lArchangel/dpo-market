@@ -30,7 +30,7 @@ const raleway = Raleway({
 })
 
 export const metadata = {
-  title: 'DPO Markets | Invest and trade DPO Tokens',
+  title: 'DPO Markets | Home Page',
   description: 'Direct Private Offets Markets allows investors to hold DPO shares in form of DPO tokens via primary amrket investment and also secondary market trade, enter debt offer agreement and receive convertible notes ',
   keywords:"DPO,TOKENS,MONEY,EQUITY,DEBT,ISSUE,SECURITY,BLOCKCHAIN,TOKENIZATION,TRADE,PRIMARY MARKET,STO"
 }

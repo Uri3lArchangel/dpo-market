@@ -1,6 +1,21 @@
 import React from 'react'
+import { Metadata } from 'next'
+
+
+export async function generateMetadata(
+  
+): Promise<Metadata> {
+  
+
+  return {
+    title:'DPO Markets | Debt Agreement',
+    description:'Enter a debt agreement with DPO and receive converible notes which can be redemed',
+    keywords:"DPO,DEBT,CONVERTIBLE NOTES,SECURITIES"
+  }
+}
 
 const page = () => {
+
   return (
     <article className='py-24 selectedScroll ' style={{width:'99%',margin:'auto'}} id="debt_agreement" >
 <h1 className=' text-xl'>Direct Private Offers</h1>
