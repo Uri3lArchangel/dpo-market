@@ -39,7 +39,6 @@ export const onPasswordFieldChange=()=>{
     
   }
   if(passwordField.value.length >= 8){
-    console.log(passwordField.value.length)
     if(passwordField.value.match(/[0-9]/) != null || passwordField.value.match(/[A-Z]/) != null || passwordField.value.match(/\W/) != null){
       level0.style.backgroundColor='#f00'
       level1.style.backgroundColor='#a40' 

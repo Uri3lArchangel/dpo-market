@@ -1,66 +1,40 @@
-import 'server-only'
-import { PrismaClient } from "@prisma/client";
-import Mongoose from 'mongoose'
-import Investor from '../../../src/BE/DB/Mongo/InvestorsModel'
-import {MongoClient} from 'mongodb'
+import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMongoDB"
+import User from "@/src/BE/DB/schema/User"
+import  Mongoose  from "mongoose"
 
-const URL = process.env.MONGOURL!
-
-const queryAccreditation = async(email:string)=>{
-   console.log('mongo')
-await MongoClient.connect(URL)
-console.log('connected')
-
-
-let res = await Investor.findOne({Email:email})
-console.log(res)
-if(!res){
-return null
+export const SignupDB=async(email:string,uname:string,hash:string)=>{
+try{
+await connectMongo()
+const newUserData={
+    id:crypto.randomUUID(),
+    email:email,
+    username:uname,
+    password:hash,
+}
+await User.create(newUserData)
+await disconnectMongo()
+}catch(err){
+console.error(err)
 }
 
-return res.Status
 }
 
-const prisma = new PrismaClient()
-
-export const initializeDB = async()=>{
-
-}
-export const addNewUser=async(username:string,email:string,passwordHash:string)=>{
-//   let status=  await queryAccreditation(email)
-  let isAccredited = false
-//   if(status =="approved"){
-//    isAccredited=true
-//   }
-      await prisma.user.create({
-       data:{
-        email:email,
-        username:username,
-         password:passwordHash,
-         isAccredited:isAccredited,
-         isDebtOfferActive:false,
-      
-       }
-    })
-   await disconnectDB()
-   
-
-}
-export const checkIfUsernameExist=async(uname:string)=>{
-const res =await prisma.user.findFirst({
-   where:{username:uname}
-})
-await disconnectDB()
-return res
-}
 export const checkIfEmailExist=async(email:string)=>{
-   const res =await prisma.user.findFirst({
-      where:{email:email}
-   })
-   await disconnectDB()
-   return res
+    await connectMongo()
+    const user = await User.findOne({email:email})
+    await disconnectMongo()
+    if(user){
+        return true
+    }
+    return false
 }
 
-export const disconnectDB=async()=>{
-   await prisma.$disconnect()
+export const checkIfUsernameExist=async(uname:string)=>{
+    await connectMongo()
+    const user = await User.findOne({username:uname})
+    await disconnectMongo()
+    if(user){
+        return true
+    }
+    return false
 }

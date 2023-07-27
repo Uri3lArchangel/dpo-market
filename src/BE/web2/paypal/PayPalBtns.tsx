@@ -17,7 +17,7 @@ function PayPalBtns({createOrder,onClick,onApprove}:ButtonFunctions) {
 
 
   return (
-    <PayPalButtons createOrder={createOrder} onClick={onClick} onApprove={onApprove} />
+    <PayPalButtons createOrder={createOrder} onClick={onClick} onApprove={onApprove}  />
   )
 }
 

@@ -5,8 +5,9 @@ import { useSearchParams } from 'next/navigation'
 import Debt from '../Debt'
 import Loading from '@/app/loading'
 import App from '@/app/not-found'
+import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
-function MainPage({clientID,jwtsecretverifier}:{clientID:string,jwtsecretverifier:string}) {
+function MainPage({clientID,secretverifier,cookie,total}:{clientID:string,secretverifier:string,cookie:RequestCookie | undefined,total:{Progress:number}}) {
    const Params = useSearchParams()
    const offer = Params.get('offer')
 
@@ -14,7 +15,7 @@ function MainPage({clientID,jwtsecretverifier}:{clientID:string,jwtsecretverifie
      return (
     <>
   <Suspense fallback={<Loading />}>  
-          <Equity clientID={clientID} jwtsecretverifier={jwtsecretverifier}  />
+          <Equity totalInvestmentMade={total} clientID={clientID} clientCookie={cookie} secretverifier={secretverifier}  />
 </Suspense>
 
     </>
@@ -22,7 +23,7 @@ function MainPage({clientID,jwtsecretverifier}:{clientID:string,jwtsecretverifie
    }else if(offer == "debt"){
     return(
       <Suspense fallback={<Loading />}>  
-        <Debt />
+        <Debt clientCookie={cookie} totalInvestmentMade={total} clientID={clientID} secretverifier={secretverifier} />
         </Suspense>
     )
    }else{

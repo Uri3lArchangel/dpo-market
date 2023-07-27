@@ -1,4 +1,4 @@
-import { addNewUser, checkIfEmailExist, checkIfUsernameExist } from "@/app/auth/sign-up/db"
+import { SignupDB, checkIfEmailExist, checkIfUsernameExist } from "@/app/auth/sign-up/db"
 import { HashPassword } from "@/src/BE/web2/functions/HashPasswords"
 import { NextResponse } from "next/server"
 
@@ -16,7 +16,7 @@ if(unameCheck){
 
 const hash = HashPassword(Password)
 
-await addNewUser(Username,Email,hash)
+await SignupDB(Email,Username,hash)
 return NextResponse.json({'message':'Sign Up Successful','description':'',type:"success"},{status:201})
 }catch(err:any){
   console.error(err.message)

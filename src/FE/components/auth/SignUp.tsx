@@ -49,7 +49,6 @@ if(email == ''){
     message:'No Email',
     description:'Please input an email'
   }
-  console.log(noteContext)
   noteContext!(notification)
   return
 } 
@@ -60,7 +59,6 @@ if(uname == ''){
     message:'No Username',
     description:'Please input a username'
   }
-  console.log(noteContext)
   noteContext!(notification)
   return
 }
@@ -79,7 +77,6 @@ if(pass == ''){
     message:'No Password',
     description:'Please input a password'
   }
-  console.log(noteContext)
   noteContext!(notification)
   return
 }
@@ -91,7 +88,6 @@ if(pass != confirmPass){
       message:'Invalid Confirm Password',
       description:'Password and Confirm Password do not match'
     }
-    console.log(noteContext)
     noteContext!(notification)
     return
   

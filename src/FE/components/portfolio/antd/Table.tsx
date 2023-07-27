@@ -3,8 +3,6 @@ import React from 'react';
 import portfolio from "../../../../../styles/portfolio/portfolio.module.css";
 import { Button, Space, Table, Tag } from 'antd';
 import Image, { StaticImageData } from 'next/image';
-import btc from 'cryptocurrency-icons/svg/color/btc.svg'
-import dpo from '../../../../../public/images_/dpologo.png'
 
 const { Column, ColumnGroup } = Table;
 
@@ -15,11 +13,13 @@ interface DataType {
   value: string;
 }
 
-const data: DataType[] = [
 
-];
+const TableApp = ({wallet}:{wallet:any}) => {
+  const data: DataType[] = wallet;
+  
 
-const TableApp: React.FC = () => (
+
+  return(
   <Table dataSource={data} scroll={{x:true}}>
     
       <Column title="Coin" dataIndex="token" key="token" render={(token: {name:string,img:StaticImageData})=>(
@@ -41,6 +41,8 @@ const TableApp: React.FC = () => (
     />
    
   </Table>
-);
+  )
+      }
+      ;
 
 export default TableApp;

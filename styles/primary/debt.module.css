@@ -126,7 +126,7 @@ background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
 .inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
+    color: #fffd;
     font-size: 0.8rem;
 }
 
@@ -329,10 +329,7 @@ border: 2px solid rgba(123, 218, 108, 0.74);
 background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
-.inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
-    font-size: 0.8rem;
-}
+
 
 .inputs section {
     margin: 1.5em 0;
@@ -533,10 +530,7 @@ border: 2px solid rgba(123, 218, 108, 0.74);
 background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
-.inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
-    font-size: 0.8rem;
-}
+
 
 .inputs section {
     margin: 1.5em 0;
@@ -735,10 +729,7 @@ border: 2px solid rgba(123, 218, 108, 0.74);
 background: rgba(217, 217, 217, 0.00);
 margin: 0.3em 0;
 }
-.inputs input::placeholder{
-    color: rgba(116, 190, 105, 0.6);
-    font-size: 0.8rem;
-}
+
 
 .inputs section {
     margin: 1.5em 0;

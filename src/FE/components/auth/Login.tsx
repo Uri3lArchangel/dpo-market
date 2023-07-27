@@ -25,7 +25,7 @@ function Login() {
 
 
   const LoginSubmit=async(e:React.MouseEvent)=>{
-    e.preventDefault()
+   try{ e.preventDefault()
     if(!email_usernameRef.current){
       const notification:NotificationDataObject={
         type:'error',
@@ -68,12 +68,22 @@ function Login() {
       body:JSON.stringify(body)
     })
     message.destroy()
+    if(res.status == 500){
+      throw new Error("Internal Server Error Please Reload And Try Again")
+    }
+    if(res.status == 400){
+      noteContext!({message:"Bad Request",type:"error",description:'The request sent is malformed please reload and try again'})
 
+
+    }
     const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()
-   
+
     noteContext!({message:data.message,type:data.type,description:data.description})
     if(data.type =="success"){
       window.location.href=window.location.origin+"/portfolio"
+    }}catch(err:any){
+      noteContext!({message:err.message,type:"error",description:''})
+
     }
   }
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
@@ -10,7 +10,9 @@ import { BsCurrencyExchange, BsFillBriefcaseFill } from 'react-icons/bs';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { AiOutlineControl } from 'react-icons/ai';
 import nav from '../../../../../../styles/nav.module.css'
-import { useRouter } from 'next/navigation';
+import { message } from "antd";
+import { NotificationContext } from "../../antd/notification/Note";
+
 
 const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
 
@@ -27,7 +29,24 @@ const smoothScoll=(e:React.MouseEvent<HTMLAnchorElement>)=>{
   }
   }
 
-const items: MenuProps['items'] = [
+
+
+ 
+
+export const CollapsedNav = ({Username}:{Username:string|null}) => {
+  const noteContext =  useContext(NotificationContext)
+  const signOut = async()=>{
+    try{message.loading('Signing Out')
+    let res =await fetch(process.env.NODE_ENV == "development"?'/api/signout':window.location.origin+"/api/signout")
+    let data = await res.json()
+    
+    noteContext!(data)
+    window.location.href=window.location.origin+'/'
+  }catch(err:any){
+  console.error(err)
+    }
+   }
+  const items: MenuProps['items'] = [
     {
         key: '1',
         label:   <Link href={{pathname:'/portfolio'}}>My Portfolio</Link>,
@@ -123,16 +142,16 @@ const items: MenuProps['items'] = [
   },
   {
     key: '5',
-    label: <Link href={{pathname:'/auth/sign-in'}}>Login</Link>,
+    label: !Username?<Link href={{pathname:'/auth/sign-in'}}>Login</Link>:<p>{Username}</p>,
   },
   {
     key: '6',
-    label: <Link href={{pathname:'/auth/sign-up'}}>Sign Up</Link>,
+    label:!Username?<Link href={{pathname:'/auth/sign-up'}}>Sign Up</Link>: <button onClick={signOut} className="bg-red-500 px-6 py-2 mx-3" >
+    Sign Out
+    </button>,
   }
 ];
-
-
-export const CollapsedNav = () => (
+  return(
   <Dropdown menu={{ items }} className={nav.dropdown_sm}>
       <Space>
        <Link href=" " style={{fontSize:'1.4rem'}}>
@@ -141,5 +160,6 @@ export const CollapsedNav = () => (
         </Link>
       </Space>
   </Dropdown>
-);
+  )
+};
 

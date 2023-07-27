@@ -66,7 +66,6 @@ const noteContext =  useContext(NotificationContext)
  const signOut = async()=>{
   try{message.loading('Signing Out')
   let res =await fetch(process.env.NODE_ENV == "development"?'/api/signout':window.location.origin+"/api/signout")
-  console.log(res)
   let data = await res.json()
   
   noteContext!(data)
@@ -132,7 +131,7 @@ console.error(err)
         </figcaption>
         </Link>
       </figure>
-      <CollapsedNav />
+      <CollapsedNav Username={Username} />
     </nav>
     <nav id="top_sm_md_lg_nav" className={nav.nav_md}>
     <figure>
@@ -144,14 +143,20 @@ console.error(err)
         </Link>
       </figure>
     <CollapsedNavMD />
-      <div className={nav.div_authButton_container}>
+    {!Username?<div className={nav.div_authButton_container}>
         <button onClick={()=>{
           router.push('/auth/sign-in')
         }}>Login</button>
         <button onClick={()=>{
           router.push('/auth/sign-up')
         }}>Sign Up</button>
-      </div>
+      </div>:
+      <div className="flex text-white items-center">
+        <p className={"text-xl font-bold "+ nav.username}>{Username}</p>
+        <button onClick={signOut} className="bg-red-500 px-6 py-2 mx-3" >
+        Sign Out
+        </button>
+        </div>}
     </nav>
     </>
   );

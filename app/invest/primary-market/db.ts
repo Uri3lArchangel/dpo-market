@@ -1,99 +1,118 @@
-import { PrismaClient } from "@prisma/client";
+import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMongoDB"
+import Market from "@/src/BE/DB/schema/Market"
+import User from "@/src/BE/DB/schema/User"
 
-const Prisma = new PrismaClient();
 
 export const EquityInvestmentPostApprovedPayment = async (
   username: string,
-  dpopurchased: number,
-  amountInvestedInUSD: number,
+  dpopurchased: string,
+  amountInvestedInUSD: string,
   walletAddress: string
 ) => {
-  let userObject = await Prisma.user.findFirst({
-    where: { username: username },
-    include: {
-      equityOffers: true,
-    },
-  });
-
-  if (userObject) {
-    if (!userObject.equityOffers) {
-      await Prisma.equity.create({
-        data: {
-          userID: userObject.id,
-          totalAmountInvested: amountInvestedInUSD,
-          totalTokensToReceive: dpopurchased,
-          walletAddress: walletAddress,
-          isActive: true,
-        },
-      });
-
-      let market = await Prisma.market.findFirst({
-        where: { marketName: "DPO-MARKET" },
-      });
-      if (!market) {
-        await Prisma.market.create({
-          data: {
-            marketName: "DPO-MARKET",
-            primaryMarketProgress: dpopurchased,
-          },
-        });
-      } else {
-        await Prisma.market.update({
-          where: { marketName: "DPO-MARKET" },
-          data: {
-            primaryMarketProgress: dpopurchased+market.primaryMarketProgress,
-          },
-        });
+  await connectMongo()
+  let userData = await User.findOne({username:username})
+  if(userData.equityOffer.isActive == false){
+    await User.updateOne({username:username},{
+      equityOffer:{
+        isActive:true,
+        totalTokensToReceive:dpopurchased,
+        amountInvested:(Number(amountInvestedInUSD)).toFixed(2),
+        walletAddress:walletAddress
       }
-      await disconnectDB();
-      return {
-        message: "Investment sucessful",
-        description:
-          "Await token distribution when the target amount is reached",
-        type: "success",
-      };
+    })
+        await updateMarket(amountInvestedInUSD)
+
+    await disconnectMongo()
+  
+  
+    return {'message':`You have successfully invested ${amountInvestedInUSD} and will receive ${dpopurchased}DPO tokens during distribution`,'description':'','type':'success'}
+  }  
+   await User.updateOne({username:username},{
+    equityOffer:{
+      isActive:true,
+      totalTokensToReceive:Number(dpopurchased)+Number(userData.equityOffer.totalTokensToReceive),
+      amountInvested:(Number(amountInvestedInUSD)+Number(userData.equityOffer.amountInvested)).toFixed(2),
+      walletAddress:walletAddress
     }
-    
+  })
+    await updateMarket(amountInvestedInUSD)
 
-    await Prisma.equity.updateMany({
-      where: { userID: userObject.equityOffers.userID },
-      data: {
-        totalAmountInvested:
-          userObject.equityOffers.totalAmountInvested + amountInvestedInUSD,
-        totalTokensToReceive:
-          userObject.equityOffers.totalTokensToReceive + dpopurchased,
-        walletAddress: walletAddress,
-      },
-    });
+  await disconnectMongo()
+
+
+
+  return {'message':`You have successfully invested ${amountInvestedInUSD} and will receive ${dpopurchased}DPO tokens during distribution`,'description':'','type':'success'}
+}
+
+
+export const DebtInvestmentPostApprovedPayment = async (
+  username: string,
+  NotesPurchased: string,
+  amountInvestedInUSD: string, 
+  walletAddress: string,
+  faceValue:string
+  )=>{
+    await connectMongo()
+    let userData = await User.findOne({username:username})
+    if(userData.debtOffer.isActive == false){
+      await User.updateOne({username:username},{
+        debtOffer:{
+          isActive:true,
+          totalNotesOwned:NotesPurchased,
+          totalFaceValue:faceValue,
+          amountInvested:(Number(amountInvestedInUSD)).toFixed(2),
+          walletAddress:walletAddress,
+          maturityDate:new Date(Date.now()+(365*24*3600000)),
+          maturityPeriodInDays:356
+        }
+      })
+    await updateMarket(amountInvestedInUSD)
+
+  await disconnectMongo()
+
+  return {'message':`You have successfully invested ${amountInvestedInUSD} Purchasing ${NotesPurchased} convertible notes with a total face value of ${faceValue}`,'description':'','type':'success'}
+
   }
+  await User.updateOne({username:username},{
+    debtOffer:{
+      isActive:true,
+      totalNotesOwned:Number(NotesPurchased)+Number(userData.debtOffer.totalNotesOwned),
+      totalFaceValue:(Number(faceValue)+Number(userData.debtOffer.totalFaceValue)).toFixed(2),
+      amountInvested:(Number(faceValue)+Number(userData.debtOffer.totalFaceValue)).toFixed(2),
+      walletAddress:walletAddress,
+      maturityDate:new Date(Date.now()+(365*24*3600000)),
+      maturityPeriodInDays:356
 
-  let market = await Prisma.market.findFirst({
-    where: { marketName: "DPO-MARKET" },
-  });
-  if (!market) {
-    await Prisma.market.create({
-      data: {
-        marketName: "DPO-MARKET",
-        primaryMarketProgress: dpopurchased,
-      },
-    });
-  } else {
-    await Prisma.market.update({
-      where: { marketName: "DPO-MARKET" },
-      data: {
-        primaryMarketProgress: dpopurchased+market.primaryMarketProgress,
-      },
-    });
-  }
-  await disconnectDB();
-  return {
-    message: "Investment sucessful",
-    description:
-      "Await token distribution when the target amount is reached",
-    type: "success",
-  };
-};
+    }
+  })
+    await updateMarket(amountInvestedInUSD)
 
-export const disconnectDB = async () => {
-  await Prisma.$disconnect();
-};
+  await disconnectMongo()
+
+
+
+  return {'message':`You have successfully invested ${amountInvestedInUSD} Purchasing ${NotesPurchased} convertible notes with a total face value of ${faceValue}`,'description':'','type':'success'}
+
+
+
+}
+
+
+
+ const updateMarket = async(amount:string)=>{
+  const marketData = await Market.findOne({})
+  await Market.updateOne({},{primaryMarket:{status:true,progress:Number(marketData.primaryMarket.progress)+Number(amount)}})
+
+}
+
+
+
+export const returnTotalInvestments=async()=>{
+  await connectMongo()
+
+  const market = await Market.findOne({})
+  await disconnectMongo()
+
+  return market.primaryMarket.progress
+
+}

@@ -1,31 +1,29 @@
 import Portfolio from '@/src/FE/components/portfolio/Portfolio'
-import PortfolioBase from '@/src/FE/components/portfolio/PortfolioBase'
 import { cookies } from 'next/headers'
 import React from 'react'
-import { getPortfoliodata } from './db'
+
 
 const fetchPortfolioData = async()=>{
-// let res = await fetch("/api/portoflio-data",{mode:'no-cors',next:{}})
-let sessionCookie = cookies().get('dpo-session-base')
-let data = await getPortfoliodata()
+    const cookie = cookies().get('dpo-session-base')
+    if(!cookie){
+        return null
+    }
+let res = await fetch(process.env.BASEURL!+"/api/portoflio-data",{method:'POST',mode:'no-cors',next:{tags:[process.env.CACHETAG!],revalidate:false},body:JSON.stringify({sessionCookieData:cookie})})
+let data = await res.json()
+
+return data
 }
 
-const page = () => {
-  
-  
-  if(false){
-     return (
-    <main>
-        <PortfolioBase />
-    </main>
-  )
-  }else{
+
+
+const page = async() => {
+ const data = (await fetchPortfolioData())!
     return(
     <main>
-        <Portfolio />
+        <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={data.wallet}/>
     </main>
     )
-  }
+  
  
 }
 
