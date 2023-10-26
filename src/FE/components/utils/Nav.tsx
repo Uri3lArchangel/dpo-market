@@ -37,7 +37,13 @@ const noteContext =  useContext(NotificationContext)
     }
   }
 }
-
+if(document.querySelector("#sec-trade")){
+  const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
+    for(let i=0;i<navs.length;i++){
+      navs[i].classList.add('scrolledNav')
+    }
+  
+}
 
   
   document.onscroll=()=>{
@@ -48,7 +54,7 @@ const noteContext =  useContext(NotificationContext)
     const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
     const section2 = document.getElementById(id!) as HTMLDivElement;
     const section2RectTop = (section2.getBoundingClientRect()).top
-
+      console.log(section2RectTop)
     if(section2RectTop <= 100){
       for(let i=0;i<navs.length;i++){
         navs[i].classList.add('scrolledNav')

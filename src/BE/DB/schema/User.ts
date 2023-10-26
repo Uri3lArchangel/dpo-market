@@ -60,11 +60,28 @@ import { Schema, SchemaType, model, models } from "mongoose";
     },
     wallet:{
         
-        type:[{coinName:String,
+        type:[
+            {
+        coinName:String,
         amount:Number,
-        valueInUSD:Number,
-        contractAddress:String
-    }]
+        pending:Number
+    }],
+    depositAddress:String
+    },
+    secondary:{
+        type:{
+            orders:[
+                {
+                    type:String,
+                    pair:String,
+                    entryPrice:Number,
+                    amount:Number,
+                    targetPrice:Number,
+                    canceled:Boolean
+                }
+            ]
+
+        }
     }
 })
 

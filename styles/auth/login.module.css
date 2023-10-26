@@ -1,5 +1,5 @@
 .mainContainer{
-    min-height: 100vh;
+    height: 800px;
     background-color: black;
     background-image: url(../../public/images_/Group\ 1.png);
     background-size: 100% 100%;
@@ -8,8 +8,8 @@
 }
 .innerContainer{
     display: flex;
-    min-height: 100vh;
-    height: 100vh;
+    height: 600px;
+    
 
 }
 .leftContainer main{
@@ -20,7 +20,7 @@
 .leftContainer{
      width: 100%; 
     align-self: center;
-    height: 60%;
+    height: 70%;
 }
 .titleContainer{
     color: white;
@@ -119,22 +119,11 @@ cursor: pointer;
 }
 
 @media screen and (min-width:540px) {
-    .mainContainer{
-        min-height: 100vh;
-        background-color: black;
-        background-image: url(../../public/images_/Group\ 1.png);
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    .innerContainer{
-        display: flex;
-        min-height: 100vh;
-    }
+  
     .leftContainer{
          width: 100%; 
         align-self: center;
-        height: 60%;
+        height: 80%;
     }
     .titleContainer{
         color: white;
@@ -161,7 +150,6 @@ cursor: pointer;
     .leftContainer  main  > div{
     width:60%;
     margin: auto;
-    height: 60%;
     
     }
     .leftContainer form input{
@@ -234,7 +222,6 @@ cursor: pointer;
 }
 @media screen and (min-width:1024px) {
     .mainContainer{
-        min-height: 100vh;
         background-color: black;
         background-image: url(../../public/images_/Group\ 1.png);
         background-size: 100% 100%;
@@ -242,13 +229,11 @@ cursor: pointer;
         background-repeat: no-repeat;
     }
     .innerContainer{
-        display: flex;
-        min-height: 100vh;
+        height: 800px;
     }
     .leftContainer{
          width: 50%; 
         align-self: center;
-        height: 60%;
     }
     .titleContainer{
         color: white;
@@ -351,21 +336,17 @@ cursor: pointer;
 
 @media screen and (min-width:1400px) {
     .mainContainer{
-        min-height: 100vh;
+        min-height: 700px;
         background-color: black;
         background-image: url(../../public/images_/Group\ 1.png);
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
     }
-    .innerContainer{
-        display: flex;
-        min-height: 100vh;
-    }
+ 
     .leftContainer{
          width: 50%; 
         align-self: center;
-        height: 60%;
     }
     .titleContainer{
         color: white;

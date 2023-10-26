@@ -1,5 +1,5 @@
 .mainContainer{
-    min-height: 120vh;
+    min-height: 800px;
     background-color: black;
     background-image: url(../../public/images_/Group\ 1.png);
     background-size: 100% 100%;
@@ -8,8 +8,7 @@
 }
 .innerContainer{
     display: flex;
-    min-height: 120vh;
-    height: 120vh;
+    height: 120%;
 }
 .leftContainer main{
     width: 100%; 

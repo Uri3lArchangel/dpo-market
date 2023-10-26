@@ -3,4 +3,5 @@ Disallow: /api/*
 Disallow: /auth/reset-password
 Disallow: /fonts/
 Disallow: /images_/
+Disallow: /portfolio
 Allow: /

@@ -10,6 +10,43 @@
 body{
     width: 100%;
 }
+
+
+
+#trading_chart{
+    width:100%;
+    height: 100%;
+}
+#widget_container{
+    height: 400%;
+}
+#b_priceInput::-webkit-inner-spin-button,#b_priceInput::-webkit-outer-spin-button{
+    appearance: none;
+}
+#b_priceInput{
+    -moz-appearance: textfield;
+}#s_priceInput::-webkit-inner-spin-button,#s_priceInput::-webkit-outer-spin-button{
+    appearance: none;
+}
+#s_priceInput{
+    -moz-appearance: textfield;
+}
+/* #OrderBookAndTrades .ant-tabs-nav::before{
+    border-bottom:2px solid #222 !important;
+    z-index: 3 !important;
+} */
+/* .ant-tabs-nav::before{
+ border: 0 !important;
+
+} */
+/* #OrderBookAndTrades :where(.ant-tabs-tab-active) #tabBtn{
+    background-color: #759500;
+    border-radius: 12px;
+    
+} */
+
+
+
 :root{
 font-size: 16px;
 --green-pry-1:#6ec761;

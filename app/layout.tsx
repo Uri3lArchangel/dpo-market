@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   let data:string|null=null
   let cookie =  cookies().get('dpo-session-base')
-  if(cookie){
+  if(cookie && cookie.value){
     data = (jwtdecodebase(cookie.value)).Username 
     
   }

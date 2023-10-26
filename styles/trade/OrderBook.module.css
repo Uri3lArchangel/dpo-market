@@ -1,0 +1,36 @@
+.MainContainer{
+ 
+}
+.sellListContainer{
+   height: 42vh;
+   overflow: scroll;
+   display: flex;
+   flex-direction: column-reverse;
+ 
+}
+.sellListContainer li:nth-child(odd){
+    background-color: #ccc;
+    padding: 0.3em 0;
+
+}.sellListContainer li:nth-child(even){
+    background-color: #ddd;
+    padding: 0.3em 0;
+
+}
+.sellListContainer :is(li),.buyListContainer :is(li){
+    font-size: 1.1rem;
+}
+.buyListContainer{
+    height: 50vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.buyListContainer li:nth-child(odd){
+    background-color: #333;
+    padding: 0.3em 0;
+}.buyListContainer li:nth-child(even){
+    background-color: #444;
+    padding: 0.3em 0;
+
+}

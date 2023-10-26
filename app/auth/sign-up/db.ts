@@ -20,9 +20,7 @@ console.error(err)
 }
 
 export const checkIfEmailExist=async(email:string)=>{
-    await connectMongo()
     const user = await User.findOne({email:email})
-    await disconnectMongo()
     if(user){
         return true
     }
@@ -30,9 +28,7 @@ export const checkIfEmailExist=async(email:string)=>{
 }
 
 export const checkIfUsernameExist=async(uname:string)=>{
-    await connectMongo()
-    const user = await User.findOne({username:uname})
-    await disconnectMongo()
+   const user = await User.findOne({username:uname})
     if(user){
         return true
     }

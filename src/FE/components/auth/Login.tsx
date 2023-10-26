@@ -6,10 +6,8 @@ import Link from 'next/link'
 import Aos from 'aos'
 import {message} from 'antd'
 import { NotificationContext, NotificationDataObject } from '../utils/antd/notification/Note'
-import { useRouter } from 'next/navigation'
 
 function Login() {
-  const router = useRouter()
   const noteContext =  useContext(NotificationContext)
   const email_usernameRef=useRef<HTMLInputElement>(null)
   useEffect(()=>{
@@ -72,8 +70,7 @@ function Login() {
       throw new Error("Internal Server Error Please Reload And Try Again")
     }
     if(res.status == 400){
-      noteContext!({message:"Bad Request",type:"error",description:'The request sent is malformed please reload and try again'})
-
+      return
 
     }
     const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()

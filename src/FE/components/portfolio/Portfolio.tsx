@@ -32,6 +32,7 @@ coinName:String,
 }
 
 function Portfolio({equityOffers,debtOffers,wallet}:Props) {
+  
   console.log(equityOffers,debtOffers,wallet)
   useEffect(()=>{
     if(window.innerWidth <1024){

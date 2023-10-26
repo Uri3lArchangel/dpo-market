@@ -7,7 +7,7 @@
 .nav_sm{
     display: flex;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
     overflow-x: hidden;
     justify-content: space-between;
     position: fixed;
@@ -46,8 +46,6 @@ display: none;
 }
 .nav_md{
     display: flex ;
-    position: fixed;
-    z-index: 10;
     color: white;
     justify-content: space-between;
     width: 100%;

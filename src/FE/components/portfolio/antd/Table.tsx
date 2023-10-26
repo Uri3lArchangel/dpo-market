@@ -8,9 +8,9 @@ const { Column, ColumnGroup } = Table;
 
 interface DataType {
   key: React.Key;
-  token: {name:string,img:StaticImageData};
+  coinName: string;
   amount: number;
-  value: string;
+  pending:number
 }
 
 
@@ -22,14 +22,9 @@ const TableApp = ({wallet}:{wallet:any}) => {
   return(
   <Table dataSource={data} scroll={{x:true}}>
     
-      <Column title="Coin" dataIndex="token" key="token" render={(token: {name:string,img:StaticImageData})=>(
-        <div className={portfolio.coin}>
-       <Image src={token.img} alt={token.name}/>
-       <p>{token.name}</p>
-        </div>
-)} />
+      <Column title="Coin" dataIndex="token" key="token"  />
     <Column title="Amount" dataIndex="amount" key="amount" />
-    <Column title="Value" dataIndex="value" key="value" />
+    <Column title="Pending" dataIndex="pending" key="pending" />
     <Column
       title=""
       key="action"
