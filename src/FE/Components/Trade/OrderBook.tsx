@@ -5,9 +5,11 @@ import CurrentMarketOrder from "./CurrentMarketOrder";
 import { FullTradingPairContextKey } from "./TradingPairContext";
 import { fetchPairName } from "../../Functions/Helpers/FE/FetchPairName";
 import {  initWSKraken, initWSOKX } from "../../Functions/Helpers/FE/Websocket";
+import { CoinNameContextHandler } from "../Contexts/CoinNameContext";
 
 function OrderBook() {
   const keyVal = useContext(FullTradingPairContextKey).keyPropVal;
+  let PairName = useContext(CoinNameContextHandler).replace("-", "/");
   const [askData, setAskData] = useState<[string, string, string][]>([
     ["", "", ""],
   ]);
@@ -18,7 +20,6 @@ function OrderBook() {
   useEffect(() => {
    
 
-    let PairName = fetchPairName();
 
     let Socket: WebSocket | null;
     let opened: boolean = false;

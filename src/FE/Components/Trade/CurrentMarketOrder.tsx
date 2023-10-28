@@ -3,9 +3,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { FullTradingPairContextKey } from "./TradingPairContext";
 import { fetchPairName } from "../../Functions/Helpers/FE/FetchPairName";
 import { initWSKraken, initWSOKX } from "../../Functions/Helpers/FE/Websocket";
+import { CoinNameContextHandler } from "../Contexts/CoinNameContext";
 
 function CurrentMarketOrder() {
   const keyVal = useContext(FullTradingPairContextKey).keyPropVal;
+  let pairName = useContext(CoinNameContextHandler).replace("-", "/");
+
   const [price, setPrice] = useState<{
     direction: "neutral" | "up" | "down";
     value: number;
@@ -13,7 +16,6 @@ function CurrentMarketOrder() {
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
-    let pairName = fetchPairName();
     let SocketTicker: WebSocket | null = null;
     let prevPrice = 0;
     let isTickerSocketOpened = false;

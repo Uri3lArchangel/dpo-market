@@ -4,25 +4,24 @@ import { PairArrayData } from "@/src/Data/TradingPairData";
 import { TradingPair } from "../../../Data/TradingPair";
 import { FullTradingPairContextKey } from "./TradingPairContext";
 import { CoinPairImageNode } from "@/src/Data/CoinPairImageNode";
+import { useRouter } from "next/navigation";
 
 function TradingPairModal({
   setModalState,
 }: {
   setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const router = useRouter();
   const setKey = useContext(FullTradingPairContextKey).setKeyPropVal;
   const [searchText, setSearchText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const selectPair = (e: React.MouseEvent<HTMLDivElement>,i:any) => {
+  const selectPair = (e: React.MouseEvent<HTMLDivElement>, i: number) => {
+    const div = document.getElementById("trade-loading-div") as HTMLDivElement;
+    div.style.display = "block";
     const id = e.currentTarget.id;
     const element = document.querySelector(`#${id} #coin${i}`) as HTMLLIElement;
-    const pairName = element.innerText;
-    console.log(pairName, element);
-    const fullPairName = TradingPair[pairName].pair;
-    window.localStorage.setItem("pairName", pairName);
-    window.localStorage.setItem("fullPairName", fullPairName);
-    setModalState(false);
-    setKey!((prev) => prev + 1);
+    const innerText = element.innerText;
+    router.push(`/trade/${innerText.replace("/", "-")}`);
   };
   const searchList = () => {
     if (!inputRef.current) return;
@@ -52,7 +51,9 @@ function TradingPairModal({
                   key={i}
                   id="coinpairholder"
                   className="flex pl-6 items-center my-4 rounded-lg hover:bg-slate-100/5 py-4 cursor-pointer text-lg "
-                  onClick={(e)=>{selectPair(e,i)}}
+                  onClick={(e) => {
+                    selectPair(e, i);
+                  }}
                 >
                   <CoinPairImageNode
                     coin1={{
@@ -64,7 +65,7 @@ function TradingPairModal({
                       alt: pair.pair.split("/")[1],
                     }}
                   />
-                  <li id={"coin"+i} className="" key={i}>
+                  <li id={"coin" + i} className="" key={i}>
                     {pair.pair}
                   </li>
                 </div>
@@ -76,7 +77,9 @@ function TradingPairModal({
                 key={i}
                 id="coinpairholder"
                 className="flex pl-6 items-center my-4  rounded-lg hover:bg-slate-100/5 py-4 w-full cursor-pointer text-lg"
-                onClick={(e)=>{selectPair(e,i)}}
+                onClick={(e) => {
+                  selectPair(e, i);
+                }}
               >
                 <CoinPairImageNode
                   coin1={{
@@ -89,7 +92,7 @@ function TradingPairModal({
                   }}
                 />
 
-                <li id={"coin"+i} className="" key={i}>
+                <li id={"coin" + i} className="" key={i}>
                   {pair.pair}
                 </li>
               </div>

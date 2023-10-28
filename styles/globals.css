@@ -45,6 +45,11 @@ body{
     
 } */
 
+.trade-loading{
+    background-image: linear-gradient(to top left,#66c76144,40%,#61afc744);
+    backdrop-filter: blur(25px);
+    /* filter: blur(400px); */
+}
 
 
 :root{

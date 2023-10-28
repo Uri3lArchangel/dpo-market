@@ -7,10 +7,10 @@ import { jwtsign } from "@/src/BE/web2/functions/jwt"
 import { NextResponse } from "next/server"
 
 export async function POST(request:Request){
+    await disconnectMongo()
     await connectMongo()
 
     const {Email_Username,Password}:{Email_Username:string,Password:string} = await request.json()
-    console.log(1)
     const emailCheck = await checkIfEmailExist(Email_Username)
 
 

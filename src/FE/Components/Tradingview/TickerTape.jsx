@@ -97,14 +97,25 @@ const TickerTape = () => {
       "locale": "en"
     });
 
-   let doc= document.querySelector('.tradingview-widget-container__widget').appendChild(script);
+    const container = document.getElementById('tradingview-widget-container');
 
-    return () => {
-      if(doc && document.querySelector('.tradingview-widget-container__widget')){
-              document.querySelector('.tradingview-widget-container__widget').removeChild(script);
-
+    if (container) {
+      const existingScript = container.querySelector('script');
+      if (existingScript) {
+        container.removeChild(existingScript);
       }
-      doc=null
+    }
+  
+    container.appendChild(script);
+  
+    // Return a cleanup function
+    return () => {
+      if (container) {
+        const existingScript = container.querySelector('script');
+        if (existingScript) {
+          container.removeChild(existingScript);
+        }
+      }
     };
   }, []);
 

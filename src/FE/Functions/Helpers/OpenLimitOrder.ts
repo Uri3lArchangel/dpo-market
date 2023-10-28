@@ -17,6 +17,7 @@ const res = await fetch(URLresolve('/api/bid'),{
     method:"POST",
     body:JSON.stringify(body),
     mode:"no-cors",
+    redirect:"follow"
 })
 // if(res.status == 201 || res.status == 200){
 //    if(a.initalPrice <= a.bidPrice){
@@ -24,15 +25,13 @@ const res = await fetch(URLresolve('/api/bid'),{
 // } 
 // }
 
-console.log(res.status)
-if(res.status == 301){
-    console.log("redirect")
-window.location.href = res.headers.get("location")!
-console.log(res.headers.get("location")!)
-return
-}
+// if(res.status == 301){
+// window.location.href = res.headers.get("location")!
+// console.log(res.headers.get("location")!)
+// return
+// }
 const data = await res.json()
-
+console.log(data)
 
 
 return data

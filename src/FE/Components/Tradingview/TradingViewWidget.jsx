@@ -2,23 +2,21 @@
 
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FullTradingPairContextKey } from "../Trade/TradingPairContext";
+import { CoinNameContextHandler } from "../Contexts/CoinNameContext";
+import { TradingPair } from "@/src/Data/TradingPair";
 
 let tvScriptLoadingPromise;
 
 export default function TradingViewWidget() {
   const onLoadScriptRef = useRef();
-  const [FullPairName, setFullPairName] = useState("")
- const key = useContext(FullTradingPairContextKey).keyPropVal
+  const pairname = useContext(CoinNameContextHandler).replace("-", "/");
+  const fullPairName = TradingPair[pairname].pair;
+  const key = useContext(FullTradingPairContextKey).keyPropVal;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fullPairName = window.localStorage.getItem("fullPairName");
-    if (!fullPairName) {
-      setFullPairName("KRAKEN:BTCCAD");
-      window.localStorage.setItem("fullPairName", "KRAKEN:BTCCAD");
-    }else{
-          setFullPairName(fullPairName);
-
-    }
+    const div = document.getElementById('trade-loading-div')
+  
     onLoadScriptRef.current = createWidget;
 
     if (!tvScriptLoadingPromise) {
@@ -33,9 +31,11 @@ export default function TradingViewWidget() {
       });
     }
 
-    tvScriptLoadingPromise.then(
-      () => onLoadScriptRef.current && onLoadScriptRef.current()
-    );
+    tvScriptLoadingPromise.then(() => {
+      onLoadScriptRef.current && onLoadScriptRef.current();
+      div.style.display="none"
+      setLoading(false);
+    });
 
     return () => (onLoadScriptRef.current = null);
 
@@ -47,7 +47,7 @@ export default function TradingViewWidget() {
         new window.TradingView.widget({
           width: "100%",
           height: "100%",
-          symbol: FullPairName,
+          symbol: fullPairName,
           interval: "60",
           timezone: "Etc/UTC",
           theme: "dark",
@@ -61,11 +61,12 @@ export default function TradingViewWidget() {
         });
       }
     }
-  }, [key,FullPairName]);
+  }, [key]);
 
   return (
-    <div className="tradingview-widget-container h-[60%]" >
-      <div id="tradingview_80697" key={key} />
+    <div className={loading?"tradingview-widget-container h-[100%] bg-black":"tradingview-widget-container h-[60%] bg-black"}>
+          <div id="tradingview_80697" key={key} className={loading?"opacity-0":'opacity-100'} />
+       
     </div>
   );
 }

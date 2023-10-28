@@ -42,14 +42,25 @@ const TradingViewWidget = () => {
       isTransparent: false,
       locale: 'en',
     });
+    const container = document.getElementById('tradingview-widget-container');
 
-  let doc=  document.getElementById('tradingview-widget-container').appendChild(script);
-
-    return () => {
-      if(doc && document.getElementById('tradingview-widget-container')){
-      document.getElementById('tradingview-widget-container').removeChild(script);
+    if (container) {
+      const existingScript = container.querySelector('script');
+      if (existingScript) {
+        container.removeChild(existingScript);
       }
-      doc=null
+    }
+  
+    container.appendChild(script);
+  
+    // Return a cleanup function
+    return () => {
+      if (container) {
+        const existingScript = container.querySelector('script');
+        if (existingScript) {
+          container.removeChild(existingScript);
+        }
+      }
     };
   }, []);
 

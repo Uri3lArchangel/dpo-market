@@ -1,7 +1,7 @@
 import React from 'react'
-import TabApp from '../Antd/TabApp'
 import { TabsProps } from 'antd';
 import OpenOrders from './OpenOrders';
+import OrderDataTabApp from './OrderDataTabApp';
 
 
 const items: TabsProps["items"] = [
@@ -20,8 +20,8 @@ const items: TabsProps["items"] = [
   
 const OrderData = () => {
   return (
-    <div className='px-4'>
-        <TabApp tabItems={items} />
+    <div className='px-4 '>
+      <OrderDataTabApp items={items} />
     </div>
   )
 }

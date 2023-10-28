@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+'use client'
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Bid } from "../../Functions/Helpers/OpenLimitOrder";
 import { URLresolve } from "../../Functions/Helpers/FE/FetchUrlResolve";
+import { FullTradingPairContextKey } from "./TradingPairContext";
 
 interface Wallet{
       coinName: string;
@@ -13,12 +15,16 @@ const BuyMarketSection = ({
   from,
   to,
   currentPrice,
-  secret
+  walletData,
 }: {
   from: { name: string; price: number };
   to: { name: string; price: number };
-  currentPrice: number;
-  secret:string;
+  currentPrice: number | string;
+  walletData:{
+    coinName:string;
+    amount:number;
+    pending:number;
+  }[]
 
 }) => {
   const amountRef = useRef<HTMLInputElement>(null);
@@ -26,53 +32,51 @@ const BuyMarketSection = ({
   const [totalPay, setTotalPay] = useState(0);
   const [totalRecieve, setTotalRecieve] = useState(0);
   const [availableBuyBalance,setAvailableBuyBalance]=useState(0)
-  const controller = new AbortController()
-  const signal = controller.signal
-  
-  
+  const keyVal = useContext(FullTradingPairContextKey).keyPropVal
 
 
 
 
-  const fetchWallet=async()=>{
-    console.log("fetching wallet",1)
-  const res = await fetch(URLresolve("/api/fetchUserWalletData"),{signal,mode:"no-cors",cache:"no-cache"})
-  
-  const data  = await res.json()
-  console.log(data,"data")
-  return data
-  }
+// useEffect(()=>{
+//   async function init(){
+//   const walletData:Wallet[] =  (await fetchWallet()).wallet
+//   if(walletData && walletData.length >0 ){
+//     for(let i=0;i<walletData.length;i++){
+//       if(String(walletData[i].coinName) == from.name){
+        
+//         setAvailableBuyBalance(Number(walletData[i].amount))
+            
+//       }
+//     }
+//   }
+// }
+// init()
 
-
-
-
+// },[])
 
 
 useEffect(()=>{
   async function init(){
-  const walletData:Wallet[] =  (await fetchWallet()).wallet
-  console.log(walletData,walletData.length,"wallet")
-  if(walletData && walletData.length >0 ){
-    for(let i=0;i<walletData.length;i++){
-      console.log(walletData[i],from.name,"wa")
-      if(String(walletData[i].coinName) == from.name){
-        
-        setAvailableBuyBalance(Number(walletData[i].amount))
-            
+      if(walletData && walletData.length >0 ){
+        for(let i=0;i<walletData.length;i++){
+
+          if(String(walletData[i].coinName) == from.name){    
+            setAvailableBuyBalance(Number(walletData[i].amount))
+                
+          }
+        }
       }
     }
-  }
-}
-init()
+    init()
+},[walletData,from.name])
 
-// return ()=>{
-//   controller.abort("clean up")
-// }
-},[availableBuyBalance])
 
   const onInputChange = () => {
     if (!amountRef.current || !priceRef.current) {
       return; 
+    }
+    if(isNaN(parseFloat(amountRef.current.value)) || isNaN(parseFloat(amountRef.current.value))){
+      return
     }
     let price = priceRef.current.value;
     let amount = amountRef.current.value;
@@ -96,13 +100,12 @@ init()
     const Amount = Number(amountRef.current.value)
     const AmountPaid = totalPay
     const res = await Bid(InitialPrice,BidPrice,Amount,Pair,AmountPaid);
-    console.log(res)
   };
 
   return (
     <section className="space-y-8 px-12 py-8" key={currentPrice}>
       <p className="text-white">
-        Balance: {availableBuyBalance} {from.name}{" "}
+        Balance: {availableBuyBalance.toLocaleString()} {from.name}{" "}
       </p>
       <div className=" h-16 rounded-lg px-6 w-full border border-gray-400 bg-gray-900 flex items-center">
         <label

@@ -8,7 +8,7 @@ const SellMarketSection = ({
 }: {
   from: { name: string; price: number };
   to: { name: string; price: number };
-  currentPrice: number;
+  currentPrice: number | string;
 }) => {
   const amountRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
