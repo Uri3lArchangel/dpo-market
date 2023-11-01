@@ -1,16 +1,17 @@
 'use client'
 import React from 'react';
 import { Space, Table, Tag } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
 
 export interface DataType {
-  key: string;
+  key: React.Key;
   marketType:"BUY" | "SELL"
-  pair: {fullname:string,pairname:string};
+  pair: string;
   entryPrice: number;
   amount: number;
   targetPrice:number;
-  pnl:number
+  canceled:boolean,
+  isFullfiled:boolean
 }
 
 const columns: ColumnsType<DataType> = [
@@ -58,22 +59,11 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: '1',
-    marketType:"BUY",
-    pair: {fullname:"kar:BTCCAD",pairname:"BTC/CAD"},
-    entryPrice: 16.8,
-    amount: 10,
-    targetPrice:17.8,
-    pnl:10
-  },
 
-];
 
-const TableApp = ({columns,data}:{columns:ColumnsType<DataType>,data:DataType[]}) => {
+const TableApp = ({columns,data,pagination}:{columns:ColumnsType<DataType>,data:DataType[],pagination?:false| TablePaginationConfig | undefined}) => {
 return(
-<Table columns={columns} dataSource={data} />
+<Table columns={columns} pagination={pagination} dataSource={data} />
 )
 };
 

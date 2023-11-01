@@ -132,7 +132,8 @@ color: white;
     background-size: 108.9% 117%;
     background-position: center;
     border-radius: 9px;
-    background-image: url(../../public/images_/Chart.png);
+    background-color: black;
+    background-image: url(../../public/images_/Chart.png) !important;
     top: 380px;
     box-shadow: -10px 10px 30px #0008;
 }

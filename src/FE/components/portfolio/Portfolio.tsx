@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect } from "react";
 import portfolio from "../../../../styles/portfolio/portfolio.module.css";
-import { BiBriefcase } from "react-icons/bi";
 import Image from "next/image";
 import { BsBriefcaseFill } from "react-icons/bs";
 import logo from '../../../../public/images_/dpologo.png'

@@ -1,5 +1,7 @@
 import User from "@/src/BE/DB/schema/User";
 import { jwtdecodebase } from "@/src/BE/web2/functions/jwt";
+import { MongoError } from "mongodb";
+import { MongooseDocumentMiddleware } from "mongoose";
 
 export const returnUserWalletData = async (email: string) => {
   const userData = await User.findOne({ email });
@@ -16,7 +18,8 @@ export const retrieveUserWalletData = async(cookieToken: string) => {
 };
 
 export const updateUserWalletDataBid=async(email:string,coinName:string,amountPaid:number)=>{
- let walletData = await returnUserWalletData(email)
+ try{let walletData = await returnUserWalletData(email)
+ let index=0;
  console.log(walletData,amountPaid,coinName)
  if(walletData.length ==0 ){
   return {status:"error",msg:"insufficient balance"}
@@ -24,6 +27,7 @@ export const updateUserWalletDataBid=async(email:string,coinName:string,amountPa
  }
  for(let i=0;i<walletData.length;i++){
   if(walletData[i].coinName == coinName){
+    index=i
   if(walletData[i].amount < amountPaid){
     return {status:"error",msg:"insufficient balance"}
   }
@@ -31,8 +35,27 @@ export const updateUserWalletDataBid=async(email:string,coinName:string,amountPa
   return {status:"error",msg:"insufficient balance"}
 }
 }
-const userWallet = await User.findOne({email})
-  await User.updateOne({email},{$push:{wallet:{coinName,pending:userWallet.wallet.pending+amountPaid,amount:userWallet.wallet.amount-amountPaid}}})
 
-  return {status:"success"}
+
+  const updateResult= await User.updateOne({email},{
+    $inc:{
+      'wallet.$[element].amount':-amountPaid,
+      'wallet.$[element].pending':amountPaid,
+    },
+  },
+  {
+    arrayFilters:[{'element.coinName':coinName}]
+  }
+  
+  )
+
+  if (updateResult.modifiedCount === 0) {
+    return { status: "error", msg: "No document was updated" };
+  } else {
+    console.log("Document updated successfully");
+    return { status: "success", msg: "Document updated successfully" };
+  }
+} catch (err:any) {
+  return { status: "error", msg: "Internal Server Error " + err.message };
+}
 }

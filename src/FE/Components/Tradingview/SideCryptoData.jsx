@@ -65,7 +65,7 @@ const TradingViewWidget = () => {
   }, []);
 
   return (
-    <div id="tradingview-widget-container" className="tradingview-widget-container " >
+    <div id="tradingview-widget-container" className="tradingview-widget-container hidden " >
       <div className="tradingview-widget-container__widget h-40%" ></div>
       <div className="tradingview-widget-copyright bg-black">
         <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">

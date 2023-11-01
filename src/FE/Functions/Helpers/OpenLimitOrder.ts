@@ -19,17 +19,52 @@ const res = await fetch(URLresolve('/api/bid'),{
     mode:"no-cors",
     redirect:"follow"
 })
-// if(res.status == 201 || res.status == 200){
-//    if(a.initalPrice <= a.bidPrice){
-//     return {status:"success",msg:`Buy Order Filled of ${a.amount + ' '+ s}  at ${a.bidPrice}`}
-// } 
-// }
+if(res.status === 307){
+    const data = await res.json()
+    console.log(data.path)
 
-// if(res.status == 301){
-// window.location.href = res.headers.get("location")!
-// console.log(res.headers.get("location")!)
-// return
-// }
+window.location.href = window.location.origin+data.path
+return
+}
+
+if(!res.ok){
+    return undefined
+}
+const data = await res.json()
+console.log(data)
+
+
+return data
+}
+
+export const Ask=async(InitialPrice:number,BidPrice:number,Amount:number,Pair:string,AmountPaid:number)=>{
+
+    console.log(1,InitialPrice,BidPrice,Pair,Amount,AmountPaid)
+const body={
+InitialPrice,
+BidPrice,
+Amount,
+Pair,
+AmountPaid,
+}
+
+const res = await fetch(URLresolve('/api/ask'),{
+method:"POST",
+body:JSON.stringify(body),
+mode:"no-cors",
+redirect:"follow"
+})
+if(res.status === 307){
+const data = await res.json()
+console.log(data.path)
+
+window.location.href = window.location.origin+data.path
+return
+}
+
+if(!res.ok){
+return undefined
+}
 const data = await res.json()
 console.log(data)
 

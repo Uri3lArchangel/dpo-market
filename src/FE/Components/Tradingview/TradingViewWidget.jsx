@@ -64,8 +64,8 @@ export default function TradingViewWidget() {
   }, [key]);
 
   return (
-    <div className={loading?"tradingview-widget-container h-[100%] bg-black":"tradingview-widget-container h-[60%] bg-black"}>
-          <div id="tradingview_80697" key={key} className={loading?"opacity-0":'opacity-100'} />
+    <div className={loading?"tradingview-widget-container lg:h-[100%] bg-black":"tradingview-widget-container lg:h-[60%] bg-black "}>
+          <div id="tradingview_80697" key={key} className={loading?"opacity-0":'opacity-100 '} />
        
     </div>
   );

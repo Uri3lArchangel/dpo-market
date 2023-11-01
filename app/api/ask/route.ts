@@ -10,14 +10,13 @@ import {  revalidateTag } from "next/cache"
 export async function POST(req:NextRequest){
         try{
 
-    const {InitialPrice,BidPrice,Amount,Pair,AmountPaid,Checksum}:{InitialPrice:number,BidPrice:number,Amount:number,Pair:string,AmountPaid:number,Checksum:string}=await req.json()
+    const {InitialPrice,BidPrice,Amount,Pair,AmountPaid}:{InitialPrice:number,BidPrice:number,Amount:number,Pair:string,AmountPaid:number}=await req.json()
     const body={
         InitialPrice,
         BidPrice,
         Amount,
         Pair,
         AmountPaid,
-        Checksum
     }
     const a= createBuyOrderCheck(body)
 
@@ -34,7 +33,7 @@ export async function POST(req:NextRequest){
     await connectMongo()
     const updateData = {InitialPrice,BidPrice,Amount,Pair}
     const updated = await UpdateOrder(cookiedata.Email,updateData)
-    const v = await updateUserWalletDataBid(cookiedata.Email,Pair.split('/')[1],AmountPaid)
+    const v = await updateUserWalletDataBid(cookiedata.Email,Pair.split('/')[0],AmountPaid)
     if(v.status == "error"){
         await disconnectMongo()
 

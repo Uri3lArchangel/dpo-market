@@ -6,7 +6,6 @@ import matic from "cryptocurrency-icons/32/color/matic.png";
 import link from "cryptocurrency-icons/32/color/link.png";
 import trx from "cryptocurrency-icons/32/color/trx.png";
 import uni from "cryptocurrency-icons/32/color/uni.png";
-import arb from "../../public/coindata/arb.png";
 import okb from "../../public/coindata/okb.png";
 import mana from "cryptocurrency-icons/32/color/mana.png";
 import bnb from "cryptocurrency-icons/32/color/bnb.png";

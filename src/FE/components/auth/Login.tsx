@@ -74,11 +74,11 @@ function Login() {
 
     }
     const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()
-
     noteContext!({message:data.message,type:data.type,description:data.description})
     if(data.type =="success"){
       window.location.href=window.location.origin+"/portfolio"
     }}catch(err:any){
+      console.log(err)
       noteContext!({message:err.message,type:"error",description:''})
 
     }

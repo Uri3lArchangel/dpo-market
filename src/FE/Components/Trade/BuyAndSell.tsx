@@ -88,7 +88,7 @@ const items: TabsProps["items"] = [
   {
     key: "2",
     label: <p className='text-red-500 text-lg'>SELL</p>,
-    children: <SellMarketSection currentPrice={Price || "Fetching..."} from={{name:PairName.split("/")[0],price:0}}  to={{name:PairName.split("/")[1],price:0}} />,
+    children: <SellMarketSection walletData={wallet} currentPrice={Price || "Fetching..."} from={{name:PairName.split("/")[0],price:0}}  to={{name:PairName.split("/")[1],price:0}} />,
   },
 
 ];
@@ -104,8 +104,8 @@ init()
 
   return (
     <>
-    <ModalApp state={modalState} setState={setModalState} component={<TradingPairModal setModalState={setModalState} />} classname='bg-[#2e303579] min-w-[700px] rounded-lg' styles={modalStyles} closeicon={false} />
-    <section className='h-[51%] bg-black px-4 overflow-y-scroll' id='buySellContainer'>
+    <ModalApp state={modalState}  setState={setModalState} component={<TradingPairModal setModalState={setModalState} />} classname='bg-[#2e303579] lg:min-w-[700px] w-full rounded-lg' styles={modalStyles} closeicon={true} />
+    <section className='h-[420px] bg-black px-4 overflow-y-scroll' id='buySellContainer'>
         <div onClick={()=>{
           setModalState(true)
         }} className='flex items-center  cursor-pointer rounded-lg select-none text-white text-xl bg-gray-800 w-fit p-4 '>{PairArrayData().map((r,i)=>(r.pair == PairName?<div key={i} className='flex items-center'><CoinPairImageNode  coin1={{img:r.pairimg.main,alt:"coin pair"}} coin2={{img:r.pairimg.sub,alt:"coin pair"}} /><h1>{PairName}</h1></div>:null))}<BiChevronDown size={25} /></div>

@@ -1,0 +1,8 @@
+.Table{
+    width: 100%;
+    user-select: none;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}

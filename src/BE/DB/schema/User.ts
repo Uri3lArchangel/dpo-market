@@ -24,7 +24,6 @@ import { Schema, SchemaType, model, models } from "mongoose";
     },password:{
         type:String,
         required:true,
-        unique:true
     },
     isAccredited:{
         type:Boolean,
@@ -72,12 +71,13 @@ import { Schema, SchemaType, model, models } from "mongoose";
         type:{
             orders:[
                 {
-                    type:String,
+                    marketType:String,
                     pair:String,
                     entryPrice:Number,
                     amount:Number,
                     targetPrice:Number,
-                    canceled:Boolean
+                    canceled:Boolean,
+                    isFullfiled:Boolean
                 }
             ]
 

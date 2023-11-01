@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Bid } from "../../Functions/Helpers/OpenLimitOrder";
 import { URLresolve } from "../../Functions/Helpers/FE/FetchUrlResolve";
 import { FullTradingPairContextKey } from "./TradingPairContext";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface Wallet{
       coinName: string;
@@ -27,6 +29,7 @@ const BuyMarketSection = ({
   }[]
 
 }) => {
+  const router =useRouter()
   const amountRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
   const [totalPay, setTotalPay] = useState(0);
@@ -93,21 +96,23 @@ useEffect(()=>{
   const onBuy = async() => {
     if(!priceRef || !priceRef.current) return
     if(!amountRef || !amountRef.current) return
-
+    if(Number(amountRef.current.value) == 0)  return
     const Pair = to.name+'/'+from.name
     const InitialPrice=Number(currentPrice)
     const BidPrice =Number(priceRef.current.value) 
     const Amount = Number(amountRef.current.value)
     const AmountPaid = totalPay
     const res = await Bid(InitialPrice,BidPrice,Amount,Pair,AmountPaid);
+    router.refresh()
+   
   };
 
   return (
-    <section className="space-y-8 px-12 py-8" key={currentPrice}>
+    <section className="space-y-8 lg:px-12 py-8" key={currentPrice}>
       <p className="text-white">
         Balance: {availableBuyBalance.toLocaleString()} {from.name}{" "}
       </p>
-      <div className=" h-16 rounded-lg px-6 w-full border border-gray-400 bg-gray-900 flex items-center">
+      <div className=" h-16 rounded-lg px-6 w-full md:w-[70%] buysellIn mx-auto border border-gray-400 bg-gray-900 flex items-center">
         <label
           className="text-gray-500 text-lg border-r pr-6 border-white/20"
           htmlFor="price"
@@ -128,7 +133,7 @@ useEffect(()=>{
           {from.name}
         </p>
       </div>
-      <div className=" h-16 rounded-lg px-6 w-full border border-gray-400 bg-gray-900 flex items-center">
+      <div className=" h-16 rounded-lg px-6 w-full md:w-[70%] buysellIn mx-auto border border-gray-400 bg-gray-900 flex items-center">
         <label
           className="text-gray-500 text-lg border-r pr-6 border-white/20"
           htmlFor="amount"
@@ -155,7 +160,7 @@ useEffect(()=>{
           You will recieve: {totalRecieve} {to.name}
         </p>
       </div>
-      <button onClick={onBuy} className="w-full bg-green-500 rounded-lg text-lg text-white py-6">
+      <button onClick={onBuy} className="w-full md:w-[70%]  mx-auto block bg-green-500 rounded-lg text-lg text-white py-6">
         BUY
       </button>
     </section>

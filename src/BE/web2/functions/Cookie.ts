@@ -6,8 +6,8 @@ name:'dpo-session-base',
 value:cookieToken,
 secure:true,
 httpOnly:true,
-maxAge:3600,
-expires:3600
+maxAge:3600 *2,
+expires:3600*2
 })
 }
 

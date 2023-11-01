@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 
 const page = ({ params }: { params: { coin: string } }) => {
   return (
-    <section id="sec-trade" className="pt-16">
+    <section id="sec-trade" className="pt-16 md:pt-0">
       <CoinNameContext value={params.coin}>
         <TradeChart />
       </CoinNameContext>

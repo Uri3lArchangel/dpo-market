@@ -17,57 +17,43 @@ import { NotificationContext } from "./antd/notification/Note";
 const Nav = ({Username}:{Username:string|null}) => {
 const router = useRouter()
 const noteContext =  useContext(NotificationContext)
-
+const [isActiveScroll,setScroll]=useState(false)
  useEffect(()=>{
 
-  let element = document.querySelector('.selectedScroll')
-  let id = element?.id;
-  if(id){
-  const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
-  const section2 = document.getElementById(id!) as HTMLDivElement;
-  const section2RectTop = (section2.getBoundingClientRect()).top
 
-  if(section2RectTop <= 100){
-    for(let i=0;i<navs.length;i++){
-      navs[i].classList.add('scrolledNav')
-    }
-  }else{
-    for(let i=0;i<navs.length;i++){
-      navs[i].classList.remove('scrolledNav')
-    }
-  }
-}
 if(document.querySelector("#sec-trade")){
   const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
     for(let i=0;i<navs.length;i++){
-      navs[i].classList.add('scrolledNav')
+      navs[i].classList.add('scrolledNav_trade')
+     
     }
-  
+  return
 }
 
   
   document.onscroll=()=>{
-    let element = document.querySelector('.selectedScroll')
-    let id = element?.id;
+    let element = document.getElementById('navtriger_main') as HTMLDivElement;
 
-    if(id){
     const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
-    const section2 = document.getElementById(id!) as HTMLDivElement;
-    const section2RectTop = (section2.getBoundingClientRect()).top
-      console.log(section2RectTop)
-    if(section2RectTop <= 100){
+    const triggerTop = (element.getBoundingClientRect()).top
+    console.log(triggerTop,"scroll")
+    if(triggerTop <= 0){
+      setScroll(true)
+      console.log("add")
       for(let i=0;i<navs.length;i++){
         navs[i].classList.add('scrolledNav')
       }
     }else{
+      console.log("remv")
+      setScroll(false)
       for(let i=0;i<navs.length;i++){
         navs[i].classList.remove('scrolledNav')
       }
     }
   }
   
-}
- },[])
+
+ },[isActiveScroll])
 
  const signOut = async()=>{
   try{message.loading('Signing Out')
@@ -81,7 +67,8 @@ console.error(err)
   }
  }
   return (
-  <>
+  <section>
+  <div className="absolute w-[1px] h-[1px] left-0 top-[80px] z-[50]" id="navtriger_main"></div>
     <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden'}>
       <figure>
         <Link href="/"> 
@@ -164,7 +151,7 @@ console.error(err)
         </button>
         </div>}
     </nav>
-    </>
+    </section>
   );
 };
 

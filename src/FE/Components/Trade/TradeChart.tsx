@@ -27,28 +27,26 @@ const fetchWallet = async()=>{
 let res = await fetch(process.env.BASEURL!+"/api/portoflio-data",{method:'POST',mode:'no-cors',next:{tags:[process.env.CACHETAG!],revalidate:false},body:JSON.stringify({sessionCookieData:cookie})})
 let data = await res.json()
 
-return data.wallet
+return data
 }
 
 
 async function TradeChart() {
- const wallet= await fetchWallet()
-
+ const wallet= (await fetchWallet())?.wallet
+ const orderData = (await fetchWallet())? (await fetchWallet()).secondary.orders : []
+  console.log(orderData)
   return (
     <TradingPairContext>
-      <div className="absolute w-full h-full z-[10000] trade-loading" id="trade-loading-div"><Image src={spinner1} className="w-20 h-20 absolute top-[40%] left-[47%]" alt="spinner gif transparent background" /></div>
+      <div className="absolute w-full h-[1000px] sm:h-[800px] md:h-[900px] z-[10000] trade-loading" id="trade-loading-div"><Image src={spinner1} className="w-20 h-20 absolute top-[40%] left-[47%]" alt="spinner gif transparent background" /></div>
     <section
       className={
-        "h-[600px] sm:h-[800px] md:h-[900px] " +
-        TradingCharts.MainSectionContainerForCharts
-      }
-    >
-      
+        "h-[950px]  md:h-[1200px] lg:h-[900px] block " +
+        TradingCharts.MainSectionContainerForCharts}>
       <section className={TradingCharts.CenterChartData}>
         <TickerTape /> 
         <TradingViewWidget />
-        <div>
-        <OrderData />
+        <div className="">
+        <OrderData order={orderData} />
         </div>
       </section>
       <section className={TradingCharts.Order}>

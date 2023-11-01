@@ -7,12 +7,12 @@
 .nav_sm{
     display: flex;
     width: 100%;
-    z-index: 1000;
+    z-index: 10;
     overflow-x: hidden;
     justify-content: space-between;
     position: fixed;
     color: white;
-    padding: 0 1em;
+    padding: 1.3em 1em;
 }
 .nav_sm figure a{
     font-size:1.3rem;
@@ -49,6 +49,8 @@ display: none;
     color: white;
     justify-content: space-between;
     width: 100%;
+    padding: 2em 0.5em;
+    z-index: 10;
 
 }
 .nav_md figure a{
