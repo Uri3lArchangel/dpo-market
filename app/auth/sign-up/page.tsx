@@ -12,8 +12,24 @@ export async function generateMetadata(
   
     return {
       title:'DPO Markets | Sign Up ',
-      description:'Begin Your jorney here sign up and participate in the DPO Markets',
-      keywords:"DPO,,SIGN UP,BEGIN YOUR JOURNEY, START, JOIN,ADD, BECOME AN INVESTOR"
+      description:"Join DPO Markets and unlock exciting investment opportunities. Sign up for a secure trading account on our financial platform. Register today to start investing online in the world of finance with DPO Markets.",
+      keywords:[
+        "DPO Markets",
+        "Sign up",
+        "Create Account",
+        "Register",
+        "Investment Platform",
+        "Financial Services",
+        "Online Trading",
+        "Secure Registration",
+        "Join DPO Markets",
+        "Sign up for DPO Markets",
+        "Trading Account",
+        "Investment Opportunities",
+        "Start Investing",
+        "DPO Markets Sign up",
+        "Financial Market Sign up",
+      ]
     }
   }
 const page = () => {

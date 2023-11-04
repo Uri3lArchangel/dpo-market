@@ -19,7 +19,7 @@ if(emailCheck){
     const login = await emailLogin(Email_Username,hash)
     
     if(login){
-        let token = jwtsign(login.email,login.username)
+        let token = jwtsign(login.email,login.username,login.Verified)
         setSessionCookie(token)
         await disconnectMongo()
 
@@ -37,7 +37,7 @@ if(unameCheck){
     const hash = HashPassword(Password)
     const login = await usernameLogin(Email_Username,hash)
     if(login){
-        let token = jwtsign(login.email,login.username)
+        let token = jwtsign(login.email,login.username,login.Verified)
         setSessionCookie(token)
         await disconnectMongo()
 

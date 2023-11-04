@@ -10,8 +10,19 @@ export async function generateMetadata(
     
       return {
         title:'DPO Markets | Investor Portfolio ',
-        description:'Watch Your Investments and offer statuses access your wallet and send and receive tokens',
-        keywords:"DPO,PORTFOLIO,DATA INVESTOR,MONITOR,VIEW"
+        description: "Explore our impressive portfolio showcasing DPO Markets' successful projects and client case studies in the financial services industry. Discover how we excel in providing investment solutions and serving our clients in the finance sector.",
+        keywords: [
+            "DPO Markets portfolio",
+            "DPO Markets projects",
+            "DPO Markets work",
+            "Financial services portfolio",
+            "Investment solutions",
+            "Client success stories",
+            "DPO Markets case studies",
+            "Finance industry projects",
+            "DPO Markets showcase",
+            "DPO Markets achievements",
+          ]
       }
     }
 
@@ -25,6 +36,7 @@ let data = await res.json()
 
 return data
 }
+
 
 
 

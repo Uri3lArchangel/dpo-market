@@ -1,7 +1,8 @@
 User-agent:*
 Disallow: /api/*
-Disallow: /auth/reset-password
 Disallow: /fonts/
 Disallow: /images_/
 Disallow: /portfolio
+Disallow: /trade/*
+Disallow: /resetpasswordconfirmation
 Allow: /

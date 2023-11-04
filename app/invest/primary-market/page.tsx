@@ -12,8 +12,21 @@ export async function generateMetadata(
   
     return {
       title:'DPO Markets | Primary Market ',
-      description:'Engage in DPO primary market, invest early by purchasing DPO tokens in equity offer or convertible notes in debt offer',
-      keywords:"DPO,PRIMARY MARKET, MARKET,DEBT,EQUITY"
+      description:"Explore investment opportunities in the primary market of DPO Markets. Discover debt financing through convertible notes and equity offers for startups and companies seeking capital.",
+      keywords: [
+        "Debt using convertible notes",
+        "Equity offers",
+        "DPO Markets primary market",
+        "Debt financing",
+        "Convertible notes",
+        "Equity fundraising",
+        "Primary market investments",
+        "Startup financing",
+        "Investment opportunities",
+        "Financial securities",
+        "Capital raising",
+        "Investor relations",
+      ]
     }
   }
 

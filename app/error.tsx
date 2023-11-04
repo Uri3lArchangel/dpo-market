@@ -11,7 +11,7 @@ function globalError({
   }) {
   return (
     <section className='selectedScroll flex items-center justify-center' style={{minHeight:'100vh'}} id='error'>
-    <App reset={reset} errorCause={error.cause} errorName={error.name} />
+    <App reset={()=>{window.location.reload()}} errorCause={error.cause} errorName={error.name} />
     </section>
   )
 }

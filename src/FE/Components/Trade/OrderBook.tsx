@@ -244,8 +244,8 @@ function OrderBook() {
       <ul className={ob.sellListContainer}>
         {askData?askData.map((data, i) => (
             <li key={i} className="flex justify-between px-4">
-              <p className="text-red-500">{Number(data[0]).toLocaleString()}</p>
-              <p className="text-[#000]">{Number(data[1]).toLocaleString()}</p>
+              <p className="text-red-500">{data[0] != ''?Number(data[0]).toLocaleString():data[0]}</p>
+              <p className="text-[#000]">{data[1] != ''?Number(data[1]).toLocaleString():data[1]}</p>
             </li>
           )):<p>loading...</p>}
       </ul>
@@ -254,8 +254,8 @@ function OrderBook() {
         {bidData
           ? bidData.map((data, i) => (
               <li key={i} className="flex justify-between px-4">
-                <p className="text-green-500">{Number(data[0]).toLocaleString()}</p>
-                <p className="text-white/95">{Number(data[1]).toLocaleString()}</p>
+                <p className="text-green-500">{data[0] != ''?Number(data[0]).toLocaleString():data[0]}</p>
+                <p className="text-white/95">{data[1] != ''?Number(data[1]).toLocaleString():data[1]}</p>
               </li>
             ))
           : <p>loading...</p>

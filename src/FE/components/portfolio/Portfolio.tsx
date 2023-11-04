@@ -25,25 +25,22 @@ wallet:{
 coinName:String,
   amount:Number,
   valueInUSD:Number,
-  contractAddress:String
+  contractAddress:String}[]}
 
-}[]
-}
+
 
 function Portfolio({equityOffers,debtOffers,wallet}:Props) {
   
-  console.log(equityOffers,debtOffers,wallet)
   useEffect(()=>{
-    if(window.innerWidth <1024){
-      Aos.init({duration:0,easing:'ease-in',disable:window.innerWidth<1024,delay:0,once:true})
-    }else{
-      Aos.init({duration:150,easing:'ease-in',disable:window.innerWidth<1024,once:true})
+   
+      Aos.init({duration:150,easing:'ease-in',once:true})
     
     
-    }
+    
   },[])
   return (
     <section className={portfolio.mainContainer+ ' selectedScroll'} id="portfolio">
+      
       <div>
         <section data-aos="fade-right" className={portfolio.total}>
           <div className={portfolio.titleContainer}>
@@ -98,6 +95,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
             </ul>}
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
+        <button className="border border-blue-500 rounded-lg px-6 py-2 text-blue-500">Deposit Crypto</button>
             <h3>Wallet Balance</h3>
 
             <TableApp wallet={wallet} />

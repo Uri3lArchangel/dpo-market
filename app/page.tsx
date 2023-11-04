@@ -3,7 +3,9 @@ import StepsToINvesting from '@/src/FE/components/landing/section2/StepsToINvest
 import Goals from '@/src/FE/components/landing/section3/Goals'
 import AboutDPO from '@/src/FE/components/landing/section4/AboutDPO'
 import AllBlockchains from '@/src/FE/components/landing/section5/AllBlockchains'
-import React, { useEffect } from 'react'
+import { Metadata } from 'next'
+import React from 'react'
+
 
 const page = () => {
   return (

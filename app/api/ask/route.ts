@@ -18,17 +18,23 @@ export async function POST(req:NextRequest){
         Pair,
         AmountPaid,
     }
+    console.log(1)
     const a= createBuyOrderCheck(body)
+    console.log(2)
 
     if(a){
         return NextResponse.json(a,{status:400})
     }
+    console.log(3)
+
     const cookie = cookies().get('dpo-session-base')
     if(!cookie || !cookie.value || cookie.value == ''){
         console.log(req.url)
-        return NextResponse.json({path:"/auth/sign-in"},{status:307})
+        return NextResponse.json({path:"/auth/sign-in",status:"error","msg":"sign in to trade"},{status:307})
 
     }
+    console.log(4)
+
     const cookiedata = jwtdecodebase(cookie.value)
     await connectMongo()
     const updateData = {InitialPrice,BidPrice,Amount,Pair}
@@ -42,11 +48,11 @@ export async function POST(req:NextRequest){
     }
     await disconnectMongo()
     revalidateTag(process.env.CACHETAG!)
-    return NextResponse.json({Data:updated,Status:"success",msg:`BUY order of ${Amount} ${Pair.split('/')[0]} at ${BidPrice} is placed`},{status:201})
+    return NextResponse.json({Data:updated,status:"success",msg:`SELL order of ${Amount} ${Pair.split('/')[0]} at ${BidPrice} is placed`},{status:201})
 }
     catch(err:any){
         console.error(err.message)
-        return NextResponse.json({status:"error",msg:err.message})
+        return NextResponse.json({status:"error",msg:"Server Error"})
     
     }
 }

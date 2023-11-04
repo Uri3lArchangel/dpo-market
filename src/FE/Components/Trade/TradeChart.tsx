@@ -34,7 +34,6 @@ return data
 async function TradeChart() {
  const wallet= (await fetchWallet())?.wallet
  const orderData = (await fetchWallet())? (await fetchWallet()).secondary.orders : []
-  console.log(orderData)
   return (
     <TradingPairContext>
       <div className="absolute w-full h-[1000px] sm:h-[800px] md:h-[900px] z-[10000] trade-loading" id="trade-loading-div"><Image src={spinner1} className="w-20 h-20 absolute top-[40%] left-[47%]" alt="spinner gif transparent background" /></div>

@@ -1,7 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Ask } from "../../Functions/Helpers/OpenLimitOrder";
 import { useRouter } from "next/navigation";
+import { NotificationContext } from "../../components/utils/antd/notification/Note";
+import { message } from "antd";
 
 const SellMarketSection = ({
   from,
@@ -21,6 +23,7 @@ const SellMarketSection = ({
   const router =useRouter()
   const amountRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
+  const noteContext =  useContext(NotificationContext)
   const [totalPay, setTotalPay] = useState(0);
   const [totalRecieve, setTotalRecieve] = useState(0);
   const [availableBuyBalance,setAvailableBuyBalance]=useState(0)
@@ -58,15 +61,25 @@ const SellMarketSection = ({
   };
 
   const onSell  = async()=>{
+    message.destroy()
+
     if(!priceRef || !priceRef.current) return
     if(!amountRef || !amountRef.current) return
-    if(Number(amountRef.current.value) == 0)  return
-    const Pair = to.name+'/'+from.name
+    if(Number(amountRef.current.value) == 0)  {noteContext!({type:"error",message:"Invalid Quantity",description:"Quantity cannot be 0"}) ;return}
+    message.loading("Creating Order",1000000)
+    const Pair = from.name+'/'+to.name
     const InitialPrice=Number(currentPrice)
     const BidPrice =Number(priceRef.current.value) 
     const Amount = Number(amountRef.current.value)
     const AmountPaid = totalPay
     const res = await Ask(InitialPrice,BidPrice,Amount,Pair,AmountPaid);
+    if(res.status == "sucess"){
+      message.destroy()
+      noteContext!({type:"success",message:res.msg,description:""})
+    }else{
+      message.destroy()
+      noteContext!({type:"error",message:res.msg,description:""})
+    }
     router.refresh()
    
   }
@@ -90,7 +103,7 @@ const SellMarketSection = ({
           type="number"
           name=""
           id="s_priceInput"
-          className="w-full bg-transparent cursor-not-allowed px-4 text-white/95 text-lg outline-none"
+          className="w-full bg-transparent  px-4 text-white/95 text-lg outline-none"
           defaultValue={currentPrice}
         />
         <p className="text-gray-500 text-lg border-l pl-6 border-white/20">
@@ -103,7 +116,7 @@ const SellMarketSection = ({
           className="text-gray-500 text-lg border-r pr-6 border-white/20"
           htmlFor="amount"
         >
-          Amount
+          Quantity
         </label>
 
         <input

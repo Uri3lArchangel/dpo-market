@@ -67,6 +67,58 @@ import { Schema, SchemaType, model, models } from "mongoose";
     }],
     depositAddress:String
     },
+    Verified:{
+        type:Boolean,
+        default:false
+    },
+    token:{
+        type:{
+            emailVerifier:{
+                token:String,
+                expiration:{
+                    type:Date,
+                    default:new Date(Date.now()+(30 * 3600 * 1000)),
+                },
+                cc:{
+                    type:Number,
+                    default:1
+                },
+
+                cooldown:{
+                    type:Date,
+                default:new Date(Date.now())
+                }
+
+            },
+            withdrawVrifier:{
+                token:String,
+                expiration:{
+                    type:Date,
+                    default:new Date(Date.now()+(30 * 3600 * 1000)),
+                }
+            },
+                passwordreset:{
+                token:{
+                    type:String,
+                    default:""
+                },
+                expiration:{
+                    type:Date,
+                    default:new Date(Date.now()+(30 * 3600 * 1000)),
+                },
+                cc:{
+                    type:Number,
+                    default:1
+                },
+
+                cooldown:{
+                    type:Date,
+                default:new Date(Date.now())
+                }
+
+            },
+            },
+        },
     secondary:{
         type:{
             orders:[

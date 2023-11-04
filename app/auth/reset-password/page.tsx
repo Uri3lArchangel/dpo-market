@@ -1,15 +1,37 @@
-import React from 'react'
 
-const page = () => {
+import { Metadata } from 'next';
+import React from 'react'
+import ResetPassowrdPage from './ResetPassowrdPage';
+
+
+export async function generateMetadata(
+  
+  ): Promise<Metadata> {
+    
+  
+    return {
+      title:'DPO Markets | Password reset ',
+      description:"Ensure a secure and hassle-free password reset process on the DPO Markets password reset page. Recover your account access quickly with our reliable password recovery service. Don't worry if you've forgotten your password – we've got you covered!",
+      keywords:[
+        "DPO Markets",
+        "Password Reset",
+        "Account Recovery",
+        "Forgot Password",
+        "Reset Password",
+        "Secure Password Reset",
+        "DPO Markets Login",
+        "Password Recovery",
+        "User Account Access",
+        "Password Assistance"
+      ]
+    }
+  }
+function page() {
+ 
   return (
-   <section className='selectedScroll' id='reset-pass'>
-    <main style={{height:'50vh',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
-        <h1 className='text-xl font-bold'>Reset Password:</h1>
-        <br />
-        <input type="text" name="" id="" placeholder='Enter your email address' className='border h-12 px-4 border-gray-400 outline-none w-4/4 md:w-2/4 lg:w-1/4 sm:w-full'  />
-        <button className='bg-green-400 px-10 py-3 my-6'>Reset</button>
-    </main>
-   </section>
+    <>
+  <ResetPassowrdPage />
+    </>
   )
 }
 

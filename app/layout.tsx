@@ -31,8 +31,19 @@ const raleway = Raleway({
 
 export const metadata = {
   title: 'DPO Markets | Home Page',
-  description: 'Direct Private Offets Markets allows investors to hold DPO shares in form of DPO tokens via primary amrket investment and also secondary market trade, enter debt offer agreement and receive convertible notes ',
-  keywords:"DPO,TOKENS,MONEY,EQUITY,DEBT,ISSUE,SECURITY,BLOCKCHAIN,TOKENIZATION,TRADE,PRIMARY MARKET,STO"
+  description: "Explore DPO Markets your gateway to the world of digital private offering markets. Discover new investment opportunities, trade tokenized assets, and experience the future of blockchain investments. Join us for secure, efficient, and transparent financial markets.",
+  keywords:[
+  "DPO Markets",
+  "Digital Private Offering Markets",
+  "Investment Opportunities",
+  "Tokenized Assets",
+  "Blockchain Investments",
+  "Crypto Securities",
+  "Online Trading Platform",
+  "Financial Markets",
+  "Digital Asset Investments",
+  "Secure Investment Platform"
+],
 }
 
 export default function RootLayout({

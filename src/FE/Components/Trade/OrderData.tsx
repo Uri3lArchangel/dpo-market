@@ -2,6 +2,7 @@ import React from "react";
 import { TabsProps } from "antd";
 import OpenOrders from "./OpenOrders";
 import OrderDataTabApp from "./OrderDataTabApp";
+import OrderHistory from "./OrderHistory";
 
 const OrderData = ({
   order,
@@ -25,7 +26,7 @@ const OrderData = ({
     {
       key: "2",
       label: "ORDER HISTORY",
-      children: "Content of Tab Pane 2",
+      children: <OrderHistory order={order} />,
     },
   ];
 

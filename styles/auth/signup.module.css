@@ -1,5 +1,5 @@
 .mainContainer{
-    min-height: 800px;
+    height: 800px;
     background-color: black;
     background-image: url(../../public/images_/Group\ 1.png);
     background-size: 100% 100%;
@@ -213,7 +213,6 @@ cursor: pointer;
         height: 100%;
         background-image: url(../../public/images_/bg-3.png);
         background-size: 100% 70%;   
-        /* filter: opacity(0.5); */
         background-repeat: no-repeat; 
         background-position: center;
     }

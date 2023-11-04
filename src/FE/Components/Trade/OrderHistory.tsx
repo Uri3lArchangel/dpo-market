@@ -15,7 +15,7 @@ interface DataType {
   isFullfiled: boolean;
 }
 
-function OpenOrders({
+function OrderHistory({
   order,
 }: {
   order: {
@@ -28,7 +28,7 @@ function OpenOrders({
     isFullfiled: boolean;
   }[] | any;
 }) {
-  const filteredOrders = order.filter((e: any) => !e.canceled);
+  const filteredOrders = order.filter((e: any) => e.canceled || e.isFullfiled);
 
   const columns: ColumnsType<DataType> = [
     {
@@ -63,15 +63,7 @@ function OpenOrders({
       dataIndex: "targetPrice",
       key: "targetPrice",
     },
-    {
-      title: "Action",
-      key: "action",
-      render: () => (
-        <Space size="middle">
-          <Button danger>Cancel Order</Button>
-        </Space>
-      ),
-    },
+
   ];
 
   return (
@@ -81,4 +73,4 @@ function OpenOrders({
   );
 }
 
-export default OpenOrders;
+export default OrderHistory;

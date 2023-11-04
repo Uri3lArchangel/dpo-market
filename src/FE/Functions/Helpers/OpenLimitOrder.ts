@@ -56,17 +56,13 @@ redirect:"follow"
 })
 if(res.status === 307){
 const data = await res.json()
-console.log(data.path)
 
 window.location.href = window.location.origin+data.path
-return
+return data
 }
 
-if(!res.ok){
-return undefined
-}
+
 const data = await res.json()
-console.log(data)
 
 
 return data

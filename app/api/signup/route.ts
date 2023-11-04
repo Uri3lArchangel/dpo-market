@@ -8,6 +8,7 @@ import {
   disconnectMongo,
 } from "@/src/BE/DB/functions/ConnectMongoDB";
 import { HashPassword } from "@/src/BE/web2/functions/HashPasswords";
+import { SENDSIGNUPVERIFICATION } from "@/src/BE/web2/functions/send";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -52,7 +53,9 @@ export async function POST(request: Request) {
 
     const hash = HashPassword(Password);
 
-    await SignupDB(Email, Username, hash);
+    const user = await SignupDB(Email, Username, hash);
+    let d =await SENDSIGNUPVERIFICATION(Email,Username,user.token.emailVerifier.token)
+    console.log(d)
     await disconnectMongo();
 
     return NextResponse.json(

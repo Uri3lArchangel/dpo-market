@@ -9,8 +9,21 @@ export async function generateMetadata(
 
   return {
     title:'DPO Markets | Debt Agreement',
-    description:'Enter a debt agreement with DPO and receive converible notes which can be redemed',
-    keywords:"DPO,DEBT,CONVERTIBLE NOTES,SECURITIES"
+    description:"Explore DPO Markets Debt Offer Agreement, featuring information on Convertible Notes, investment opportunities, and the terms and guidelines for debt offerings. Learn about DPO Markets' financial instruments and how you can participate in this unique investment opportunity.",
+    keywords: [
+      "DPO Markets Debt Offer Agreement",
+      "Convertible Notes",
+      "Debt Offer Agreement",
+      "Convertible Notes DPO Markets",
+      "DPO Markets Agreement Terms",
+      "Debt Offer Agreement Guidelines",
+      "Investment in Convertible Notes",
+      "DPO Markets Financial Instruments",
+      "Convertible Notes Information",
+      "Debt Offering Terms",
+      "DPO Markets Investment Opportunities",
+      "Convertible Debt Securities",
+    ]
   }
 }
 

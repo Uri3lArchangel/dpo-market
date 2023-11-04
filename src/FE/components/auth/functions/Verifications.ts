@@ -8,7 +8,7 @@ export const onPasswordFieldChange=()=>{
     let level4= document.querySelector('#level-4')as HTMLLIElement
   
    let container = document.getElementById('password_strength') as HTMLDivElement
-   let passwordField=document.getElementById('password') as HTMLInputElement
+   let passwordField=document.getElementById('password') as HTMLInputElement || document.getElementById('password-r') as HTMLInputElement
    let passwordContainer = document.getElementById('passwordField-container') as HTMLDivElement
    if(passwordField.value == ''){
     passwordContainer.style.border='1px solid red'

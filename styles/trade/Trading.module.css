@@ -33,7 +33,7 @@ height: 900px;
 .LeftChartData {
   width: 30%;
 position: relative;
-margin-top: 2em;
+margin-top: 4em !important;
 margin-bottom: 0;
 }
 .CenterChartData{

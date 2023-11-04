@@ -1,14 +1,14 @@
 import JWT from 'jsonwebtoken'
 
-export const jwtsign = (email:string,uname:string)=> {
+export const jwtsign = (email:string,uname:string,status:boolean)=> {
     const rand = String(Math.random()*10000)
-const token = JWT.sign({Email:email,Username:uname,Random:rand},process.env.JWTSECRET!+rand)
+const token = JWT.sign({Email:email,Username:uname,status,Random:rand},process.env.JWTSECRET!+rand)
 return token
 }
 
 export const jwtdecodebase = (token:string)=>{
-    const decodedData = JWT.decode(token) as {Email:string,Username:string,Random:string}
-    const verifiedData = JWT.verify(token,process.env.JWTSECRET!+decodedData.Random) as {Email:string,Username:string,Random:string}
+    const decodedData = JWT.decode(token) as {Email:string,Username:string,status:boolean,Random:string}
+    const verifiedData = JWT.verify(token,process.env.JWTSECRET!+decodedData.Random) as {Email:string,Username:string,status:boolean,Random:string}
     return verifiedData
 }
 

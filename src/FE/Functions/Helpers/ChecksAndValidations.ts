@@ -5,6 +5,7 @@ export const createBuyOrderCheck = (a:{InitialPrice:number,BidPrice:number,Amoun
     if(isNaN(parseFloat(String(a.InitialPrice))) || isNaN(parseFloat(String(a.Amount))) || isNaN(parseFloat(String(a.BidPrice)))){
         return {status:"error",msg:"Input data error"}
     }
+    console.log(a.Pair)
     if(!TradingPair[a.Pair].pair){
         return {status:"error",msg:"Invalid coin pair"}
 
