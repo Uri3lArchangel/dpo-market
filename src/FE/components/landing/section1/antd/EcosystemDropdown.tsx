@@ -26,6 +26,11 @@ const items: MenuProps['items'] = [
     key: '4',
     label: <Link target='_blank' href="https://www.directprivateoffers.net/dpo">OTC:MNZO</Link>,
     icon:<AiOutlineControl />
+  },
+  {
+    key: '5',
+    label: <Link target='_blank' href="https://dpo-dao.vercel.app/">DAO</Link>,
+    icon:<AiOutlineControl />
   }
  
 ];

@@ -136,6 +136,11 @@ export const CollapsedNav = ({Username}:{Username:string|null}) => {
             key: '4-4',
             label: <Link target='_blank' href="https://www.directprivateoffers.net/dpo">OTC:MNZO</Link>,
             icon:<AiOutlineControl />
+          },
+          {
+            key: '4-5',
+            label: <Link target='_blank' href="https://dpo-dao.vercel.app/">DAO</Link>,
+            icon:<AiOutlineControl />
           }
          
     ]
