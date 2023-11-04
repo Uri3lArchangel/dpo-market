@@ -8,7 +8,7 @@
 }
 .innerContainer{
     display: flex;
-    height: 120%;
+    height: 100%;
 }
 .leftContainer main{
     width: 100%; 

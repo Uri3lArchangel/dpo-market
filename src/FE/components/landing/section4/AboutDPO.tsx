@@ -4,15 +4,7 @@ import about from '../../../../../styles/landing/about.module.css'
 import Aos from 'aos'
 
 const AboutDPO = () => {
-  useEffect(()=>{
-    if(window.innerWidth <1024){
-      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
-    }else{
-      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
-    
-    
-    }
-  },[])
+
     
   return (
     <section id="about-us" className={about.sect_mainContainer + ' overflow-x-hidden'}> 

@@ -13,13 +13,13 @@ import Aos from 'aos'
 const StepsToINvesting = () => {
 
   useEffect(()=>{
-    if(window.innerWidth <1024){
-      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
-    }else{
-      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    // if(window.innerWidth <1024){
+    //   Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
+    // }else{
+    //   Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
     
     
-    }
+    // }
   },[])
     
   return (
@@ -27,28 +27,28 @@ const StepsToINvesting = () => {
       <Intersect1 />
       <Intersect2 />
     <div>
-      <h1 data-aos="slide-left" >Follow these steps to begin your investment</h1>
-      <p data-aos="slide-right">Investing in DPO Tokens is a straightforward process that provides you with the opportunity to <br /> become a shareholder in private companies. Here&apos;s a step-by-step guide:</p>
+      <h1 data-aos="slide-left" >Follow these steps to start investing</h1>
+      <p data-aos="slide-right">Investing in DPO Tokens is a straightforward <br /> process,  one that provides you with the opportunity to <br /> become a shareholder in private companies. <br /> Here&apos;s a step-by-step guide:</p>
       <ul className={steps.ul_stepsContainer}>
         <li data-aos="fade-up">
           <div> 
             <Image src={createIconProfile} alt='Create your account icon' />
           </div>
-          <h2>1. Create An Account</h2>
+          <h2 className='underline'>1. Create An Account</h2>
           <p>Sign up as an accredited investor or connect with <br />  your wallet for foreign investors.</p>
         </li>
          <li data-aos="fade-up" data-aos-delay="50">
           <div>
             <Image src={verifyIcon} alt='Create your account icon' />
           </div>
-          <h2>2. Complete verification process</h2>
+          <h2 className='underline'>2. Complete verification process</h2>
           <p>Complete our verification process for a secure platform. <br /> Your data is safeguarded.</p>
         </li>
         <li data-aos="fade-up" data-aos-delay="100">
           <div>
             <Image src={marketIcon} alt='Create your account icon' />
           </div>
-          <h2>3. Invest in our primary market, <br /> equity or debit offer</h2>
+          <h2 className='underline'>3. Invest in our primary market, <br /> equity or debit offer</h2>
           <p>Invest in our primary market. Equity or debt offer</p>
         </li>
         <button data-aos="slide-up" data-aos-delay="100">
@@ -60,7 +60,7 @@ const StepsToINvesting = () => {
           <div>
             <Image src={tradeIcon} alt='Create your account icon' />
           </div>
-          <h2>4. Trade With DPO and other Coins</h2>
+          <h2 className='underline'>4. Trade With DPO and other Coins</h2>
           <p>Once the secondary market is open, trade dpo with other coin pairs.</p>
         </li>
         <button data-aos="slide-up" data-aos-delay="150">

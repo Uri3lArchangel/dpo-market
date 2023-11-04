@@ -2,18 +2,11 @@
 import React, { Suspense, useEffect } from 'react'
 import header from '../../../../../styles/landing/header.module.css'
 import {BiChevronRight, BiSolidRightArrow} from 'react-icons/bi'
-import Aos from 'aos'
 import { useRouter } from 'next/navigation'
 const Header = () => {
   const router = useRouter()
   useEffect(()=>{
-    if(window.innerWidth <1024){
-      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
-    }else{
-      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
-    
-    
-    }
+
   },[])
     
   

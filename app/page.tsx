@@ -9,7 +9,7 @@ import React from 'react'
 
 const page = () => {
   return (
-  <>
+  <section className=' overflow-x-hidden'>
   <Header />
   <main>
     <StepsToINvesting />
@@ -17,7 +17,7 @@ const page = () => {
     <AboutDPO />
     <AllBlockchains />
   </main>
-  </>
+  </section>
   )
 }
 

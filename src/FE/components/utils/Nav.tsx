@@ -12,7 +12,7 @@ import { CollapsedNavMD } from "./antd/md/CollapsedNavMD";
 import { useRouter } from "next/navigation";
 import { message } from "antd";
 import { NotificationContext } from "./antd/notification/Note";
-
+import Aos from 'aos'
 
 const Nav = ({Username}:{Username:string|null}) => {
 const router = useRouter()
@@ -20,7 +20,13 @@ const noteContext =  useContext(NotificationContext)
 const [isActiveScroll,setScroll]=useState(false)
  useEffect(()=>{
 
-
+    if(window.innerWidth <1024){
+      Aos.init({duration:0,easing:'ease-out',disable:window.innerWidth<1024,delay:0,once:true})
+    }else{
+      Aos.init({duration:500,easing:'ease-out',disable:window.innerWidth<1024,once:true})
+    
+    
+    }
 if(document.querySelector("#sec-trade")){
   const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
     for(let i=0;i<navs.length;i++){
