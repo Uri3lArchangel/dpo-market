@@ -5,6 +5,8 @@ import { URLresolve } from "../../Functions/Helpers/FE/FetchUrlResolve";
 import { FullTradingPairContextKey } from "./TradingPairContext";
 import { Router } from "next/router";
 import { useRouter } from "next/navigation";
+import { NotificationContext } from "../../components/utils/antd/notification/Note";
+import { message } from "antd";
 
 interface Wallet{
       coinName: string;
@@ -36,6 +38,7 @@ const BuyMarketSection = ({
   const [totalRecieve, setTotalRecieve] = useState(0);
   const [availableBuyBalance,setAvailableBuyBalance]=useState(0)
   const keyVal = useContext(FullTradingPairContextKey).keyPropVal
+  const noteContext =  useContext(NotificationContext)!
 
 
 
@@ -97,12 +100,23 @@ useEffect(()=>{
     if(!priceRef || !priceRef.current) return
     if(!amountRef || !amountRef.current) return
     if(Number(amountRef.current.value) == 0)  return
+    message.destroy()
+    message.loading("Creating bid order",10000)
     const Pair = to.name+'/'+from.name
     const InitialPrice=Number(currentPrice)
     const BidPrice =Number(priceRef.current.value) 
     const Amount = Number(amountRef.current.value)
     const AmountPaid = totalPay
     const res = await Bid(InitialPrice,BidPrice,Amount,Pair,AmountPaid);
+    if(res.status === "error"){
+      message.destroy()
+      noteContext({type:"error",description:"Error",message:res.msg})
+    }else{
+      message.destroy()
+
+      noteContext({type:"success",description:"Success",message:res.msg})
+
+    }
     router.refresh()
    
   };

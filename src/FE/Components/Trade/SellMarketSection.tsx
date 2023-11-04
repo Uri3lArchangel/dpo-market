@@ -75,10 +75,10 @@ const SellMarketSection = ({
     const res = await Ask(InitialPrice,BidPrice,Amount,Pair,AmountPaid);
     if(res.status == "sucess"){
       message.destroy()
-      noteContext!({type:"success",message:res.msg,description:""})
+      noteContext!({type:"success",message:res.msg,description:"Success"})
     }else{
       message.destroy()
-      noteContext!({type:"error",message:res.msg,description:""})
+      noteContext!({type:"error",message:res.msg,description:"Error"})
     }
     router.refresh()
    

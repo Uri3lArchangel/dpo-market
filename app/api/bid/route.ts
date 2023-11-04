@@ -43,7 +43,7 @@ export async function POST(req:NextRequest){
     }
     await disconnectMongo()
     revalidateTag(process.env.CACHETAG!)
-    return NextResponse.json({Data:updated,Status:"success",msg:`BUY order of ${Amount} ${Pair.split('/')[0]} at ${BidPrice} is placed`},{status:201})
+    return NextResponse.json({data:updated,status:"success",msg:`BUY order of ${Amount} ${Pair.split('/')[0]} at ${BidPrice} is placed`},{status:201})
 }
     catch(err:any){
         console.error(err.message)
