@@ -1,6 +1,6 @@
 "use client";
 import ModalApp from "@/src/FE/Components/Antd/ModalApp";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import depositcoins from '../../../../Data/DepositCoinsSelect.json'
 import { CoinMap } from "@/src/Data/CoinImgMap";
 import Image from "next/image";
@@ -13,19 +13,20 @@ function DepositCrypto() {
   const [generateDepositAddressState,setGenerateDepositAddressState] = useState(false)
   const [selectedCryptoSymbol,setSelectedCryptoSymbol]=useState("")
   const [methods,setMethods]=useState<[{method:string,fee:string,minimum:string}] | undefined>()
+  const [selectedMethod,setSelectedMethod]=useState("")
   const [selectedMethodData,setSelectedMethodData]=useState<{fee:number,min:string}>({fee:0,min:"0"})
-
+  const amountRef = useRef<HTMLInputElement>(null)
   const noteContext =  useContext(NotificationContext)!
 
 const getDepositCryptoMethod =async () => {
   message.destroy()
   let sym= (document.getElementById("coinselect") as HTMLSelectElement).value
-console.log(sym)
   if(sym == ""){
     return
   }
   let symbol = sym.toUpperCase()
   if(symbol == "BTC") symbol = "XBT";
+  setSelectedCryptoSymbol(symbol)
   message.loading("Generating Methods",10000000)
   const res = await fetch(URLresolve("/api/generateDepositMethod"),{method:"POST",mode:"no-cors",body:JSON.stringify({asset:symbol})})
   const data = await res.json()
@@ -42,15 +43,33 @@ console.log(sym)
 }
 const filterFees = (e:React.ChangeEvent<HTMLSelectElement>)=>{
 const methodVal = e.currentTarget.value
-console.log()
+
 if(!methodVal || !methods){
   return
 }
+setSelectedMethod(methodVal)
 methods.map((e)=>{
   if(e.method == methodVal){
 
   setSelectedMethodData({fee:Number(e.fee),min:e.minimum})
 }})
+}
+
+const generateDepositAddress=async()=>{
+  if(!amountRef || !amountRef.current) return
+  let sym= ((document.getElementById("coinselect") as HTMLSelectElement).value).toUpperCase()
+  if(sym == "BTC") sym="XBT"
+  console.log(sym)
+  if(!selectedMethod) return
+  message.destroy()
+  message.loading("Generating Address")
+  if(selectedMethod == "Bitcoin Lightning" && amountRef.current.value) {
+    message.destroy()
+    noteContext({type:"error",message:"Input Error",description:"Bitcoin Lightning method requires the amount to be deposited to be specified"})
+    return
+  }
+  const res=await fetch(URLresolve("/api/generateDepositAddress"),{method:'POST',mode:"no-cors",body:JSON.stringify({asset:sym,method:selectedMethod,amount:amountRef.current.value})})
+  const data = await res.json()
 }
 
 
@@ -103,11 +122,11 @@ methods.map((e)=>{
             {methods.map((i,n)=>(<option value={i.method}>{i.method}</option>))}
 
           </select>
-          <button className="bg-black text-white  h-fit px-4 py-2">Generate</button>
+          <button className="bg-black text-white  h-fit px-4 py-2" onClick={generateDepositAddress}>Generate</button>
 
         </div>}
-        <div className="w-[80%]">
-          <input type="text" placeholder="enter amount you want to deposit" className="w-full" />
+        <div className={selectedMethod == "Bitcoin Lightning"?"w-[80%]":"hidden"}>
+          <input type="text" ref={amountRef} placeholder="enter amount you want to deposit" className="w-full outline-none bg-[#cfcfcf99] p-2 rounded-sm" />
         </div>
         <div>
           <p>Fee: {selectedMethodData.fee}</p>
@@ -118,6 +137,7 @@ methods.map((e)=>{
         <p>Deposit Address: </p>
         <p>This address is only valid for 30 mins</p>
       </ModalApp>
+      
     </>
   );
 }
