@@ -21,10 +21,10 @@ export async function POST(req:NextRequest) {
                 asset,method,nonce:Date.now() * 100
             }
             const res = await krakenRequest("/0/private/DepositAddresses",body)
+                console.log(res)
 
         }
     }
 
-    console.log(firstTest)
     return NextResponse.json({})
 }
