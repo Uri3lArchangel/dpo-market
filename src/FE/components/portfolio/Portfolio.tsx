@@ -1,11 +1,11 @@
-'use client'
-import React, { useEffect } from "react";
+import React from "react";
 import portfolio from "../../../../styles/portfolio/portfolio.module.css";
 import Image from "next/image";
 import { BsBriefcaseFill } from "react-icons/bs";
 import logo from '../../../../public/images_/dpologo.png'
 import TableApp from "./antd/Table";
 import Aos from 'aos'
+import DepositCrypto from "./antd/DepositCrypto";
 
 interface Props{
   equityOffers:{
@@ -31,13 +31,7 @@ coinName:String,
 
 function Portfolio({equityOffers,debtOffers,wallet}:Props) {
   
-  useEffect(()=>{
-   
-      Aos.init({duration:150,easing:'ease-in',once:true})
-    
-    
-    
-  },[])
+
   return (
     <section className={portfolio.mainContainer+ ' selectedScroll'} id="portfolio">
       
@@ -95,7 +89,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
             </ul>}
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
-        <button className="border border-blue-500 rounded-lg px-6 py-2 text-blue-500">Deposit Crypto</button>
+        <DepositCrypto />
             <h3>Wallet Balance</h3>
 
             <TableApp wallet={wallet} />

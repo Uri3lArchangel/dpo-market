@@ -9,6 +9,10 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { cookie } = await req.json();
+
+    if (!cookie) {
+      return NextResponse.json({ data: null, status: false });
+    }
     const cookieData = jwtdecodebase(cookie);
 
     if (!cookieData) {
@@ -20,7 +24,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ data: user, status: true });
   } catch (err: any) {
     await disconnectMongo();
+    return NextResponse.json({ data: null, status: false });
 
-    return NextResponse.json({ data: err.message, status: false });
+console.log(err)
   }
 }

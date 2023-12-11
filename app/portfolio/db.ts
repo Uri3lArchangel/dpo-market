@@ -10,6 +10,7 @@ import User from '@/src/BE/DB/schema/User';
 export const getPortfoliodata=async(username:string)=>{
     await connectMongo()
   const userData = await User.findOne({username:username})
+  console.log(userData)
     await disconnectMongo()
     return userData
 }

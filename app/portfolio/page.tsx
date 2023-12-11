@@ -26,22 +26,20 @@ export async function generateMetadata(
       }
     }
 
-const fetchPortfolioData = async()=>{
-    const cookie = cookies().get('dpo-session-base')
-    if(!cookie){
-        return null
+     const fetchUserData=async()=>{
+        const cookie = cookies().get('dpo-session-base')
+        if(!cookie){
+            return null
+        }
+    let res = await fetch(process.env.BASEURL!+"/api/userdata",{method:'POST',next:{revalidate:false,tags:[process.env.CACHETAG!]},body:JSON.stringify({cookie:cookie.value})})
+    let data = (await res.json()).data
+    return data
+
     }
-let res = await fetch(process.env.BASEURL!+"/api/portoflio-data",{method:'POST',mode:'no-cors',next:{tags:[process.env.CACHETAG!],revalidate:false},body:JSON.stringify({sessionCookieData:cookie})})
-let data = await res.json()
-
-return data
-}
-
-
 
 
 const page = async() => {
- const data = (await fetchPortfolioData())!
+const data = await fetchUserData()
     return(
     <main>
         <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={data.wallet}/>

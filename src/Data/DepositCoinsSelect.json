@@ -1,0 +1,65 @@
+[
+    {
+        "fullname":"Bitcoin",
+        "symbol":"BTC"
+    },
+    
+    {
+        "fullname":"Canadian Dollar",
+        "symbol":"CAD"
+    },
+    {
+        "fullname":"Ethereum",
+        "symbol":"ETH"
+    },
+    {
+        "fullname":"United Stated Dollar Coin",
+        "symbol":"USDC"
+    }, {
+        "fullname":"Polygon Matic",
+        "symbol":"MATIC"
+    }, {
+        "fullname":"Chainlink",
+        "symbol":"LINK"
+    }, {
+        "fullname":"Tron",
+        "symbol":"TRX"
+    }, {
+        "fullname":"Uniswap",
+        "symbol":"UNI"
+    }, {
+        "fullname":"OKB",
+        "symbol":"OKB"
+    }, {
+        "fullname":"Decentraland",
+        "symbol":"MANA"
+    }, {
+        "fullname":"Binance Coin",
+        "symbol":"BNB"
+    }, {
+        "fullname":"Maker",
+        "symbol":"MKR"
+    }, {
+        "fullname":"Cronos",
+        "symbol":"CRO"
+    }, {
+        "fullname":"AAVE",
+        "symbol":"AAVE"
+    }, {
+        "fullname":"The Sandbox",
+        "symbol":"ETH"
+    },
+    {
+        "fullname":"Near",
+        "symbol":"NEAR"
+    },
+    {
+        "fullname":"Direct Private Offers",
+        "symbol":"DPO"
+    },
+    {
+        "fullname":"THETA",
+        "symbol":"THETA"
+    }
+  
+]

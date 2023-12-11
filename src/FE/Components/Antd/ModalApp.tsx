@@ -2,7 +2,7 @@ import React, { CSSProperties, useState } from 'react';
 import { Button, Modal } from 'antd';
 
 
-const ModalApp = ({state,setState,component,title,classname,mask,styles,closeicon}:{state:boolean,setState: React.Dispatch<React.SetStateAction<boolean>>,component?:React.ReactNode,title?:string,classname?:string,mask?:boolean,styles?:any,closeicon?:boolean}) => {
+const ModalApp = ({state,setState,children,title,classname,mask,styles,closeicon}:{state:boolean,setState: React.Dispatch<React.SetStateAction<boolean>>,children?:React.ReactNode,title?:string,classname?:string,mask?:boolean,styles?:any,closeicon?:boolean}) => {
 
   return (
     <>
@@ -21,7 +21,7 @@ const ModalApp = ({state,setState,component,title,classname,mask,styles,closeico
         onCancel={() => setState(false)}
         className={classname}
       >
-        {component}
+        {children}
       </Modal>
     </>
   );
