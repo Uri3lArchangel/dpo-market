@@ -27,7 +27,7 @@ export async function POST(req:NextRequest) {
     await connectMongo()
     const firstTest = await krakenRequest("/0/private/DepositAddresses",body)
     if(firstTest.error.length > 0){
-        if(firstTest.error[0] == "EFunding:Too many addresses"){
+        if(firstTest.error[0].includes("EFunding:Too many addresses")){
             body={
                 asset,method,nonce:Date.now() * 100
             }
@@ -49,7 +49,15 @@ export async function POST(req:NextRequest) {
 
 
         }
+        await disconnectMongo()
+
+        return NextResponse.json({address:firstTest.error},{status:201})
+
     }}catch(err:any){
         console.error(err)
+        await disconnectMongo()
+
+        return NextResponse.json({address:err},{status:500})
+
     }
 }
