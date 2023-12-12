@@ -69,7 +69,7 @@ const generateDepositAddress=async()=>{
     noteContext({type:"error",message:"Input Error",description:"Bitcoin Lightning method requires the amount to be deposited to be specified"})
     return
   }
-  const res=await fetch(URLresolve("/api/generateDepositAddress"),{method:'POST',mode:"no-cors",body:JSON.stringify({asset:sym,method:selectedMethod,amount:amountRef.current.value,sym})})
+  const res=await fetch(URLresolve("/api/generateDepositAddress"),{method:'POST',mode:"no-cors",body:JSON.stringify({asset:sym,method:selectedMethod,amount:amountRef.current.value})})
   const data = await res.json()
   if(res.status == 201){
     message.destroy()

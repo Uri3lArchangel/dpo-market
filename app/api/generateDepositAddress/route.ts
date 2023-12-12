@@ -9,7 +9,7 @@ import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMong
 export async function POST(req:NextRequest) {
 
     try{
-    const {asset,method,amount,sym}=await req.json()
+    const {asset,method,amount}=await req.json()
     const cookie = cookies().get("dpo-session-base")
     if(!cookie || !cookie.value) return NextResponse.redirect(new URL("/auth/sign-in",req.nextUrl))
     const user = jwtdecodebase(cookie.value)
@@ -36,7 +36,7 @@ export async function POST(req:NextRequest) {
             console.log(res)
             let r
             for(let i =0;i<res.result.length;i++){
-              r=  await UpdateMarketDeposit(res.result[i].address,user.Email,method,sym)
+              r=  await UpdateMarketDeposit(res.result[i].address,user.Email,method,asset)
              if(r == false){
                 continue
              }else{
