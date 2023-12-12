@@ -108,7 +108,7 @@ const generateDepositAddress=async()=>{
           
           >
             <option value="">--Select Crypto--</option>
-            {depositcoins.map((i,n)=>(<option  value={i.symbol} onClick={()=>{setSelectedCryptoSymbol(i.symbol);alert(1)}} className="py-2 cursor-pointer"><Image src={CoinMap[i.symbol].img} alt={i.fullname+ " image"} className="w-8" /><div >{i.fullname}</div></option>))}
+            {depositcoins.map((i,n)=>(<option key={n} value={i.symbol} onClick={()=>{setSelectedCryptoSymbol(i.symbol);alert(1)}} className="py-2 cursor-pointer"><Image src={CoinMap[i.symbol].img} alt={i.fullname+ " image"} className="w-8" /><div >{i.fullname}</div></option>))}
           </select>
           <button className="bg-black text-white  h-fit px-4 py-2" onClick={getDepositCryptoMethod}>Select</button>
         </div>
@@ -130,7 +130,7 @@ const generateDepositAddress=async()=>{
             className=" block cursor-pointer my-4 bg-[#efefef77] px-6 py-2 rounded-md border-0 outline-none"
           >
             <option value="">--Select Blockchain Method--</option>
-            {methods.map((i,n)=>(<option value={i.method}>{i.method}</option>))}
+            {methods.map((i,n)=>(<option key={n} value={i.method}>{i.method}</option>))}
 
           </select>
           <button className="bg-black text-white  h-fit px-4 py-2" onClick={generateDepositAddress}>Generate</button>
