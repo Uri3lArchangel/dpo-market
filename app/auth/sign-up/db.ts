@@ -1,4 +1,5 @@
 import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMongoDB"
+import Market from "@/src/BE/DB/schema/Market"
 import User from "@/src/BE/DB/schema/User"
 import { HashPassword } from "@/src/BE/web2/functions/HashPasswords"
 import  Mongoose  from "mongoose"
@@ -130,3 +131,65 @@ if(!user){
   export const ChangeEmail=async(Email:string,newEmail:string)=>{
     await User.updateOne({email:Email},{email:newEmail})
   }
+
+
+  export const UpdateMarketDeposit = async (address: string, ownerEmail: string, method: string,sym:string) => {
+    try {
+        const existingMarket = await Market.findOne({ "deposits.address": address });
+
+        if (existingMarket == null) {
+          
+            await Market.updateOne(
+                {},
+                { $push: { deposits: { method, address, ownerEmail} } },
+                { upsert: true }
+            );
+            await pendingDepositStateActive(ownerEmail,sym,method,address)
+
+           return address
+        } else {
+            const filteredObjects =  (existingMarket.deposits.filter((obj:any) => obj.address === address))[0];
+
+            if(filteredObjects.expiresAt >= (Date.now())){ 
+                await pendingDepositStateActive(ownerEmail,sym,method,address)
+
+            return address
+            }
+            // if(filteredObjects.method == method && filteredObjects.ownerEmail == ownerEmail && filteredObjects.expiresAt >= (Date.now())){
+            //     return address
+            // }
+            if(filteredObjects.method == method && filteredObjects.expiresAt <= (Date.now())){
+                await Market.updateOne(
+                    { "deposit.address": address },
+                    {
+                        $set: {
+                            "deposit.$.method": method,
+                            "deposit.$.ownerEmail": ownerEmail,
+                            "deposit.$.expiresAt":(Date.now() + 30 * 60 *1000)
+                        }
+                    })
+                   await pendingDepositStateActive(ownerEmail,sym,method,address)
+                    return address
+            }
+            
+            return false
+
+
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+
+}; 
+
+export const pendingDepositStateActive = async(email:string,sym:string,method:string,depositAddress:string)=>{
+       await User.updateOne({email},{$push:{pendingDeposit:{asset:sym,minTime:Date.now(),maxTime:(Date.now()+30 * 60 * 1000),method,depositAddress,active:true}}}) 
+    }
+
+    export const pendingDepositCheck =async (email:string) => {
+        const user =await User.findOne({email})
+        const filteredObjectArr =  (user.pendingDeposit.filter((obj:any) => obj.active === true));
+        return filteredObjectArr
+
+    }

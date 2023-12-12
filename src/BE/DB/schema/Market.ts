@@ -33,7 +33,19 @@ const Marketschema = new Schema({
             value:Number,
             direction:String,
         }
-    }
+    },
+    deposits:[
+        {
+          
+            ownerEmail:String,
+            expiresAt:{
+                type:Number,
+                default:(Date.now() + 30 * 60 *1000)
+            },
+            address:String,
+            method:String
+        }
+    ]
 })
 
 let Market = models.MarketData || model("MarketData",Marketschema)

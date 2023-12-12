@@ -57,6 +57,17 @@ import { Schema, SchemaType, model, models } from "mongoose";
             default:false
         }
     },
+    pendingDeposit:[{
+    
+        asset:String,
+        minTime:Number,
+        maxTime:Number,
+        method:String,
+        depositAddress:String,
+        active:{
+            type:Boolean,default:false
+        },
+    }],
     wallet:{
         
         type:[

@@ -1,10 +1,10 @@
+'use client'
 import React from "react";
 import portfolio from "../../../../styles/portfolio/portfolio.module.css";
 import Image from "next/image";
 import { BsBriefcaseFill } from "react-icons/bs";
 import logo from '../../../../public/images_/dpologo.png'
 import TableApp from "./antd/Table";
-import Aos from 'aos'
 import DepositCrypto from "./antd/DepositCrypto";
 
 interface Props{
@@ -34,7 +34,6 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
 
   return (
     <section className={portfolio.mainContainer+ ' selectedScroll'} id="portfolio">
-      
       <div>
         <section data-aos="fade-right" className={portfolio.total}>
           <div className={portfolio.titleContainer}>

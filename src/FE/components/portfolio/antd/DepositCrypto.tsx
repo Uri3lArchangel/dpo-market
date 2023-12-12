@@ -15,6 +15,7 @@ function DepositCrypto() {
   const [methods,setMethods]=useState<[{method:string,fee:string,minimum:string}] | undefined>()
   const [selectedMethod,setSelectedMethod]=useState("")
   const [selectedMethodData,setSelectedMethodData]=useState<{fee:number,min:string}>({fee:0,min:"0"})
+  const [addressGen,setAddressGen]=useState("")
   const amountRef = useRef<HTMLInputElement>(null)
   const noteContext =  useContext(NotificationContext)!
 
@@ -63,13 +64,23 @@ const generateDepositAddress=async()=>{
   if(!selectedMethod) return
   message.destroy()
   message.loading("Generating Address")
-  if(selectedMethod == "Bitcoin Lightning" && amountRef.current.value) {
+  if(selectedMethod == "Bitcoin Lightning" && !amountRef.current.value) {
     message.destroy()
     noteContext({type:"error",message:"Input Error",description:"Bitcoin Lightning method requires the amount to be deposited to be specified"})
     return
   }
-  const res=await fetch(URLresolve("/api/generateDepositAddress"),{method:'POST',mode:"no-cors",body:JSON.stringify({asset:sym,method:selectedMethod,amount:amountRef.current.value})})
+  const res=await fetch(URLresolve("/api/generateDepositAddress"),{method:'POST',mode:"no-cors",body:JSON.stringify({asset:sym,method:selectedMethod,amount:amountRef.current.value,sym})})
   const data = await res.json()
+  if(res.status == 201){
+    message.destroy()
+
+    noteContext({type:"success",message:"Generated",description:""})
+
+    setAddressGen(data.address)
+    setSelectCryptoState(false)
+    setGenerateDepositAddressState(true)
+
+  }
 }
 
 
@@ -133,9 +144,9 @@ const generateDepositAddress=async()=>{
           <p>Minimum: {selectedMethodData.min}</p>
         </div>
       </ModalApp>
-      <ModalApp mask={false} setState={setGenerateDepositAddressState} state={generateDepositAddressState}>
-        <p>Deposit Address: </p>
-        <p>This address is only valid for 30 mins</p>
+      <ModalApp mask={false} setState={setGenerateDepositAddressState} state={generateDepositAddressState} classname="text-center">
+        <p>Deposit Address: {addressGen}</p>
+        <p>This address is only valid for 30 minutes, <span className="text-red-500"> DO NOT DEPOSIT TO THIS ADDRESS AFTER 30 MINUTES</span></p>
       </ModalApp>
       
     </>
