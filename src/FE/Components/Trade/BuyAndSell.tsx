@@ -104,7 +104,7 @@ init()
 
   return (
     <>
-    <ModalApp state={modalState}  setState={setModalState} component={<TradingPairModal setModalState={setModalState} />} classname='bg-[#2e303579] lg:min-w-[700px] w-full rounded-lg' styles={modalStyles} closeicon={true} />
+    <ModalApp state={modalState}  setState={setModalState} classname='bg-[#2e303579] lg:min-w-[700px] w-full rounded-lg' styles={modalStyles} closeicon={true}><TradingPairModal setModalState={setModalState} /></ModalApp>
     <section className='h-[420px] bg-black px-4 overflow-y-scroll' id='buySellContainer'>
         <div onClick={()=>{
           setModalState(true)
