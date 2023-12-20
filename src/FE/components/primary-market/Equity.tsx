@@ -37,7 +37,7 @@ let order = {purchase_units:[{
     }
 }]}
 
-// USEEFFECT
+// USE EFFECT
 
     useEffect(()=>{
         const first = document.getElementById('start') as HTMLParagraphElement

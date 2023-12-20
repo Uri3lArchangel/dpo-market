@@ -2,6 +2,7 @@ import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMong
 import Market from "@/src/BE/DB/schema/Market"
 import User from "@/src/BE/DB/schema/User"
 import { HashPassword } from "@/src/BE/web2/functions/HashPasswords"
+import { CoinMap } from "@/src/Data/CoinImgMap"
 import  Mongoose  from "mongoose"
 
 export const SignupDB=async(email:string,uname:string,hash:string)=>{
@@ -190,6 +191,17 @@ export const pendingDepositStateActive = async(email:string,sym:string,method:st
     export const pendingDepositCheck =async (email:string) => {
         const user =await User.findOne({email})
         const filteredObjectArr =  (user.pendingDeposit.filter((obj:any) => obj.active === true));
-        return filteredObjectArr
+        return filteredObjectArr 
+
+    }
+    
+    export const updateWalletCoinsDeposit=async(email:string,amount:number,state:string,sym:string)=>{
+        if(state == "p"){await User.updateOne({email},{$push:{wallet:{coinName:CoinMap[sym].full,pending:amount}}})}
+        else if(state == "s"){
+         await User.updateOne({email},{$push:{wallet:{coinName:CoinMap[sym].full,amount,pending:0}}})
+        }else{
+            await User.updateOne({email},{$push:{wallet:{coinName:CoinMap[sym].full,amount:0,pending:0}}})
+           }
+        
 
     }
