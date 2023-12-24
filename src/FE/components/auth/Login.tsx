@@ -70,7 +70,9 @@ function Login() {
       throw new Error("Internal Server Error Please Reload And Try Again")
     }
     if(res.status == 400){
-      return
+      const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()
+       noteContext!({message:data.message,type:data.type,description:data.description})
+return
 
     }
     const data:{message:string,description:string,type:"error"|"warning"|"success"} = await res.json()

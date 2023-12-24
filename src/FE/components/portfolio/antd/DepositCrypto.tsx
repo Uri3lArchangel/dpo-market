@@ -148,7 +148,6 @@ const generateDepositAddress=async()=>{
         <p>Deposit Address: {addressGen}</p>
         <p>This address is only valid for 30 minutes, <span className="text-red-500"> DO NOT DEPOSIT TO THIS ADDRESS AFTER 30 MINUTES</span></p>
       </ModalApp>
-      
     </>
   );
 }

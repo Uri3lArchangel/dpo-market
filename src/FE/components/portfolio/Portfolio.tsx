@@ -90,7 +90,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
         <DepositCrypto />
-        <WithdrawCrypto />
+        {/* <WithdrawCrypto /> */}
             <h3>Wallet Balance</h3>
 
             <TableApp wallet={wallet} />

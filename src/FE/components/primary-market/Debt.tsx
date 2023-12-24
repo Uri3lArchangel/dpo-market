@@ -252,9 +252,9 @@ const clipboardpaste=async()=>{
                 <div data-aos="fade-right" className={debt.leftContainer}>
                     <div>
                     <figure>
-                        <FcDebt size={35} className={debt.icon} />
+                        <FcDebt size={35} className={debt.icon+" mx-2"} />
                         <figcaption>
-                            <h1>DIRECT <text>PRIVATE</text> OFFERS, <br /> DEBT OFFER</h1>
+                        <h1> DPO<text className='mx-1'>Global</text> LLC, <br /> DEBT OFFER</h1>
                         </figcaption>
                     </figure>
                     <article>

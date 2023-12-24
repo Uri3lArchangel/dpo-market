@@ -13,7 +13,6 @@ import { Schema, SchemaType, model, models } from "mongoose";
         required:true,
         unique:true,
         lowercase:true
-
     },
     username:{
         type:String,
@@ -25,6 +24,7 @@ import { Schema, SchemaType, model, models } from "mongoose";
         type:String,
         required:true,
     },
+    
     isAccredited:{
         type:Boolean,
         default:true,

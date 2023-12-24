@@ -217,9 +217,10 @@ const clipboardpaste=async()=>{
                 <div data-aos="fade-right" className={equity.leftContainer}>
                     <div>
                     <figure>
-                        <GiMoneyStack size={35} className={equity.icon} />
+                        <GiMoneyStack size={35} className={equity.icon+" mx-2"} />
                         <figcaption>
-                            <h1>DIRECT <text>PRIVATE</text> OFFERS, <br /> EQUITY OFFER</h1>
+                          
+                            <h1> DPO<text className='mx-1'>Global</text> LLC, <br /> EQUITY OFFER</h1>
                         </figcaption>
                     </figure>
                     <article>
