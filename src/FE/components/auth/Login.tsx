@@ -94,10 +94,10 @@ return
             <div>
               <div className={login.titleContainer}>
                 <h2> <text>SIGN</text> IN</h2>
-                <p>Sign In and continue your journey</p>
-                <small>
+                <p>JOIN the community!</p>
+                {/* <small>
                Continue to build your portfoio
-                </small>
+                </small> */}
               </div>
               <form action="">
                 <div>
