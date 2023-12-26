@@ -224,7 +224,7 @@ const clipboardpaste=async()=>{
                         </figcaption>
                     </figure>
                     <article>
-                    <p>Invest in DPO by buying shares in form of DPO <br /> equity tokens at a fixed price of <span className='text-green-500'> 0.01 USD per DPO token </span> and join the DPO <br /> ecosystem</p>
+                    <p>Invest in DPO by buying shares in form of DPO <br /> equity tokens at a fixed price of <span className='text-green-500'>  Price: $40 USD per token, less 13% discount to market = $34.82 </span> and join the DPO <br /> ecosystem</p>
                     </article>
                     <div className={equity.leftGoToDebtCntainer}>
                     <em>Interested in our debt offer?</em>
