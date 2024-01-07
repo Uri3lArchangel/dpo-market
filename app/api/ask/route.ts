@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server"
 import {cookies} from 'next/headers'
 import { jwtdecodebase } from "@/src/BE/web2/functions/jwt"
 import { updateUserWalletDataBid } from "@/src/FE/Functions/Helpers/BE/UserWalletDB"
-import { UpdateOrder } from "@/app/trade/db"
+import { UpdateOrder } from "@/app/trade_working/db"
 import {  revalidateTag } from "next/cache"
 
 export async function POST(req:NextRequest){
