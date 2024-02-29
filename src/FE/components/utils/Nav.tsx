@@ -81,8 +81,8 @@ console.error(err)
         <div>
           <Image src={logo} alt="DPO Markets Logo" /> 
         </div>
-        <figcaption>
-          DPO <text>Market</text>
+        <figcaption className="text-white">
+          DPO <text className="text-[#000]">Expert</text>Market
         </figcaption>
         </Link>
       </figure>

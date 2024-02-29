@@ -18,17 +18,18 @@
 }
 
 .Header_headerContainer{
-    background-color: #000000fc;
+    background-color: #fff;
     min-height: 650px;
     background-repeat: no-repeat;
     background-position-y: bottom;
     background-position-x: center;
     background-size:200% 30%;
-    animation-timing-function: ease-in-out;
+    /* animation-timing-function: ease-in-out;
     animation-name: colorchange;
     animation-duration: 45s;
     animation-direction: alternate;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
+    color:black;
 background-image: url(../../public/images_/hero-bg.png) ;
 }
 
