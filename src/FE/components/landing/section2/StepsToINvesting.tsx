@@ -28,7 +28,10 @@ const StepsToINvesting = () => {
       <Intersect2 />
     <div>
       <h1 data-aos="slide-left" >Follow these steps to start investing</h1>
-      <p data-aos="slide-right">Investing in DPO Tokens is a straightforward <br /> process,  one that provides you with the opportunity to <br /> become a shareholder in private companies. <br /> Here&apos;s a step-by-step guide:</p>
+      <p data-aos="slide-right">Investing in DPO Tokens is a straightforward
+process, one that provides you with the opportunity to
+become a shareholder in private companies.
+Here&apos;s a step-by-step guide</p>
       <ul className={steps.ul_stepsContainer}>
         <li data-aos="fade-up">
           <div> 

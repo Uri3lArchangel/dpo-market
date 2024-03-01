@@ -42,11 +42,12 @@ display: none;
 {
 .nav_sm{
     display: none;
+    color: #0000;
 
 }
 .nav_md{
     display: flex ;
-    color: white;
+    color: black !important;
     justify-content: space-between;
     width: 100%;
     padding: 2em 0.5em;
@@ -97,7 +98,7 @@ align-items: center;
     justify-content: space-between;
     width: 43%;
     font-size: 0.85rem;
-    color: white;
+    color: black !important;
     font-weight: 500;
 }
 .nav_level0_NavContainer > li{

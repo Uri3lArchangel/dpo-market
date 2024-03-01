@@ -29,7 +29,7 @@
     animation-duration: 45s;
     animation-direction: alternate;
     animation-iteration-count: infinite; */
-    color:black;
+    color:black !important;
 background-image: url(../../public/images_/hero-bg.png) ;
 }
 
