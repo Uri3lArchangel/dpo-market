@@ -44,7 +44,7 @@ background-image: url(../../public/images_/hero-bg.png) ;
     .Header_headerContainer  figcaption{
     font-size: 1.3rem;
     font-weight: 600;
-    color: white;
+    color: black !important; 
     }
 /*The is at the center  of the nav*/
 .Header_headerContainer nav > ul{
@@ -53,7 +53,7 @@ background-image: url(../../public/images_/hero-bg.png) ;
     justify-content: space-between;
     width: 43%;
     font-size: 0.85rem;
-    color: white;
+    color: black !important;
     font-weight: 500;
 }
 .Header_headerContainer nav > li{
@@ -68,7 +68,7 @@ background-image: url(../../public/images_/hero-bg.png) ;
     margin: auto;
     display: flex;
     justify-content: center;
-    color: white;
+    color: black !important;
     flex-direction: column;
 
 

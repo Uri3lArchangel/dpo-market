@@ -37,26 +37,26 @@ if(document.querySelector("#sec-trade")){
 }
 
   
-  document.onscroll=()=>{
-    let element = document.getElementById('navtriger_main') as HTMLDivElement;
+  // document.onscroll=()=>{
+  //   let element = document.getElementById('navtriger_main') as HTMLDivElement;
 
-    const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
-    const triggerTop = (element.getBoundingClientRect()).top
-    console.log(triggerTop,"scroll")
-    if(triggerTop <= 0){
-      setScroll(true)
-      console.log("add")
-      for(let i=0;i<navs.length;i++){
-        navs[i].classList.add('scrolledNav')
-      }
-    }else{
-      console.log("remv")
-      setScroll(false)
-      for(let i=0;i<navs.length;i++){
-        navs[i].classList.remove('scrolledNav')
-      }
-    }
-  }
+  //   const navs = document.querySelectorAll('#top_sm_md_lg_nav') as NodeListOf<HTMLDivElement>;
+  //   const triggerTop = (element.getBoundingClientRect()).top
+  //   console.log(triggerTop,"scroll")
+  //   if(triggerTop <= 0){
+  //     setScroll(true)
+  //     console.log("add")
+  //     for(let i=0;i<navs.length;i++){
+  //       navs[i].classList.add('scrolledNav')
+  //     }
+  //   }else{
+  //     console.log("remv")
+  //     setScroll(false)
+  //     for(let i=0;i<navs.length;i++){
+  //       navs[i].classList.remove('scrolledNav')
+  //     }
+  //   }
+  // }
   
 
  },[isActiveScroll])
@@ -75,7 +75,7 @@ console.error(err)
   return (
   <section>
   <div className="absolute w-[1px] h-[1px] left-0 top-[80px] z-[50]" id="navtriger_main"></div>
-    <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden'}>
+    <nav id="top_sm_md_lg_nav" className={nav.nav_level0_NavContainer+ ' overflow-x-hidden scrolledNav'}>
       <figure>
         <Link href="/"> 
         <div>
@@ -121,7 +121,7 @@ console.error(err)
         </button>
         </div>}
     </nav>
-    <nav id="top_sm_md_lg_nav" className={nav.nav_sm}>
+    <nav id="top_sm_md_lg_nav" className={nav.nav_sm+" scrolledNav"}>
     <figure>
     <Link href="/"> 
 
@@ -132,7 +132,7 @@ console.error(err)
       </figure>
       <CollapsedNav Username={Username} />
     </nav>
-    <nav id="top_sm_md_lg_nav" className={nav.nav_md}>
+    <nav id="top_sm_md_lg_nav" className={nav.nav_md+" scrolledNav"}>
     <figure>
     <Link href="/"> 
 
