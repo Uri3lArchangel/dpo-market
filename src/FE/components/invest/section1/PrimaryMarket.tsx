@@ -30,7 +30,7 @@ const PrimaryMarket = () => {
         <div>
             <section className={primary.innerContainer}>
             <div className={primary.topTitle} data-aos="fade-down" data-aos-easing="ease-in">
-            <h1>Primary Market</h1>
+            <h1>Private Market</h1>
             <p>Participate in Primary Investment to fund start-ups, private companies, projects, and more.</p>
             </div>
            <section className={primary.offers}>
