@@ -1,17 +1,16 @@
-import { connectMongo, disconnectMongo } from "@/src/BE/DB/functions/ConnectMongoDB";
-import { retrieveUserWalletData } from "@/src/FE/Functions/Helpers/BE/UserWalletDB";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { connectMongoWallet, disconnectMongoWallet } from "@/src/BE/DB/functions/ConnectWalletMongo";
+import UserWallet from "@/src/BE/DB/schema/Wallet";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET() {
-  const sessionCookie = cookies().get('dpo-session-base')
+export async function POST(req: NextRequest) {
+  try {
+    const { address } = await req.json()
+    await connectMongoWallet()
+    const userWallet = UserWallet.findOne({ address })
 
-  if (!sessionCookie || !sessionCookie.value) {
-    return NextResponse.json({wallet:[]}, {status: 200});
+    await disconnectMongoWallet()
+    return NextResponse.json([userWallet, null] ,{ status: 200 });
+  } catch (err: any) {
+    return NextResponse([null, err.message])
   }
-  await connectMongo()
-  let wallet = await retrieveUserWalletData(sessionCookie.value);
-  if(!wallet)wallet =[]
-  await disconnectMongo()
-  return NextResponse.json({ wallet }, { status: 200 });
 }

@@ -33,3 +33,12 @@ export const jwtverifychecksum = (token:string)=>{
     const verifiedData = JWT.verify(token,process.env.JWTSECRET!+decodedData.Random)
     return verifiedData
 }
+
+export const walletAddressJWTSign=(address:string)=>{
+    const token = JWT.sign({walletAddress:address},process.env.JWTSECRET!)
+    return token
+}
+export const verifyWalletAddressJWTSign=(address:string)=>{
+    const {walletAddress} = JWT.verify({walletAddress:address},process.env.JWTSECRET!) as {walletAddress:string}
+    return address
+}

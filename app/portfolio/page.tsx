@@ -1,3 +1,5 @@
+import { UserWalletmodel } from '@/declarations'
+import { verifyWalletAddressJWTSign } from '@/src/BE/web2/functions/jwt'
 import Portfolio from '@/src/FE/components/portfolio/Portfolio'
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
@@ -28,7 +30,7 @@ export async function generateMetadata(
 
      const fetchUserData=async()=>{
         const cookie = cookies().get('dpo-session-base')
-        if(!cookie){
+        if(!cookie || !cookie.value){
             return null
         }
     let res = await fetch(process.env.BASEURL!+"/api/userdata",{method:'POST',next:{revalidate:false,tags:[process.env.CACHETAG!]},body:JSON.stringify({cookie:cookie.value})})
@@ -36,13 +38,31 @@ export async function generateMetadata(
     return data
 
     }
+    const fetchWalletData = async()=>{
+        const cookie = cookies().get('_gt_0_')
+        if(!cookie || !cookie.value){
+            return null
+        }
+        if(!verifyWalletAddressJWTSign(cookie.value)){
+            return null
+
+        }
+        let res = await fetch(process.env.BASEURL!+"/api/fetchUserWalletData",{method:'POST',next:{revalidate:false,tags:[process.env.CACHETAG!]},body:JSON.stringify({address:verifyWalletAddressJWTSign(cookie.value)})})
+        let [success,error] = await res.json()
+        if(error){
+            return null;
+        }
+        return success as UserWalletmodel
+    }
 
 
 const page = async() => {
 const data = await fetchUserData()
+const userWallet = await fetchWalletData()
+
     return(
     <main>
-        <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={data.wallet}/>
+        <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={userWallet?userWallet:[]}/>
     </main>
     )
   

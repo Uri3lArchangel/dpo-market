@@ -4,35 +4,32 @@ import portfolio from "../../../../../styles/portfolio/portfolio.module.css";
 import { Button, Space, Table, Tag } from 'antd';
 import Image, { StaticImageData } from 'next/image';
 import { CoinMap } from '@/src/Data/CoinImgMap';
+import { UserWalletmodel } from '@/declarations';
+import {FiatMap} from '../../../../Data/FiatMap'
+import Flags, {ICurrencyFlagProps} from 'react-currency-flags'
+
 
 
 const { Column, ColumnGroup } = Table;
 
-interface DataType {
-  key: React.Key;
-  coinName: string
-  amount: number;
-  pending:number
-}
 
 
-const TableApp = ({wallet}:{wallet:any}) => {
-  const data: DataType[] = wallet;
-  
+const TableApp = ({wallet}:{wallet:UserWalletmodel}) => {
+  const walletData = wallet.wallet
 
 
   return(
-  <Table dataSource={data} scroll={{x:true}}>
+  <Table dataSource={walletData} scroll={{x:true}}>
     
-      <Column title="Coin"  key="coinName" dataIndex="coinName" render={(coin:string)=>{
+      <Column title="Coin"  key="currencyName" dataIndex="currencyName" render={(coin:string)=>{
         return (
         <div className='flex space-x-2 items-center'>
-          <Image className='w-8 h-8 rounded-full' src={CoinMap[coin].img} alt={coin} />
-          <p>{CoinMap[coin].full} ({coin})</p>
+         {FiatMap[coin]? <Flags currency={coin} />:<Image className='w-8 h-8 rounded-full' src={CoinMap[coin].img} alt={coin} />}
+          <p>{FiatMap[coin]} ({coin})</p>
         </div>
       )}} />
-    <Column title="Amount" dataIndex="amount" key="amount" />
-    <Column title="Pending" dataIndex="pending" key="pending" />
+    <Column title="Amount" dataIndex="currencyAmount" key="currencyAmount" />
+    <Column title="Pending" dataIndex="pendingAmount" key="pendingAmount" />
     <Column
       title=""
       key="action"
