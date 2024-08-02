@@ -47,7 +47,6 @@ if(unameCheck){
         return NextResponse.json({'message':'Login Successful','description':'',type:"success"},{status:200})
 
     }
-    console.log(login)
     await disconnectMongo()
 
     return  NextResponse.json({'message':'Wrong Credentials','description':'Incorrect Username or Passord',type:"error"},{status:200})
