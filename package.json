@@ -23,6 +23,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.1",
     "next": "^14.2.4",
+    "lucide-react": "^0.417.0",
     "postcss": "^8",
     "react-currency-flags": "^0.1.2",
     "qs": "^6.11.2",
