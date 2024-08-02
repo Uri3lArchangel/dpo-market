@@ -9,6 +9,7 @@ import ConnectWallet from "./antd/ConnectDPOWallet";
 import { UserWalletmodel, WalletOptions } from "@/declarations";
 import {trauncateStringMiddle}from '../../Functions/Helpers/FE/AddressTrauncate';
 import { CopyCheckIcon, CopyIcon } from "lucide-react";
+import React, { useState } from "react";
 
 
 interface Props{
