@@ -7,6 +7,9 @@ import logo from '../../../../public/images_/dpologo.png'
 import TableApp from "./antd/Table";
 import ConnectWallet from "./antd/ConnectDPOWallet";
 import { UserWalletmodel, WalletOptions } from "@/declarations";
+import {trauncateStringMiddle}from '../../Functions/Helpers/FE/AddressTrauncate';
+import { CopyCheckIcon, CopyIcon } from "lucide-react";
+
 
 interface Props{
   equityOffers:{
@@ -28,8 +31,19 @@ wallet:UserWalletmodel|null
 
 
 function Portfolio({equityOffers,debtOffers,wallet}:Props) {
+  const [isCopied,setIsCopied]=useState(false);
   
+  const copyAddress = ()=>{
+    let a;
+    setIsCopied(true);
+  navigator.clipboard.writeText(address)
+  message.destroy()
+  message.success("Address copied",4)
+   a= setTimeout(()=>{
+    setIsCopied(false)
+  },2000)
 
+  }
   return (
     <section className={portfolio.mainContainer+ ' selectedScroll'} id="portfolio">
       <div>
@@ -86,7 +100,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
             </ul>}
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
-        <ConnectWallet />
+        {wallet? <div className="flex items-center cursor-pointer w-fit" onClick={copyAddress}>{isCopied?<CopyCheckIcon />:<CopyIcon  />} <h1 className="text-xl">{trauncateStringMiddle(address)}</h1></div>:<ConnectWallet />}
         {/* <WithdrawCrypto /> */}
             <h3>Wallet Balance</h3>
 

@@ -49,9 +49,13 @@ setConnectWallet(false)
         setState={setConnectWallet}
         mask={true}
       >
-       <input placeholder="Wallet Account Email" className="h-8 px-2 w-full block rounded-md my-4 outline-none" id="" ref={emaillRef} />
-       <input placeholder="wallet Account Password" className="h-8 px-2 w-full block rounded-md my-4 outline-none" id="" ref={passwordRef} />
-       <button onClick={ConnectDPOWallet}>Connect</button>
+       <input placeholder="Wallet Account Email" className="h-8 px-2 w-full block rounded-md my-4 outline-none border border-black/20" id="" ref={emaillRef} />
+       <input placeholder="wallet Account Password" className="h-8 px-2 w-full block rounded-md my-4 outline-none border border-black/20" id="" ref={passwordRef} />
+       <button onClick={ConnectDPOWallet} className="bg-blue-400 px-6 py-2 rounded-md text-white block">Connect</button>
+       <button onClick={()=>{
+        setConnectWallet(false)
+       }} className="bg-red-400 px-6 py-2 rounded-md text-white block">Close</button>
+
             </ModalApp>
     </>
   );
