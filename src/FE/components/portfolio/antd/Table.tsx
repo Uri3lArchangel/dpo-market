@@ -17,14 +17,15 @@ const { Column, ColumnGroup } = Table;
 const TableApp = ({wallet}:{wallet:UserWalletmodel|null}) => {
   const walletData = wallet?wallet.wallet : []
 
-
   return(
   <Table dataSource={walletData} scroll={{x:true}}>
     
       <Column title="Coin"  key="currencyName" dataIndex="currencyName" render={(coin:string)=>{
+console.log({coin})
+
         return (
         <div className='flex space-x-2 items-center'>
-         {FiatMap[coin]? <Flags currency={coin} />:<Image className='w-8 h-8 rounded-full' src={CoinMap[coin].img} alt={coin} />}
+         {FiatMap[coin.toUpperCase()]? <Flags currency={coin} />:<Image className='w-8 h-8 rounded-full' src={CoinMap[coin].img} alt={coin} />}
           <p>{FiatMap[coin]} ({coin})</p>
         </div>
       )}} />
