@@ -9,6 +9,7 @@ import UserWallet from "@/src/BE/DB/schema/Wallet";
 import { passwordHasher } from "@/src/FE/Functions/Helpers/FE/PasswordHasher";
 import { UserWalletmodel } from "@/declarations";
 import { walletCookie } from "@/src/BE/web2/functions/Cookie";
+import { revalidateTag } from "next/cache";
 
 
 export async function POST(req: NextRequest) {
