@@ -39,6 +39,6 @@ export const walletAddressJWTSign=(address:string)=>{
     return token
 }
 export const verifyWalletAddressJWTSign=(token:string)=>{
-    const address = JWT.verify(token,process.env.JWTSECRET!) as {walletAddress:string}
-    return address.walletAddress
+    const address = JWT.verify(token,process.env.JWTSECRET!) 
+    return address.walletAddress as string
 }
