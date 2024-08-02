@@ -8,11 +8,11 @@ import { message } from "antd";
 function ConnectWallet() {
   const [connectWallet, setConnectWallet] = useState(false);
 
+const emaillRef = useRef<HTMLInputElement>(null);
+const passwordRef = useRef<HTMLInputElement>(null);
 
 const ConnectDPOWallet =async () => {
 
-const emaillRef = useRef<HTMLInputElement>(null);
-const passwordRef = useRef<HTMLInputElement>(null);
   if(!emaillRef | !emaillRef.current || !passwordRef || !passwordRef.current)return
   message.destroy()
   message.loading("Connecting...",1000000)
