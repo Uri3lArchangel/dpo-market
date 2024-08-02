@@ -40,7 +40,7 @@ export const walletAddressJWTSign=(address:string)=>{
 }
 
 export const verifyWalletAddressJWTSign=(token:string)=>{
-    const address = JWT.verify(token,process.env.JWTSECRET!) ;
+    const address:{walletAddress:string} = JWT.verify(token,process.env.JWTSECRET!) ;
     console.log({address,token})
-    return address;
+    return address.walletAddress;
 }

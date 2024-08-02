@@ -47,7 +47,7 @@ export async function generateMetadata(
             return null
 
         }
-        let res = await fetch(process.env.BASEURL!+"/api/fetchUserWalletData",{method:'POST',next:{revalidate:false,tags:[process.env.CACHETAG!]},body:JSON.stringify({address:verifyWalletAddressJWTSign(cookie.value).walletAddress})})
+        let res = await fetch(process.env.BASEURL!+"/api/fetchUserWalletData",{method:'POST',next:{revalidate:false,tags:[process.env.CACHETAG!]},body:JSON.stringify({address:verifyWalletAddressJWTSign(cookie.value)})})
         let [success,error] = await res.json()
         if(error){
             return null;
