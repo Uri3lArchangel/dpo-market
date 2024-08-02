@@ -4,15 +4,7 @@ export interface UserWalletmodel {
     address: string;
     merchantID: string;
   
-    wallet: [
-      {
-        currencyName: string;
-        currencySymbol: string;
-        type: "fiat" | "crypto";
-        currencyAmount: number;
-        pendingAmount:number;
-      }
-    ];
+    wallet: WalletOptions[];
     save: any;
   }
 
@@ -21,5 +13,7 @@ export interface UserWalletmodel {
     currencySymbol: string;
     type: "fiat" | "crypto";
     currencyAmount: number;
+    pendingAmount:number;
+
   }
   
