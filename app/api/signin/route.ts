@@ -5,6 +5,8 @@ import {  setSessionCookie } from "@/src/BE/web2/functions/Cookie"
 import { HashPassword } from "@/src/BE/web2/functions/HashPasswords"
 import { jwtsign } from "@/src/BE/web2/functions/jwt"
 import { NextResponse } from "next/server"
+import { revalidateTag } from "next/cache";
+
 
 export async function POST(request:Request){
     await disconnectMongo()
@@ -22,7 +24,7 @@ if(emailCheck){
         let token = jwtsign(login.email,login.username,login.Verified)
         setSessionCookie(token)
         await disconnectMongo()
-
+        revalidateTag("WalletDataTag_001")
        return NextResponse.json({'message':'Login Successful','description':'',type:"success"},{status:200})
 
     }
@@ -40,6 +42,7 @@ if(unameCheck){
         let token = jwtsign(login.email,login.username,login.Verified)
         setSessionCookie(token)
         await disconnectMongo()
+        revalidateTag("WalletDataTag_001")
 
         return NextResponse.json({'message':'Login Successful','description':'',type:"success"},{status:200})
 
