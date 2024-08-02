@@ -9,7 +9,7 @@ import UserWallet from "@/src/BE/DB/schema/Wallet";
 import { passwordHasher } from "@/src/FE/Functions/Helpers/FE/PasswordHasher";
 import { UserWalletmodel } from "@/declarations";
 import { walletCookie } from "@/src/BE/web2/functions/Cookie";
-import { revalidateTag } from "next/cache";
+import { revalidateTag,revalidatePath } from "next/cache";
 
 
 export async function POST(req: NextRequest) {
@@ -32,6 +32,8 @@ export async function POST(req: NextRequest) {
         const token = walletAddressJWTSign(userWallet.address)
         walletCookie(token)
         revalidateTag("WalletDataTag_001")
+        revalidatePath("/portfoilo")
+
         return NextResponse.json([true, null])
 
     } catch (err: any) {

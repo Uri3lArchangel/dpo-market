@@ -50,6 +50,7 @@ const fetchWalletData = async () => {
     }
     let res = await fetch(process.env.BASEURL! + "/api/fetchUserWalletData", { method: 'POST', next: { revalidate: 0 }, body: JSON.stringify({ address: verifyWalletAddressJWTSign(cookie.value) }) })
     let [success, error] = await res.json()
+    
     if (error) {
         return null;
     }
@@ -60,7 +61,7 @@ const fetchWalletData = async () => {
 const page = async () => {
     const data = await fetchUserData()
     const userWallet = await fetchWalletData()
-
+console.log({userWallet})
     return (
         <main>
             <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={userWallet} />
