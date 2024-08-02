@@ -60,6 +60,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="xHD9qwpyJLFQl68VYSP5fci9tvGj356BX3BOeH7sopE" />
+      </head>
       <body className={raleway.className}>
         <Note>
       <Nav Username={data} />
