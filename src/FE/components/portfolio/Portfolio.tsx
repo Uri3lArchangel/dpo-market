@@ -1,5 +1,4 @@
 'use client'
-import React from "react";
 import portfolio from "../../../../styles/portfolio/portfolio.module.css";
 import Image from "next/image";
 import { BsBriefcaseFill } from "react-icons/bs";
