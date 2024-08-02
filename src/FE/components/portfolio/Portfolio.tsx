@@ -6,7 +6,7 @@ import { BsBriefcaseFill } from "react-icons/bs";
 import logo from '../../../../public/images_/dpologo.png'
 import TableApp from "./antd/Table";
 import ConnectWallet from "./antd/ConnectDPOWallet";
-import { WalletOptions } from "@/declarations";
+import { UserWalletmodel, WalletOptions } from "@/declarations";
 
 interface Props{
   equityOffers:{
@@ -22,7 +22,7 @@ interface Props{
   maturityDate:Date,
   isActive:Boolean,
 };
-wallet:WalletOptions
+wallet:UserWalletmodel|[]
 }
 
 
