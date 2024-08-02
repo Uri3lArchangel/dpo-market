@@ -11,6 +11,6 @@ export async function POST(req: NextRequest) {
     await disconnectMongoWallet()
     return NextResponse.json([userWallet, null] ,{ status: 200 });
   } catch (err: any) {
-    return NextResponse([null, err.message])
+    return NextResponse.json([null, err.message])
   }
 }
