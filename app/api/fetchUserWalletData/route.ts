@@ -8,10 +8,11 @@ export async function POST(req: NextRequest) {
     await connectMongoWallet()
     console.log({address})
     const userWallet = UserWallet.findOne({ address })
-
+    console.log({userWallet})
     await disconnectMongoWallet()
     return NextResponse.json([userWallet, null] ,{ status: 200 });
   } catch (err: any) {
+    console.log(err.message)
     return NextResponse.json([null, err.message])
   }
 }
