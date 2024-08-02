@@ -20,8 +20,7 @@ const TableApp = ({wallet}:{wallet:UserWalletmodel|null}) => {
   return(
   <Table dataSource={walletData} scroll={{x:true}}>
     
-      <Column title="Coin"  key="currencyName" dataIndex="currencyName" render={(coin:string)=>{
-console.log({coin})
+      <Column title="Coin"  key="currencySymbol" dataIndex="currencySymbol" render={(coin:string)=>{
 
         return (
         <div className='flex space-x-2 items-center'>
