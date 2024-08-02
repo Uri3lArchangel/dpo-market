@@ -43,6 +43,7 @@ const fetchWalletData = async () => {
     if (!cookie || !cookie.value) {
         return null
     }
+    console.log({cookie})
     if (!verifyWalletAddressJWTSign(cookie.value)) {
         return null
 
