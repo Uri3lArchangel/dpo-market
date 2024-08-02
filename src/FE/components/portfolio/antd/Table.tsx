@@ -14,7 +14,7 @@ const { Column, ColumnGroup } = Table;
 
 
 
-const TableApp = ({wallet}:{wallet:UserWalletmodel}) => {
+const TableApp = ({wallet}:{wallet:UserWalletmodel|[]}) => {
   const walletData = wallet.wallet
 
 
