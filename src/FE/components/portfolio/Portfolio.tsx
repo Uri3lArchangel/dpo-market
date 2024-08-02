@@ -102,7 +102,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
             </ul>}
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
-        {wallet? <div className="flex items-center cursor-pointer w-fit" onClick={copyAddress}>{isCopied?<CopyCheckIcon />:<CopyIcon  />} <h1 className="text-xl">{trauncateStringMiddle(address)}</h1></div>:<ConnectWallet />}
+        {wallet? <div className="flex items-center cursor-pointer w-fit" onClick={copyAddress}>{isCopied?<CopyCheckIcon />:<CopyIcon  />} <h1 className="text-xl">{trauncateStringMiddle(wallet.address)}</h1></div>:<ConnectWallet />}
         {/* <WithdrawCrypto /> */}
             <h3>Wallet Balance</h3>
 
