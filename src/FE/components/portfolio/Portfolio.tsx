@@ -5,8 +5,7 @@ import Image from "next/image";
 import { BsBriefcaseFill } from "react-icons/bs";
 import logo from '../../../../public/images_/dpologo.png'
 import TableApp from "./antd/Table";
-import DepositCrypto from "./antd/DepositCrypto";
-import WithdrawCrypto from "./antd/WithdrawCrypto";
+import ConnectWallet from "./antd/ConnectDPOWallet";
 
 interface Props{
   equityOffers:{
@@ -89,7 +88,7 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
             </ul>}
         </section>
         <section data-aos="fade-up" data-aos-delay="1000" className={portfolio.coinsHoldings}>
-        <DepositCrypto />
+        <ConnectWallet />
         {/* <WithdrawCrypto /> */}
             <h3>Wallet Balance</h3>
 
