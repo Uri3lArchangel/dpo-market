@@ -10,7 +10,7 @@ import Flags, {ICurrencyFlagProps} from 'react-currency-flags'
 
 
 
-const { Column, ColumnGroup } = Table;
+const { Column } = Table;
 
 
 
@@ -28,8 +28,12 @@ const TableApp = ({wallet}:{wallet:UserWalletmodel|null}) => {
           <p>{FiatMap[coin]} ({coin})</p>
         </div>
       )}} />
-    <Column title="Amount" dataIndex="currencyAmount" key="currencyAmount" />
-    <Column title="Pending" dataIndex="pendingAmount" key="pendingAmount" />
+    <Column title="Amount" dataIndex="currencyAmount" key="currencyAmount" render={(num:number)=>(
+      num.toLocaleString()
+    )} />
+    <Column title="Pending" dataIndex="pendingAmount" key="pendingAmount" render={(num:number)=>(
+      num.toLocaleString()
+    )} />
     <Column
       title=""
       key="action"
