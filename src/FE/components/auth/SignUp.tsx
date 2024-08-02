@@ -30,7 +30,16 @@ const router = useRouter()
 
 
 
-
+  export function validateEmail(email: string): { status: string } {
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    if (!emailRegex.test(email)) {
+      return { status: "error" };
+    }
+  
+    return { status: "success" };
+  }
 
 // SIGNUP PPROCESS
 
@@ -52,6 +61,15 @@ if(email == ''){
   noteContext!(notification)
   return
 } 
+if(validateEmail(email).status == "error"){
+  const notification:NotificationDataObject={
+    type:'error',
+    message:'Invalid Email',
+    description:'Pease ensure your email is valid eg. johndoe@gmail.com'
+  }
+  noteContext!(notification)
+  return
+}
 
 if(uname == ''){
   const notification:NotificationDataObject={
@@ -133,7 +151,7 @@ router.push('/auth/sign-in')
 
 
   return (
-    <section className={signup.mainContainer}>
+    <section className={signup.mainContainer+' pt-20'}>
          <div className={signup.innerContainer}>
           <section data-aos="fade-down" data-aos-easing="ease-out-back"className={signup.leftContainer}>
           <main>
