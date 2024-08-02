@@ -13,7 +13,7 @@ const passwordRef = useRef<HTMLInputElement>(null);
 
 const ConnectDPOWallet =async () => {
 
-  if(!emaillRef | !emaillRef.current || !passwordRef || !passwordRef.current)return
+  if(!emaillRef || !emaillRef.current || !passwordRef || !passwordRef.current)return
   message.destroy()
   message.loading("Connecting...",1000000)
 
