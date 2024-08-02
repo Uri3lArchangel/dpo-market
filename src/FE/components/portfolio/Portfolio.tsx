@@ -9,6 +9,7 @@ import { UserWalletmodel, WalletOptions } from "@/declarations";
 import {trauncateStringMiddle}from '../../Functions/Helpers/FE/AddressTrauncate';
 import { CopyCheckIcon, CopyIcon } from "lucide-react";
 import React, { useState } from "react";
+import {message} from 'antd'
 
 
 interface Props{
@@ -34,9 +35,10 @@ function Portfolio({equityOffers,debtOffers,wallet}:Props) {
   const [isCopied,setIsCopied]=useState(false);
   
   const copyAddress = ()=>{
+    if(!wallet)return
     let a;
     setIsCopied(true);
-  navigator.clipboard.writeText(address)
+  navigator.clipboard.writeText(wallet.address)
   message.destroy()
   message.success("Address copied",4)
    a= setTimeout(()=>{
