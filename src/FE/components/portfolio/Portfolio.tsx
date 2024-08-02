@@ -22,7 +22,7 @@ interface Props{
   maturityDate:Date,
   isActive:Boolean,
 };
-wallet:UserWalletmodel|[]
+wallet:UserWalletmodel|null
 }
 
 

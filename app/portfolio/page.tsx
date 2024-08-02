@@ -62,7 +62,7 @@ const userWallet = await fetchWalletData()
 
     return(
     <main>
-        <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={userWallet?userWallet:[]}/>
+        <Portfolio equityOffers={data.equityOffer} debtOffers={data.debtOffer} wallet={userWallet}/>
     </main>
     )
   

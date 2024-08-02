@@ -14,8 +14,8 @@ const { Column, ColumnGroup } = Table;
 
 
 
-const TableApp = ({wallet}:{wallet:UserWalletmodel|[]}) => {
-  const walletData = wallet.wallet
+const TableApp = ({wallet}:{wallet:UserWalletmodel|null}) => {
+  const walletData = wallet?wallet.wallet : []
 
 
   return(
