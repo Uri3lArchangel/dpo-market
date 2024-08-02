@@ -30,7 +30,7 @@ const router = useRouter()
 
 
 
-  export function validateEmail(email: string): { status: string } {
+   function validateEmail(email: string): { status: string } {
     // Regular expression for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
