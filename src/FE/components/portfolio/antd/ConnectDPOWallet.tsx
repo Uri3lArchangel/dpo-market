@@ -49,8 +49,8 @@ setConnectWallet(false)
         setState={setConnectWallet}
         mask={true}
       >
-       <input placeholder="Wallet Account Email" className="h-10  mx-8 px-2 w-full block rounded-md my-4 outline-none border border-black/20" id="" ref={emaillRef} />
-       <input type="password" placeholder="wallet Account Password" className="h-10 mx-8  px-2 w-full block rounded-md my-4 outline-none border border-black/20" id="" ref={passwordRef} />
+       <input placeholder="Wallet Account Email" className="h-10  mx-8 px-2 w-full block rounded-md w-[90%] mx-auto outline-none border border-black/20" id="" ref={emaillRef} />
+       <input type="password" placeholder="wallet Account Password" className="h-10 mx-8  px-2 w-full block rounded-md w-[90%] mx-auto outline-none border border-black/20" id="" ref={passwordRef} />
        <button onClick={ConnectDPOWallet} className="bg-blue-400 px-6 py-2 rounded-md text-white block my-6">Connect</button>
        <button onClick={()=>{
         setConnectWallet(false)

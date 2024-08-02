@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const { address } = await req.json()
     await connectMongoWallet()
     console.log({address})
-    const userWallet = UserWallet.findOne({ address })
+    const userWallet = await UserWallet.findOne({ address })
     console.log({userWallet})
     await disconnectMongoWallet()
     return NextResponse.json([userWallet, null] ,{ status: 200 });
