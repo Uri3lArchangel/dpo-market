@@ -47,7 +47,7 @@ const fetchWalletData = async () => {
         return null
 
     }
-    let res = await fetch(process.env.BASEURL! + "/api/fetchUserWalletData", { method: 'POST', next: { revalidate: false, tags: ["WalletDataTag_001", process.env.CACHETAG!] }, body: JSON.stringify({ address: verifyWalletAddressJWTSign(cookie.value) }) })
+    let res = await fetch(process.env.BASEURL! + "/api/fetchUserWalletData", { method: 'POST', next: { revalidate: 0 }, body: JSON.stringify({ address: verifyWalletAddressJWTSign(cookie.value) }) })
     let [success, error] = await res.json()
     if (error) {
         return null;
